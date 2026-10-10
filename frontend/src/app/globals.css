@@ -1,0 +1,34 @@
+@import "@fontsource/montserrat/400.css";
+@import "@fontsource/montserrat/500.css";
+@import "@fontsource/montserrat/600.css";
+@import "@fontsource/montserrat/700.css";
+@import "@fontsource/montserrat/800.css";
+@import "@fontsource/jetbrains-mono/400.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { -webkit-text-size-adjust: 100%; }
+  body { @apply bg-mist-50 text-ink antialiased; font-feature-settings: "tnum" 1; }
+  h1, h2, h3 { @apply text-plum; letter-spacing: -0.01em; }
+  :focus-visible { outline: 3px solid #FF0053; outline-offset: 2px; border-radius: 6px; }
+  ::selection { background: #FFD6E3; }
+}
+
+@layer components {
+  .input {
+    @apply w-full rounded-lg border border-mist-300 bg-white px-3 py-2.5 text-[15px] text-ink placeholder:text-ink/40
+      focus:border-plum focus:outline-none focus:ring-2 focus:ring-plum/15 disabled:bg-mist-50;
+  }
+  .label { @apply mb-1.5 block text-sm font-semibold text-ink/80; }
+  .hint { @apply mt-1 text-xs text-ink/55; }
+  .panel { @apply rounded-2xl border border-mist-300/70 bg-white; }
+  .link { @apply font-semibold text-plum underline decoration-signal/40 underline-offset-4 hover:decoration-signal; }
+  .code-block { @apply overflow-x-auto rounded-xl bg-[#1E1530] p-4 font-mono text-[13px] leading-relaxed text-[#EDE9F6]; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}

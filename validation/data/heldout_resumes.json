@@ -1,0 +1,1219 @@
+[
+ {
+  "id": "r01",
+  "style": "hh.ru export, backend Python, explicit total",
+  "text": "Соколов Дмитрий Андреевич\nМужчина, 29 лет, родился 14 мая 1997\n\n+7 (916) 482-35-17 — предпочитаемый способ связи\nd.sokolov97@mail.ru\n\nПроживает: Москва\nГражданство: Россия, есть разрешение на работу: Россия\nНе готов к переезду, готов к командировкам\n\nЖелаемая должность и зарплата\nPython-разработчик (Backend)\n320 000 ₽ на руки\nСпециализации:\n— Программист, разработчик\nЗанятость: полная занятость\nГрафик работы: полный день, удаленная работа\n\nОпыт работы — 6 лет 2 месяца\n\nАвгуст 2022 — настоящее время\n4 года 3 месяца\nООО «ФинТехСервис»\nМосква\nPython-разработчик\n— Разработка и поддержка микросервисов платежного шлюза на Python 3.11 и FastAPI\n— Проектирование REST API для мобильного приложения и партнёрских интеграций\n— Перевёл сервис уведомлений на asyncio, время обработки очереди снизилось в 3 раза\n— Работа с PostgreSQL: написание сложных запросов, индексы, миграции через Alembic\n— Кэширование в Redis, обмен сообщениями между сервисами через RabbitMQ\n— Сборка и деплой в Docker, пайплайны в GitLab CI\n— Написание unit-тестов на pytest, код-ревью\n\nСентябрь 2020 — Июль 2022\n1 год 11 месяцев\nООО «Веб Решения»\nМосква\nPython-разработчик\n— Разработка backend для интернет-магазинов на Django и Django REST Framework\n— Фоновые задачи на Celery\n— Интеграции с внешними API (службы доставки, эквайринг)\n— Поддержка серверов на Ubuntu\n\nОбразование\nВысшее\n2020\nМосковский государственный технический университет им. Н.Э. Баумана\nИнформатика и системы управления, Программная инженерия\n\nКлючевые навыки\nPython  Django  FastAPI  PostgreSQL  SQL  Redis  RabbitMQ  Docker  Git  Linux  REST API  asyncio  Celery\n\nЗнание языков\nРусский — Родной\nАнглийский — B2 — Средне-продвинутый",
+  "gold": {
+   "full_name": "Соколов Дмитрий Андреевич",
+   "email": "d.sokolov97@mail.ru",
+   "phone": "+79164823517",
+   "telegram": null,
+   "city": "Москва",
+   "city_aliases": [
+    "Moscow",
+    "Мск"
+   ],
+   "years_experience": 6.2,
+   "specialization": "backend",
+   "skills": [
+    "python",
+    "web_frameworks",
+    "postgresql",
+    "sql",
+    "caching_queues",
+    "http_api",
+    "async",
+    "docker",
+    "ci_cd",
+    "git",
+    "linux"
+   ],
+   "skills_optional": [
+    "system_design",
+    "test_automation"
+   ]
+  }
+ },
+ {
+  "id": "r02",
+  "style": "hh.ru export, frontend React, explicit total",
+  "text": "Кузнецова Анна Сергеевна\nЖенщина, 26 лет, родилась 3 февраля 2000\n\n+7 (921) 655-08-43\nanna.kuznetsova.dev@gmail.com — предпочитаемый способ связи\nTelegram: @anna_kuz_fe\n\nПроживает: Санкт-Петербург, м. Петроградская\nГражданство: Россия\nНе готова к переезду, не готова к командировкам\n\nЖелаемая должность и зарплата\nFrontend-разработчик (React)\nСпециализации:\n— Программист, разработчик\nЗанятость: полная занятость\nГрафик работы: удаленная работа, гибкий график\n\nОпыт работы — 4 года 5 месяцев\n\nЯнварь 2024 — настоящее время\n2 года 10 месяцев\n«Ритейл Тех»\nFrontend-разработчик\nРазработка личного кабинета покупателя и админ-панели для сети магазинов.\n— Перевела проект с JavaScript на TypeScript (около 300 компонентов)\n— Работа со стейтом на Redux Toolkit и RTK Query, интеграция с REST API бэкенда\n— Оптимизация производительности: code splitting, lazy loading, улучшение Web Vitals (LCP с 3,9 до 2,1 с)\n— Офлайн-корзина на основе localStorage и IndexedDB\n— Unit-тесты на Jest и React Testing Library\n\nИюнь 2022 — Декабрь 2023\n1 год 7 месяцев\nООО «Студия Лайм»\nJunior Frontend-разработчик\n— Вёрстка адаптивных лендингов по макетам из Figma (HTML5, CSS3, SCSS, БЭМ)\n— Разработка компонентов на React\n— Работа с Git, участие в код-ревью\n\nОбразование\nВысшее\n2022\nСанкт-Петербургский политехнический университет Петра Великого\nИнститут компьютерных наук и кибербезопасности, Прикладная информатика\n\nКлючевые навыки\nJavaScript  TypeScript  React  Redux  Next.js  HTML5  CSS3  SCSS  Webpack  Vite  Jest  Git  REST API  Figma\n\nЗнание языков\nРусский — Родной\nАнглийский — B1 — Средний",
+  "gold": {
+   "full_name": "Кузнецова Анна Сергеевна",
+   "email": "anna.kuznetsova.dev@gmail.com",
+   "phone": "+79216550843",
+   "telegram": "@anna_kuz_fe",
+   "city": "Санкт-Петербург",
+   "city_aliases": [
+    "СПб",
+    "Питер",
+    "Saint Petersburg",
+    "St. Petersburg"
+   ],
+   "years_experience": 4.4,
+   "specialization": "frontend",
+   "skills": [
+    "javascript",
+    "typescript",
+    "react",
+    "html_css",
+    "http_api",
+    "browser",
+    "git"
+   ],
+   "skills_optional": [
+    "test_automation"
+   ]
+  }
+ },
+ {
+  "id": "r03",
+  "style": "long resume with project descriptions, data science",
+  "text": "Гарипов Ильдар Рустамович\nData Scientist\n\nКазань | +7 917 284 55 31 | ildar.garipov@yandex.ru | t.me/ildar_ds\nGitHub: github.com/igaripov\n\nО себе\nData Scientist с опытом в банковской сфере и ритейле. Строю модели от постановки задачи и сбора данных до вывода в прод и мониторинга качества. Люблю задачи, где модель напрямую влияет на деньги.\n\nОпыт работы\n\nНоябрь 2023 — по настоящее время\nData Scientist, АО «КазаньБанк Технологии»\nПроекты:\n1. Модель оттока клиентов малого бизнеса. Собрал витрину признаков из 12 источников (SQL, PostgreSQL, ClickHouse), обучил градиентный бустинг (CatBoost, LightGBM), подобрал порог под бизнес-метрику. Модель используется отделом удержания, отток в целевом сегменте снизился на 7%.\n2. Классификация обращений клиентов. Дообучил BERT-подобную модель (PyTorch, Hugging Face transformers) на 400 тыс. размеченных обращений, точность маршрутизации выросла с 71% до 89%.\n3. Оценка эффекта пилотов. Дизайн и анализ A/B-тестов, расчёт мощности, бутстрап, стратификация.\nИнструменты: Python, pandas, NumPy, scikit-learn, Airflow, MLflow, Git, Docker (на базовом уровне — собирал образы для инференса).\n\nМарт 2022 — Октябрь 2023\nМладший аналитик данных, ООО «ТатМаркет» (сеть супермаркетов)\n— Прогноз спроса по SKU (линейные модели, Prophet), отчётность по продажам\n— Автоматизация выгрузок из PostgreSQL на Python\n— Анализ промо-акций, проверка статистических гипотез\n\nОбразование\n2022, Казанский федеральный университет, Институт вычислительной математики и ИТ, бакалавр, «Прикладная математика и информатика»\n\nКурсы\n2023 — Специализация по глубокому обучению (онлайн)\n\nНавыки\nPython, SQL, pandas, NumPy, scikit-learn, CatBoost, LightGBM, PyTorch, transformers, статистика, A/B-тесты, Airflow, MLflow, Git\n\nЯзыки: русский, татарский — родные; английский — B2 (читаю статьи)",
+  "gold": {
+   "full_name": "Гарипов Ильдар Рустамович",
+   "email": "ildar.garipov@yandex.ru",
+   "phone": "+79172845531",
+   "telegram": "@ildar_ds",
+   "city": "Казань",
+   "city_aliases": [
+    "Kazan"
+   ],
+   "years_experience": 4.7,
+   "specialization": "data_science",
+   "skills": [
+    "python",
+    "pandas",
+    "ml",
+    "deep_learning",
+    "statistics",
+    "sql",
+    "postgresql",
+    "git"
+   ],
+   "skills_optional": [
+    "docker"
+   ]
+  }
+ },
+ {
+  "id": "r04",
+  "style": "terse one-screen, DevOps",
+  "text": "Павел Морозов\nDevOps-инженер\n\nНовосибирск | +7-913-907-22-41 | pavel.morozov@proton.me | tg: @pmorozov_ops\n\nОпыт\n07.2021 – н.в.  DevOps-инженер, ООО «СибСофт»\n• Kubernetes on-prem (3 кластера, ~40 нод): установка, обновления, Helm-чарты\n• CI/CD на GitLab CI + ArgoCD, шаблоны пайплайнов для 30+ команд\n• Terraform и Ansible для инфраструктуры\n• Мониторинг: Prometheus, Grafana, Alertmanager, логи в Loki\n• Docker, сборка базовых образов, Harbor\n\n09.2019 – 06.2021  Системный администратор Linux, интернет-провайдер «НовоНет»\n• Debian/CentOS, nginx, bind9, iptables\n• Сети: VLAN, маршрутизация, BGP на базовом уровне\n• Автоматизация рутины на Bash и Python\n\nНавыки: Linux, Kubernetes, Docker, GitLab CI, ArgoCD, Terraform, Ansible, Prometheus, Grafana, Git, Bash, Python, TCP/IP, DNS\n\nОбразование: НГТУ, 2019, «Инфокоммуникационные технологии и системы связи»",
+  "gold": {
+   "full_name": "Павел Морозов",
+   "email": "pavel.morozov@proton.me",
+   "phone": "+79139072241",
+   "telegram": "@pmorozov_ops",
+   "city": "Новосибирск",
+   "city_aliases": [
+    "Novosibirsk"
+   ],
+   "years_experience": 7.2,
+   "specialization": "devops",
+   "skills": [
+    "kubernetes",
+    "ci_cd",
+    "linux",
+    "monitoring",
+    "networking",
+    "docker",
+    "git",
+    "python"
+   ],
+   "skills_optional": [
+    "security"
+   ]
+  }
+ },
+ {
+  "id": "r05",
+  "style": "career switcher (teacher to manual QA), contacts at bottom",
+  "text": "Белова Елена\nТестировщик ПО (QA Engineer)\n\nОбо мне\n8 лет проработала учителем математики, в 2023 году решила сменить профессию и ушла в тестирование. Прошла курс «Инженер по тестированию» (6 месяцев), с марта 2024 работаю тестировщиком. Внимательная, умею объяснять сложное простыми словами, не боюсь рутины.\n\nОпыт работы\n\nМарт 2024 — настоящее время\nQA-инженер, ООО «УралСофт» (B2B-платформа для логистики)\n— Функциональное и регрессионное тестирование веб-приложения\n— Тест-дизайн: классы эквивалентности, граничные значения, попарное тестирование, таблицы принятия решений\n— Написание чек-листов и тест-кейсов в TestIT, заведение баг-репортов в Jira\n— Тестирование REST API в Postman (коллекции, переменные окружения, простые проверки на JS)\n— Проверка данных в БД: SQL-запросы (SELECT, JOIN, GROUP BY)\n— Работа с Chrome DevTools: вкладки Network и Console, локальное хранилище\n— Git на уровне clone/pull/commit для работы с тестовой документацией\n\nСентябрь 2015 — Август 2023\nУчитель математики, МАОУ СОШ № 47\n\nОбразование\n2015 — УрГПУ, математика и информатика\n2023 — курс «Инженер по тестированию»\n\nСейчас изучаю Python и пишу первые автотесты на pytest.\n\nКонтакты\nГород: Екатеринбург\nТелефон: 8 922 614 37 05\nE-mail: belova.elena.qa@yandex.ru",
+  "gold": {
+   "full_name": "Белова Елена",
+   "email": "belova.elena.qa@yandex.ru",
+   "phone": "+79226143705",
+   "telegram": null,
+   "city": "Екатеринбург",
+   "city_aliases": [
+    "Ekaterinburg",
+    "Yekaterinburg",
+    "Екб"
+   ],
+   "years_experience": 2.7,
+   "specialization": "qa",
+   "skills": [
+    "test_design",
+    "http_api",
+    "sql",
+    "git"
+   ],
+   "skills_optional": [
+    "browser",
+    "python",
+    "test_automation",
+    "javascript"
+   ]
+  }
+ },
+ {
+  "id": "r06",
+  "style": "English LinkedIn-like, backend Go, senior",
+  "text": "Artem Volkov\nSenior Backend Engineer (Go)\nSaint Petersburg, Russia · artem.volkov.dev@gmail.com · +7 911 238 41 09 · linkedin.com/in/artem-volkov-go\n\nSUMMARY\nBackend engineer with 8+ years of experience, the last 6 in Go. I design and build high-load distributed systems for logistics and payments. Comfortable owning services end to end: architecture, code, deployment, on-call.\n\nEXPERIENCE\nSenior Backend Engineer — Logistix\nApr 2023 – Present\n• Led the redesign of the order routing platform from a monolith into 14 microservices; wrote the design docs and ran architecture reviews\n• Built event-driven pipelines on Kafka processing ~25k events/sec; Redis for hot caches and rate limiting\n• Tuned PostgreSQL (partitioning, query plans), cut p99 latency of the tracking API from 800 ms to 120 ms\n• Services run in Kubernetes; Prometheus/Grafana dashboards and alerting for the team\n\nBackend Developer (Go) — PayFlow\nJan 2020 – Mar 2023\n• Developed payment processing services in Go: REST APIs with Gin, internal communication over gRPC\n• Heavy use of goroutines, channels and worker pools; fixed several race conditions in the settlement service\n• CI/CD with GitHub Actions, Docker-based local environment\n\nJunior PHP Developer — WebCraft Studio\nJul 2018 – Dec 2019\n• Websites and CRM integrations on PHP/Laravel, MySQL\n\nSKILLS\nGo, SQL, PostgreSQL, Kafka, Redis, gRPC, REST, Docker, Kubernetes, Prometheus, Grafana, Linux, Git, GitHub Actions, PHP\n\nEDUCATION\nITMO University — BSc in Computer Science, 2018\n\nLANGUAGES\nRussian (native), English (C1)",
+  "gold": {
+   "full_name": "Artem Volkov",
+   "email": "artem.volkov.dev@gmail.com",
+   "phone": "+79112384109",
+   "telegram": null,
+   "city": "Санкт-Петербург",
+   "city_aliases": [
+    "Saint Petersburg",
+    "St. Petersburg",
+    "СПб",
+    "Питер"
+   ],
+   "years_experience": 8.3,
+   "specialization": "backend",
+   "skills": [
+    "go",
+    "sql",
+    "postgresql",
+    "caching_queues",
+    "http_api",
+    "web_frameworks",
+    "async",
+    "system_design",
+    "docker",
+    "kubernetes",
+    "monitoring",
+    "linux",
+    "git",
+    "ci_cd"
+   ],
+   "skills_optional": []
+  }
+ },
+ {
+  "id": "r07",
+  "style": "hh.ru export, QA automation Java, explicit total",
+  "text": "Смирнов Алексей Игоревич\nМужчина, 31 год, родился 22 октября 1994\n\n+7 (930) 715-44-02\nalexey.smirnov.qa@mail.ru — предпочитаемый способ связи\nTelegram: smirnov_qa\n\nПроживает: Нижний Новгород\nГражданство: Россия\nГотов к переезду: Москва, Санкт-Петербург\n\nЖелаемая должность и зарплата\nQA Automation Engineer (Java)\n280 000 ₽\nЗанятость: полная занятость\nГрафик работы: удаленная работа\n\nОпыт работы — 5 лет 1 месяц\n\nИюнь 2023 — настоящее время\n3 года 5 месяцев\nООО «НН Софт»\nQA Automation Engineer\n— Разработка фреймворка автотестов UI и API с нуля: Java 17, Selenide, JUnit 5, RestAssured, Allure\n— Покрыто автотестами ~1800 сценариев, регресс сократился с 3 дней до 4 часов\n— Настройка запуска тестов в Jenkins, параллельный прогон в Docker (Selenoid)\n— Проверка данных в PostgreSQL через SQL-запросы\n— Тестирование интеграций через Kafka\n\nОктябрь 2021 — Май 2023\n1 год 8 месяцев\nПАО «Телеком Плюс»\nQA Engineer\n— Ручное тестирование биллинга и личного кабинета\n— Составление тест-кейсов с использованием техник тест-дизайна\n— Тестирование API в Postman\n— Начал автоматизацию: первые тесты на Selenium WebDriver + TestNG\n\nОбразование\nВысшее\n2017\nНижегородский государственный университет им. Н.И. Лобачевского\nРадиофизический факультет\n\nКлючевые навыки\nJava  Selenide  Selenium  JUnit  TestNG  RestAssured  Allure  Maven  Jenkins  Git  SQL  PostgreSQL  Docker  Postman  Тест-дизайн",
+  "gold": {
+   "full_name": "Смирнов Алексей Игоревич",
+   "email": "alexey.smirnov.qa@mail.ru",
+   "phone": "+79307154402",
+   "telegram": "@smirnov_qa",
+   "city": "Нижний Новгород",
+   "city_aliases": [
+    "Н. Новгород",
+    "Nizhny Novgorod",
+    "Нижний"
+   ],
+   "years_experience": 5.1,
+   "specialization": "qa",
+   "skills": [
+    "java",
+    "test_automation",
+    "test_design",
+    "http_api",
+    "ci_cd",
+    "git",
+    "sql",
+    "postgresql",
+    "docker"
+   ],
+   "skills_optional": [
+    "caching_queues"
+   ]
+  }
+ },
+ {
+  "id": "r08",
+  "style": "student / intern, no commercial experience, frontend",
+  "text": "Мария Ким\nJunior Frontend-разработчик / стажёр\n\nТомск · tg: @masha_kim_dev · maria.kim2005@gmail.com · 89539117423\nGitHub: github.com/mkim-dev\n\nИщу стажировку или junior-позицию во frontend-разработке. Готова к полному дню летом и 30 часам в неделю во время учёбы.\n\nОбразование\nТомский государственный университет, Институт прикладной математики и компьютерных наук, 3 курс (выпуск 2027)\n\nКоммерческого опыта пока нет. Учебные и pet-проекты:\n\n• «Погода рядом» — SPA на React + TypeScript. Данные берутся из OpenWeather API (fetch, async/await), последние города сохраняются в localStorage, есть геолокация через Geolocation API. Деплой на GitHub Pages.\n• Таск-трекер для студенческой группы — React, React Router, Context API, адаптивная вёрстка.\n• Лендинг для кофейни знакомых — чистые HTML/CSS (flexbox, grid, медиазапросы), немного ванильного JavaScript для слайдера.\n• Хакатон «Цифровой прорыв» 2025, региональный этап — фронтенд команды.\n\nНавыки\nJavaScript (ES6+), TypeScript, React, HTML5, CSS3, Git, GitHub, основы работы с DOM и событиями, REST API.\nАлгоритмы и структуры данных — курс в университете, решила ~150 задач на LeetCode.\nСейчас изучаю Next.js.\n\nАнглийский — B1.",
+  "gold": {
+   "full_name": "Мария Ким",
+   "email": "maria.kim2005@gmail.com",
+   "phone": "+79539117423",
+   "telegram": "@masha_kim_dev",
+   "city": "Томск",
+   "city_aliases": [
+    "Tomsk"
+   ],
+   "years_experience": 0,
+   "specialization": "frontend",
+   "skills": [
+    "javascript",
+    "typescript",
+    "react",
+    "html_css",
+    "http_api",
+    "browser",
+    "git",
+    "algorithms"
+   ],
+   "skills_optional": [
+    "async"
+   ]
+  }
+ },
+ {
+  "id": "r09",
+  "style": "terse one-screen, data analyst",
+  "text": "Арсен Петросян\nАналитик данных\n\nРостов-на-Дону\n+7 928 145-90-33\narsen.petrosyan@inbox.ru\n\nКлючевое: SQL (ClickHouse, PostgreSQL), Python (pandas, matplotlib), Tableau, Power BI, Excel, A/B-тесты, проверка гипотез\n\nОпыт\n02.2023 — н.в. — Продуктовый аналитик, маркетплейс «ДонМаркет»\nМетрики воронки и retention, дашборды в Tableau, A/B-тесты новых фич (t-test, хи-квадрат), ad-hoc запросы для продуктовой команды.\n\n09.2021 — 01.2023 — Аналитик данных (BI), агрохолдинг «Агро Юг»\nОтчётность в Power BI, автоматизация выгрузок на Python, витрины в PostgreSQL.\n\nО себе: люблю, когда цифры превращаются в решения, а не просто в красивые графики. Ищу позицию продуктового аналитика, удалёнка или гибрид.\n\nОбразование: ЮФУ, экономика, 2021",
+  "gold": {
+   "full_name": "Арсен Петросян",
+   "email": "arsen.petrosyan@inbox.ru",
+   "phone": "+79281459033",
+   "telegram": null,
+   "city": "Ростов-на-Дону",
+   "city_aliases": [
+    "Ростов",
+    "Rostov-on-Don"
+   ],
+   "years_experience": 5.2,
+   "specialization": "data_science",
+   "skills": [
+    "sql",
+    "postgresql",
+    "python",
+    "pandas",
+    "statistics"
+   ],
+   "skills_optional": []
+  }
+ },
+ {
+  "id": "r10",
+  "style": "English LinkedIn-like, SRE, many technologies",
+  "text": "Ruslan Akhmetov\nSite Reliability Engineer\nUfa, Russia | ruslan.akhmetov.sre@gmail.com | +7 (987) 254-11-60 | Telegram: t.me/r_akhmetov\n\nProfile\nSRE with 7 years in infrastructure. I keep large Kubernetes platforms reliable, build observability from scratch and drive incident culture (SLOs, blameless postmortems).\n\nExperience\nSite Reliability Engineer, CloudNest — Feb 2022 – Present\n- Run 6 production Kubernetes clusters (EKS and self-hosted) serving ~300 microservices\n- Built the observability stack: Prometheus, VictoriaMetrics, Grafana, OpenTelemetry tracing, on-call with PagerDuty\n- Defined SLOs for tier-1 services, cut monthly incidents by 40%\n- GitOps delivery with ArgoCD and GitHub Actions; infrastructure in Terraform (AWS, GCP)\n- Wrote internal tooling in Go and Python (cluster autoscaling reports, cost dashboards)\n- Secrets management with HashiCorp Vault\n\nSystem Engineer, UfaNet Solutions — Jun 2019 – Jan 2022\n- Linux servers (Ubuntu, RHEL), Docker migration of legacy apps\n- Network troubleshooting: TCP/IP, DNS, load balancers (HAProxy), VPN\n- Zabbix monitoring\n\nSkills\nKubernetes, Docker, Terraform, AWS, GCP, Prometheus, Grafana, OpenTelemetry, Linux, TCP/IP, DNS, Go, Python, Bash, GitHub Actions, ArgoCD, Vault\n\nEducation\nUfa State Aviation Technical University, BSc Information Security, 2019",
+  "gold": {
+   "full_name": "Ruslan Akhmetov",
+   "email": "ruslan.akhmetov.sre@gmail.com",
+   "phone": "+79872541160",
+   "telegram": "@r_akhmetov",
+   "city": "Уфа",
+   "city_aliases": [
+    "Ufa"
+   ],
+   "years_experience": 7.4,
+   "specialization": "devops",
+   "skills": [
+    "kubernetes",
+    "docker",
+    "monitoring",
+    "linux",
+    "networking",
+    "go",
+    "python",
+    "ci_cd"
+   ],
+   "skills_optional": [
+    "git",
+    "security",
+    "system_design"
+   ]
+  }
+ },
+ {
+  "id": "r11",
+  "style": "informal with typos and slang, manual QA",
+  "text": "Ткаченко Дарья\nтестировщик ПО (ручное тестирование)\n\nг. Краснодар\nтел. 8-918-336-72-19\nпочта dasha.tkachenko98@mail.ru\nтелега @dashatk\n\nопыт больше 3х лет в тестировании веб и мобилки\n\nОПЫТ\nс мая 2024 по наст. время — QA инженер в ООО \"ЮгДиджитал\"\n- тестирую мобилку (андроид, айос) и веб версию сервиса записи к врачам\n- пишу тест кейсы и чек листы, использую тест дизайн (граничные значения, эквивалентное разбиение)\n- завожу баги в жиру, веду регресс\n- проверяю апи через постман, смотрю логи\n- снифер Charles для подмены ответов\n- немного SQL - селекты чтоб проверить данные в базе\n\n07.2023 - 04.2024 — стажер-тестировщик (оплачиваемая стажировка), там же\n- смоук и регресс по чек листам, учавствовала в приемке релизов\n\nОБРАЗОВАНИЕ\nКубГУ, 2020, филология (да, так получилось :))\nкурсы по тестированию 2023\n\nНАВЫКИ\nтест дизайн, тест кейсы, jira, confluence, postman, charles, devtools, sql (базово), testrail",
+  "gold": {
+   "full_name": "Ткаченко Дарья",
+   "email": "dasha.tkachenko98@mail.ru",
+   "phone": "+79183367219",
+   "telegram": "@dashatk",
+   "city": "Краснодар",
+   "city_aliases": [
+    "Krasnodar"
+   ],
+   "years_experience": 3.3,
+   "specialization": "qa",
+   "skills": [
+    "test_design",
+    "http_api",
+    "sql"
+   ],
+   "skills_optional": [
+    "browser"
+   ]
+  }
+ },
+ {
+  "id": "r12",
+  "style": "English LinkedIn-like, frontend Vue/React, no phone",
+  "text": "Ekaterina Orlova\nFrontend Developer · Vue / TypeScript\n\nKaliningrad, Russia · e.orlova.fe@gmail.com · Telegram: @ek_orlova · github.com/ekorlova\n\nAbout\nFrontend developer with 6+ years of building customer-facing web apps. Mostly Vue, also maintained a large React codebase. I care about performance, accessibility and clean component APIs.\n\nExperience\nFrontend Developer — Baltic Soft\nSeptember 2021 – Present\n• Main developer of the booking web app (Vue 3, Nuxt, Pinia, TypeScript)\n• Improved Core Web Vitals: LCP 3.4s → 1.6s via image pipeline, prefetching and a Service Worker cache\n• Maintained a legacy React 17 admin panel and migrated it to React 18 + TypeScript\n• Set up GitLab CI pipelines for lint, unit tests and preview deploys\n• Wrote end-to-end tests in Cypress for critical flows\n\nJunior Frontend Developer — Amber Studio\nMarch 2020 – August 2021\n• Responsive landing pages and small SPAs: HTML5, CSS3/SCSS, JavaScript, jQuery\n• Pixel-perfect layout from Figma, cross-browser fixes\n\nSkills\nJavaScript (ES2022), TypeScript, Vue 3, Nuxt, React, HTML5, CSS3, SCSS, Tailwind, Vite, Webpack, Jest, Cypress, Storybook, Git, GitLab CI, Web performance, Accessibility (WCAG)\n\nEducation\nImmanuel Kant Baltic Federal University — Applied Informatics, 2020",
+  "gold": {
+   "full_name": "Ekaterina Orlova",
+   "email": "e.orlova.fe@gmail.com",
+   "phone": null,
+   "telegram": "@ek_orlova",
+   "city": "Калининград",
+   "city_aliases": [
+    "Kaliningrad"
+   ],
+   "years_experience": 6.7,
+   "specialization": "frontend",
+   "skills": [
+    "javascript",
+    "typescript",
+    "html_css",
+    "react",
+    "browser",
+    "git",
+    "ci_cd"
+   ],
+   "skills_optional": [
+    "test_automation"
+   ]
+  }
+ },
+ {
+  "id": "r13",
+  "style": "long resume with project descriptions, backend Java senior",
+  "text": "Николаев Игорь Владимирович\nJava-разработчик (Senior)\n\nГород: Самара\nТелефон: 8 (927) 603-18-55\nE-mail: i.nikolaev@rambler.ru\n\nПрофессиональный опыт: более 9 лет коммерческой разработки на Java, из них последние 6 лет — в ООО «Волга Телеком Софт».\n\nОпыт работы\n\n04.2020 — по настоящее время\nООО «Волга Телеком Софт», ведущий Java-разработчик\n\nПроект 1. Распил монолитного биллинга на микросервисы.\nСпроектировал целевую архитектуру (12 сервисов, событийная модель на Kafka), подготовил план миграции без простоя. Стек: Java 17, Spring Boot, Spring Cloud, Spring Data JPA, Hibernate, PostgreSQL, Kafka, Redis.\nРезультат: время выставления счетов сократилось с 6 часов до 40 минут.\n\nПроект 2. Публичный REST API для партнёров.\nРазработал API с документацией в OpenAPI, авторизацией по OAuth2 и лимитами запросов на Redis.\n\nПроект 3. Перевод сборки и деплоя на Kubernetes (OpenShift), пайплайны в Jenkins, сборка образов Docker.\n\nТакже: менторство трёх джуниоров, проведение код-ревью, собеседования.\n\n09.2017 — 03.2020\nАО «СамараИнформ», Java-разработчик\nРазработка системы документооборота: Java 8, Spring MVC, Oracle, многопоточная обработка входящих документов (java.util.concurrent), интеграция по SOAP и REST.\n\nТехнологии\nJava, Kotlin (немного), Spring Boot, Spring Cloud, Hibernate, SQL, PostgreSQL, Oracle, Kafka, Redis, Docker, Kubernetes, Jenkins, Git, Linux, JUnit, Mockito, многопоточность\n\nОбразование\nСамарский университет им. Королёва, 2017, «Прикладная математика и информатика»",
+  "gold": {
+   "full_name": "Николаев Игорь Владимирович",
+   "email": "i.nikolaev@rambler.ru",
+   "phone": "+79276031855",
+   "telegram": null,
+   "city": "Самара",
+   "city_aliases": [
+    "Samara"
+   ],
+   "years_experience": 9.2,
+   "specialization": "backend",
+   "skills": [
+    "java",
+    "web_frameworks",
+    "sql",
+    "postgresql",
+    "caching_queues",
+    "system_design",
+    "http_api",
+    "docker",
+    "kubernetes",
+    "ci_cd",
+    "git",
+    "linux",
+    "async"
+   ],
+   "skills_optional": [
+    "test_automation",
+    "security"
+   ]
+  }
+ },
+ {
+  "id": "r14",
+  "style": "student, no commercial experience, data science",
+  "text": "Хабибуллин Тимур\nНачинающий Data Scientist\n\nПермь | t.khabibullin@gmail.com | tg: @timkhab\n\nСтудент 4 курса механико-математического факультета ПГНИУ (бакалавриат, «Прикладная математика», выпуск 2027). Ищу стажировку в DS/ML. Опыта коммерческой работы нет, зато много учебных проектов и соревнований.\n\nПроекты\n— Kaggle Playground (табличные данные, регрессия): бронзовая медаль, CatBoost + подбор гиперпараметров через Optuna, отбор признаков.\n— Курсовая: классификация снимков листьев растений на болезни. Свёрточная нейросеть на PyTorch (ResNet18, transfer learning), accuracy 94%.\n— Анализ данных о поездках на самокатах по Перми: pandas, NumPy, seaborn, проверка гипотез о влиянии погоды (t-критерий, Манна-Уитни).\n\nНавыки\nPython, pandas, NumPy, scikit-learn, CatBoost, PyTorch, matplotlib, seaborn, Jupyter\nSQL — базовые запросы, JOIN, агрегаты\nМатематическая статистика и теория вероятностей (отлично по обоим курсам)\nАлгоритмы и структуры данных: ~300 задач на Codeforces, пишу на C++\nGit, Linux (Ubuntu как основная ОС)\n\nАнглийский — B2",
+  "gold": {
+   "full_name": "Хабибуллин Тимур",
+   "email": "t.khabibullin@gmail.com",
+   "phone": null,
+   "telegram": "@timkhab",
+   "city": "Пермь",
+   "city_aliases": [
+    "Perm"
+   ],
+   "years_experience": 0,
+   "specialization": "data_science",
+   "skills": [
+    "python",
+    "pandas",
+    "ml",
+    "deep_learning",
+    "statistics",
+    "sql",
+    "algorithms",
+    "cpp",
+    "git",
+    "linux"
+   ],
+   "skills_optional": []
+  }
+ },
+ {
+  "id": "r15",
+  "style": "hh.ru export, DevOps, three jobs incl. tech support",
+  "text": "Лебедев Максим Евгеньевич\nМужчина, 28 лет, родился 30 января 1998\n\n+7 (912) 450-81-26\nlebedev.max@yandex.ru — предпочитаемый способ связи\n\nПроживает: Ижевск\nГражданство: Россия\nГотов к переезду, готов к командировкам\n\nЖелаемая должность и зарплата\nDevOps-инженер\n250 000 ₽\nЗанятость: полная занятость\nГрафик работы: полный день, удаленная работа\n\nОпыт работы — 3 года 10 месяцев\n\nФевраль 2024 — настоящее время\n2 года 9 месяцев\nООО «ИжТехСофт»\nDevOps-инженер\n— Поддержка и развитие инфраструктуры в Kubernetes (Helm, ingress-nginx)\n— Перевёл 20 проектов с ручного деплоя на GitLab CI/CD\n— Мониторинг и логирование: Prometheus, Grafana, ELK\n— Администрирование PostgreSQL: репликация, бэкапы, обновление версий\n— Инфраструктура как код: Ansible, Terraform (Яндекс Облако)\n\nМай 2023 — Январь 2024\n9 месяцев\nООО «Удмурт Диджитал»\nМладший DevOps-инженер\n— Контейнеризация приложений, Docker и docker-compose\n— Настройка серверов Linux (Ubuntu, CentOS), Nginx\n— Написание Bash-скриптов\n\nЯнварь 2023 — Апрель 2023\n4 месяца\nООО «ИжТехСофт»\nИнженер технической поддержки\n— Вторая линия поддержки, разбор логов, работа с Linux-серверами клиентов\n\nОбразование\nВысшее\n2020\nИжевский государственный технический университет им. М.Т. Калашникова\nИнформатика и вычислительная техника\n\nКлючевые навыки\nLinux  Docker  Kubernetes  Helm  GitLab CI  Ansible  Terraform  Prometheus  Grafana  ELK  Nginx  PostgreSQL  Git  Bash",
+  "gold": {
+   "full_name": "Лебедев Максим Евгеньевич",
+   "email": "lebedev.max@yandex.ru",
+   "phone": "+79124508126",
+   "telegram": null,
+   "city": "Ижевск",
+   "city_aliases": [
+    "Izhevsk"
+   ],
+   "years_experience": 3.8,
+   "specialization": "devops",
+   "skills": [
+    "docker",
+    "kubernetes",
+    "ci_cd",
+    "monitoring",
+    "linux",
+    "postgresql",
+    "git"
+   ],
+   "skills_optional": [
+    "networking",
+    "sql"
+   ]
+  }
+ },
+ {
+  "id": "r16",
+  "style": "English LinkedIn-like, QA automation Python",
+  "text": "Aigerim Sarsenbayeva\nQA Automation Engineer (Python)\nOmsk, Russia | +7 (913) 618-27-40 | aigerim.sarsenbayeva@outlook.com | Telegram: @aigerim_qa\n\nSUMMARY\nQA engineer with 6 years in testing, 4+ of them in automation. I build maintainable test frameworks for web and API, integrate them into CI and help developers test earlier.\n\nEXPERIENCE\nQA Automation Engineer | FinPoint (fintech)\nJune 2022 – Present\n- Built a pytest-based framework for UI (Playwright) and API (requests + pydantic) tests; ~2,500 tests running on every merge request\n- Integrated test runs into GitLab CI with Docker images and Allure reports\n- Test data management via SQL fixtures in PostgreSQL\n- Basic load testing with Locust\n- Review test cases written by manual QA, teach test design techniques to juniors\n\nManual QA Engineer | EduTech Lab\nAugust 2020 – April 2022\n- Functional and regression testing of an LMS platform\n- Wrote test cases using equivalence partitioning, boundary values, state transition\n- REST API testing with Postman and Swagger\n- Started UI automation with Selenium + Python\n\nSKILLS\nPython, pytest, Playwright, Selenium, requests, REST API testing, Allure, Docker, GitLab CI, SQL, PostgreSQL, Git, Linux, test design\n\nEDUCATION\nOmsk State Technical University, Software Engineering, 2020\n\nLANGUAGES\nRussian (native), Kazakh (fluent), English (B2)",
+  "gold": {
+   "full_name": "Aigerim Sarsenbayeva",
+   "email": "aigerim.sarsenbayeva@outlook.com",
+   "phone": "+79136182740",
+   "telegram": "@aigerim_qa",
+   "city": "Омск",
+   "city_aliases": [
+    "Omsk"
+   ],
+   "years_experience": 6.2,
+   "specialization": "qa",
+   "skills": [
+    "python",
+    "test_automation",
+    "test_design",
+    "http_api",
+    "docker",
+    "ci_cd",
+    "sql",
+    "postgresql",
+    "git",
+    "linux"
+   ],
+   "skills_optional": []
+  }
+ },
+ {
+  "id": "r17",
+  "style": "freelancer, former non-IT engineer, backend Python",
+  "text": "Сергей Ковалёв\nPython-разработчик, фриланс\n\nВоронеж, работаю удалённо\nТелефон / WhatsApp: 89507773412\nEmail: kovalev.dev@yandex.ru\nTelegram: t.me/kovalev_py\n\nС марта 2020 года работаю как самозанятый разработчик. До этого два года был инженером-конструктором на машиностроительном заводе, программирование начинал как хобби. Сейчас ищу постоянную работу в команде — хочется больших проектов и нормального код-ревью.\n\nЧто делаю на фрилансе (03.2020 — сейчас):\n• Сайты и внутренние сервисы на Django: каталоги, личные кабинеты, админки. Вёрстка шаблонов на HTML/CSS + Bootstrap\n• Асинхронные Telegram-боты на aiogram 3 (запись клиентов, рассылки, приём оплат)\n• Интеграции с платёжными системами и CRM через их API (ЮKassa, amoCRM, Битрикс24)\n• Парсеры на requests, BeautifulSoup, Selenium\n• Фоновые задачи: Celery + Redis\n• Деплой на VPS: Ubuntu, nginx, Docker, docker-compose\n• Базы данных: PostgreSQL, иногда SQLite\n• Код храню в Git (GitHub, приватные репозитории)\n\nВыполнил больше 60 заказов, на бирже рейтинг 4.9, постоянные клиенты — 6 компаний.\n\nНемного работал с WordPress и PHP, когда заказчик просил.\n\nОбразование: ВГТУ, 2018, «Конструкторско-технологическое обеспечение машиностроительных производств»",
+  "gold": {
+   "full_name": "Сергей Ковалёв",
+   "email": "kovalev.dev@yandex.ru",
+   "phone": "+79507773412",
+   "telegram": "@kovalev_py",
+   "city": "Воронеж",
+   "city_aliases": [
+    "Voronezh"
+   ],
+   "years_experience": 6.7,
+   "specialization": "backend",
+   "skills": [
+    "python",
+    "web_frameworks",
+    "html_css",
+    "async",
+    "http_api",
+    "caching_queues",
+    "docker",
+    "linux",
+    "postgresql",
+    "git"
+   ],
+   "skills_optional": [
+    "sql"
+   ]
+  }
+ },
+ {
+  "id": "r18",
+  "style": "English LinkedIn-like, ML engineer (deep learning), no phone",
+  "text": "Nikita Fedorov — Machine Learning Engineer\nMoscow · nikita.fedorov.ml@gmail.com · Telegram: @nfedorov_ml · github.com/nfedorov\n\nI build and ship deep learning models for computer vision and NLP, from data collection to production inference.\n\nEXPERIENCE\n\nML Engineer, VisionAI — Mar 2023 – present\n- Trained detection and segmentation models (PyTorch, YOLO, Mask R-CNN) for shelf monitoring in retail; mAP improved from 0.61 to 0.78\n- Fine-tuned open LLMs with LoRA for document extraction\n- Wrapped models into REST services with FastAPI, deployed in Docker; optimized inference with TensorRT/Triton\n- Experiment tracking in MLflow, training pipelines in Airflow\n- Familiar with Kubernetes at a basic level (deployments, configs)\n\nData Scientist, RetailData — Jul 2021 – Feb 2023\n- Demand forecasting and price elasticity models (scikit-learn, XGBoost, LightGBM)\n- Feature engineering with pandas/NumPy and SQL on a 2 TB warehouse\n- Designed and analyzed A/B tests for pricing experiments\n\nEDUCATION\nMSc Applied Mathematics and Physics, MIPT, 2021\n\nSKILLS\nPython, PyTorch, TensorFlow, Hugging Face, scikit-learn, XGBoost, pandas, NumPy, SQL, statistics, FastAPI, Docker, MLflow, Airflow, Git, Linux",
+  "gold": {
+   "full_name": "Nikita Fedorov",
+   "email": "nikita.fedorov.ml@gmail.com",
+   "phone": null,
+   "telegram": "@nfedorov_ml",
+   "city": "Москва",
+   "city_aliases": [
+    "Moscow",
+    "Мск"
+   ],
+   "years_experience": 5.3,
+   "specialization": "data_science",
+   "skills": [
+    "python",
+    "deep_learning",
+    "ml",
+    "pandas",
+    "sql",
+    "statistics",
+    "web_frameworks",
+    "http_api",
+    "docker",
+    "git",
+    "linux"
+   ],
+   "skills_optional": [
+    "kubernetes"
+   ]
+  }
+ },
+ {
+  "id": "r19",
+  "style": "terse, few technologies, junior frontend / layout",
+  "text": "Миронова Ольга\nВерстальщик / Junior Frontend\n\n+7 (915) 902-63-74\nolga.mironova.web@gmail.com\nЯрославль\n\nОпыт работы: веб-студия «Пиксель», верстальщик, ноябрь 2024 — по настоящее время.\nВерстаю сайты по макетам из Figma, адаптив под мобильные, натягиваю вёрстку на WordPress, правки по старым проектам клиентов. Сделала около 25 сайтов, большинство — лендинги и корпоративные сайты для местного бизнеса.\n\nНавыки: HTML, CSS (SCSS, БЭМ), JavaScript (базовый уровень), адаптивная вёрстка, Figma, Git, WordPress.\n\nОбразование: ЯрГУ им. Демидова, 2024, бизнес-информатика.\n\nОтветственная, всегда укладываюсь в сроки. Хочу развиваться дальше во frontend, изучаю React.",
+  "gold": {
+   "full_name": "Миронова Ольга",
+   "email": "olga.mironova.web@gmail.com",
+   "phone": "+79159026374",
+   "telegram": null,
+   "city": "Ярославль",
+   "city_aliases": [
+    "Yaroslavl"
+   ],
+   "years_experience": 2.0,
+   "specialization": "frontend",
+   "skills": [
+    "html_css",
+    "javascript",
+    "git"
+   ],
+   "skills_optional": [
+    "react"
+   ]
+  }
+ },
+ {
+  "id": "r20",
+  "style": "mixed Russian/English, many technologies, DevOps/platform",
+  "text": "Евгений Сорокин\nDevOps / Platform Engineer\n\nLocation: Тюмень (remote / relocation ok)\nPhone: +7 (919) 940-15-83\nEmail: evgeny.sorokin@gmail.com\nTelegram: @esorokin_devops\n\nAbout\n7+ лет в инфраструктуре: от Linux-админа до platform engineer. Строю internal developer platform, чтобы продуктовые команды деплоились сами и без боли.\n\nExperience\n\nPlatform Engineer — «ТНС Диджитал» (IT-дочка нефтесервисной компании)\n10.2022 — present\n- Self-service platform на Kubernetes (OpenShift + vanilla k8s), Helm, Kustomize, ArgoCD\n- CI: GitLab CI шаблоны, Jenkins для legacy, частично GitHub Actions\n- Observability: Prometheus, Thanos, Grafana, Loki, Jaeger\n- Security в пайплайнах: Trivy, SAST/DAST, hardening по CIS benchmarks, секреты в Vault\n- Эксплуатация Kafka, RabbitMQ, Redis; PostgreSQL на Patroni\n- Service mesh: Istio, Envoy\n\nDevOps Engineer — «СибИнтегратор»\n03.2020 — 09.2022\n- Terraform + Ansible + Packer для Yandex Cloud и AWS\n- Docker, containerd, перевод 40+ сервисов в контейнеры\n- Nginx, HAProxy, балансировка, TLS\n\nLinux sysadmin — «СибИнтегратор»\n01.2019 — 02.2020\n- Debian/RHEL, сети: TCP/IP, DNS, BGP, VPN (WireGuard), Ceph\n\nStack (full list)\nKubernetes, OpenShift, Helm, Kustomize, ArgoCD, Flux, GitLab CI, Jenkins, GitHub Actions, Terraform, Ansible, Packer, Vault, Consul, Prometheus, Thanos, Grafana, Loki, Jaeger, ELK, Kafka, RabbitMQ, Redis, PostgreSQL, Nginx, HAProxy, Istio, Envoy, Ceph, Docker, containerd, Git, Bash, Python, Go (небольшие утилиты), AWS, Yandex Cloud\n\nEducation: ТИУ (Тюменский индустриальный университет), 2018, «Информационные системы и технологии»",
+  "gold": {
+   "full_name": "Евгений Сорокин",
+   "email": "evgeny.sorokin@gmail.com",
+   "phone": "+79199401583",
+   "telegram": "@esorokin_devops",
+   "city": "Тюмень",
+   "city_aliases": [
+    "Tyumen"
+   ],
+   "years_experience": 7.8,
+   "specialization": "devops",
+   "skills": [
+    "kubernetes",
+    "docker",
+    "ci_cd",
+    "monitoring",
+    "linux",
+    "networking",
+    "security",
+    "caching_queues",
+    "postgresql",
+    "python",
+    "git"
+   ],
+   "skills_optional": [
+    "go",
+    "system_design"
+   ]
+  }
+ },
+ {
+  "id": "r21",
+  "style": "hh.ru export, backend C#/.NET, explicit total",
+  "text": "Захаров Антон Павлович\nМужчина, 30 лет, родился 8 июля 1996\n\n+7 (951) 487-20-66 — предпочитаемый способ связи\nanton.zakharov.net@mail.ru\nTelegram: @zakharov_dotnet\n\nПроживает: Челябинск\nГражданство: Россия\nНе готов к переезду\n\nЖелаемая должность и зарплата\n.NET-разработчик (C#)\n230 000 ₽\nЗанятость: полная занятость\nГрафик работы: удаленная работа\n\nОпыт работы — 4 года 7 месяцев\n\nАпрель 2023 — настоящее время\n3 года 7 месяцев\nООО «УралПромСофт»\nC#-разработчик\n— Разработка MES-системы для металлургического завода на .NET 8 / ASP.NET Core\n— Проектирование REST API, документация в Swagger\n— Работа с MS SQL Server и PostgreSQL через Entity Framework Core, оптимизация запросов T-SQL\n— Асинхронная обработка данных с оборудования (async/await, Channels), обмен через RabbitMQ\n— Контейнеризация сервисов в Docker, сборка в Azure DevOps Pipelines\n— Покрытие тестами на xUnit\n\nАпрель 2022 — Март 2023\n1 год\nООО «Цифровые решения»\nМладший разработчик C#\n— Доработка CRM на ASP.NET MVC, отчёты на LINQ\n— Исправление багов, работа с Git\n\nОбразование\nВысшее\n2019\nЮжно-Уральский государственный университет\nПрограммная инженерия\n\nКлючевые навыки\nC#  .NET  ASP.NET Core  Entity Framework  MS SQL Server  PostgreSQL  SQL  LINQ  REST API  RabbitMQ  Docker  Git  xUnit",
+  "gold": {
+   "full_name": "Захаров Антон Павлович",
+   "email": "anton.zakharov.net@mail.ru",
+   "phone": "+79514872066",
+   "telegram": "@zakharov_dotnet",
+   "city": "Челябинск",
+   "city_aliases": [
+    "Chelyabinsk"
+   ],
+   "years_experience": 4.6,
+   "specialization": "backend",
+   "skills": [
+    "csharp",
+    "web_frameworks",
+    "http_api",
+    "sql",
+    "postgresql",
+    "async",
+    "caching_queues",
+    "docker",
+    "ci_cd",
+    "git"
+   ],
+   "skills_optional": [
+    "test_automation"
+   ]
+  }
+ },
+ {
+  "id": "r22",
+  "style": "hh.ru export, junior manual QA, explicit total",
+  "text": "Степанова Ксения Андреевна\nЖенщина, 24 года, родилась 17 апреля 2002\n\n+7 (924) 330-51-17\nks.stepanova@bk.ru — предпочитаемый способ связи\n\nПроживает: Владивосток\nГражданство: Россия\nГотова к переезду: Москва, Санкт-Петербург, Новосибирск\n\nЖелаемая должность и зарплата\nТестировщик (QA Engineer)\n120 000 ₽\nЗанятость: полная занятость\nГрафик работы: полный день, удаленная работа\n\nОпыт работы — 1 год 4 месяца\n\nИюль 2025 — настоящее время\n1 год 4 месяца\nООО «ДВ Софт»\nТестировщик ПО\n— Функциональное и регрессионное тестирование мобильного приложения доставки (Android, iOS) и веб-админки\n— Составление тест-кейсов и чек-листов, тест-дизайн\n— Тестирование API через Postman и Swagger\n— Проверка данных в БД с помощью SQL-запросов\n— Анализ трафика через Charles, просмотр логов в DevTools\n— Оформление баг-репортов в Jira, ведение документации в Confluence\n\nОбразование\nВысшее\n2024\nДальневосточный федеральный университет\nПрикладная информатика\n\nПовышение квалификации, курсы\n2025 — Тестирование ПО: от основ до автоматизации (онлайн-школа)\n\nКлючевые навыки\nФункциональное тестирование  Тест-дизайн  Тест-кейсы  Чек-листы  Регрессионное тестирование  Мобильное тестирование  Jira  Confluence  Postman  Charles  SQL  Swagger",
+  "gold": {
+   "full_name": "Степанова Ксения Андреевна",
+   "email": "ks.stepanova@bk.ru",
+   "phone": "+79243305117",
+   "telegram": null,
+   "city": "Владивосток",
+   "city_aliases": [
+    "Vladivostok"
+   ],
+   "years_experience": 1.3,
+   "specialization": "qa",
+   "skills": [
+    "test_design",
+    "http_api",
+    "sql"
+   ],
+   "skills_optional": [
+    "browser"
+   ]
+  }
+ },
+ {
+  "id": "r23",
+  "style": "long resume with project descriptions, senior frontend",
+  "text": "Андреев Глеб\nSenior Frontend-разработчик\n\nМосква · +7 903 118 27 64 · gleb.andreev@protonmail.com · tg @gleb_fe\n\nКоротко: 7+ лет во фронтенде, последние 4 года — в e-commerce с миллионной аудиторией. Сильные стороны — производительность и архитектура фронтенда, умею договариваться с бэкендом и дизайном.\n\nОПЫТ\n\nShopLine (маркетплейс), Senior Frontend — сентябрь 2022 — по настоящее время\n\nПроект: миграция витрины с Create React App на Next.js (SSR/ISR).\nЧто сделал: спланировал поэтапный переход без заморозки фич, настроил SSR для каталога, вынес общие компоненты в дизайн-систему на Storybook. Итог: LCP на мобильных с 4,2 до 1,8 с, органический трафик +18%.\n\nПроект: микрофронтенды личного кабинета (Webpack Module Federation). Описал контракты между командами, общий слой авторизации.\n\nПроект: офлайн-режим и чат поддержки. Web Workers для тяжёлых вычислений корзины, кэш в IndexedDB, чат на WebSocket.\n\nПрочее: BFF на Node.js (Express) для агрегации REST- и GraphQL-запросов, e2e-тесты на Playwright, CI на GitHub Actions, менторство 4 разработчиков.\n\nАгентство «Цифра», Frontend-разработчик — март 2019 — август 2022\nПроекты для банков и ритейла: SPA на React + Redux, вёрстка HTML/CSS, интеграция с REST API, поддержка IE11 (к счастью, в прошлом).\n\nСТЕК\nJavaScript, TypeScript, React, Next.js, Redux, MobX, HTML, CSS (CSS Modules, styled-components), Node.js, Webpack, Vite, Jest, Playwright, Git, GitHub Actions, GraphQL\n\nОБРАЗОВАНИЕ\nМИРЭА, 2019, «Информатика и вычислительная техника»",
+  "gold": {
+   "full_name": "Андреев Глеб",
+   "email": "gleb.andreev@protonmail.com",
+   "phone": "+79031182764",
+   "telegram": "@gleb_fe",
+   "city": "Москва",
+   "city_aliases": [
+    "Moscow",
+    "Мск"
+   ],
+   "years_experience": 7.7,
+   "specialization": "frontend",
+   "skills": [
+    "javascript",
+    "typescript",
+    "react",
+    "html_css",
+    "browser",
+    "http_api",
+    "git",
+    "ci_cd"
+   ],
+   "skills_optional": [
+    "system_design",
+    "web_frameworks",
+    "test_automation",
+    "async"
+   ]
+  }
+ },
+ {
+  "id": "r24",
+  "style": "contacts at bottom, product analyst",
+  "text": "Ахмедова Виктория\nПродуктовый аналитик\n\nИщу позицию продуктового аналитика в продуктовой IT-компании. Город: СПб, рассматриваю гибрид или удалёнку.\n\nОпыт работы\n\nЯнварь 2024 — настоящее время\nПродуктовый аналитик, сервис доставки «Быстро»\n— Построила систему метрик для приложения курьеров (DAU, retention, время доставки), дашборды в Superset и DataLens\n— Провела более 40 A/B-тестов: дизайн эксперимента, расчёт MDE, CUPED, бутстрап, t-test, критерий Манна-Уитни\n— Модель прогноза оттока курьеров (логистическая регрессия, градиентный бустинг в scikit-learn) — используется для удерживающих акций\n— Сложные SQL-запросы с оконными функциями в ClickHouse и PostgreSQL\n\nСентябрь 2022 — Декабрь 2023\nМладший аналитик данных, ООО «ЕдаТех»\n— Еженедельная отчётность по заказам на Python (pandas, NumPy)\n— Когортный анализ, юнит-экономика ресторанов-партнёров\n— Ad-hoc выгрузки по запросам менеджеров\n\nОбразование\nНИУ ВШЭ — Санкт-Петербург, «Экономика», бакалавр, 2022\nКурс «Аналитик данных», 2022\n\nИнструменты: SQL, Python (pandas, NumPy, SciPy, statsmodels), ClickHouse, PostgreSQL, Superset, DataLens, Airflow (базово), Git, Excel\n\nКонтакты\nТелефон: +7-911-702-38-95\nПочта: v.akhmedova@yandex.ru\nTelegram: vika_akh",
+  "gold": {
+   "full_name": "Ахмедова Виктория",
+   "email": "v.akhmedova@yandex.ru",
+   "phone": "+79117023895",
+   "telegram": "@vika_akh",
+   "city": "Санкт-Петербург",
+   "city_aliases": [
+    "СПб",
+    "Питер",
+    "Saint Petersburg",
+    "St. Petersburg"
+   ],
+   "years_experience": 4.2,
+   "specialization": "data_science",
+   "skills": [
+    "sql",
+    "postgresql",
+    "python",
+    "pandas",
+    "statistics",
+    "ml",
+    "git"
+   ],
+   "skills_optional": []
+  }
+ },
+ {
+  "id": "r25",
+  "style": "mixed Russian/English, informal with typos, no city, no phone, backend Node.js",
+  "text": "Кирилл Зайцев\nBackend developer (Node.js)\n\ncontacts: kirill.zaytsev@gmail.com | tg @kir_zaitsev | github.com/kzaitsev\n\nПривет! Я бэкенд разработчик на Node.js, больше 4.5 лет коммерческого опыта. Пишу на TypeScipt, люблю NestJS и понятную архитектуру. Ищу remote only, переезд не рассматриваю.\n\nExperience\n\nBackend dev @ «Софт Лаб» | 08.2023 - now\n- сервисы на NestJS + TypeScript для системы бронирования (REST + немного GraphQL)\n- PostgreSQL (TypeORM, потом Prisma), MongoDB для логов\n- очереди на BullMQ + Redis, кэширование\n- WebSockets для realtime уведомлений\n- разбирался с утечками памяти и блокировками event loop, переписал тяжелые штуки на worker_threads\n- Docker, в k8s деплоили девопсы, я только helm values правил\n\nJunior fullstack @ «WebMint» | 03.2022 - 07.2023\n- Express.js API для интернет магазинов, JavaScript\n- фронт на React (немного, в основном правки)\n- git flow, код ревью\n\nSkills: Node.js, JavaScript, TypeScript, NestJS, Express, PostgreSQL, MongoDB, Redis, BullMQ, REST API, GraphQL, Docker, Git, Jest\n\nОбразование: бакалавриат, ИВТ, 2022",
+  "gold": {
+   "full_name": "Кирилл Зайцев",
+   "email": "kirill.zaytsev@gmail.com",
+   "phone": null,
+   "telegram": "@kir_zaitsev",
+   "city": null,
+   "city_aliases": [],
+   "years_experience": 4.7,
+   "specialization": "backend",
+   "skills": [
+    "javascript",
+    "typescript",
+    "web_frameworks",
+    "postgresql",
+    "caching_queues",
+    "http_api",
+    "async",
+    "docker",
+    "git"
+   ],
+   "skills_optional": [
+    "kubernetes",
+    "react",
+    "sql",
+    "test_automation"
+   ]
+  }
+ },
+ {
+  "id": "r26",
+  "style": "terse, no city, QA automation JS/TS, explicit total",
+  "text": "Роман Яковлев — QA Automation Engineer (JS/TS)\n\n+7 (937) 221-48-05 · r.yakovlev.qa@gmail.com · Telegram: t.me/ryakovlev\n\nОпыт в QA: 3 г. 2 мес.\n\n09.2024 – н.в. | QA Automation Engineer | «Nord Code»\n— UI-автотесты на Playwright + TypeScript, Page Object, ~900 тестов\n— API-тесты: Postman/Newman, затем перенос в Playwright request\n— Запуск в GitHub Actions, тесты в Docker-контейнерах, отчёты Allure\n— Нагрузочные сценарии на k6\n\n09.2023 – 08.2024 | QA Engineer | «ГородТакси»\n— ручное тестирование мобильного приложения и веба, тест-дизайн, тест-кейсы\n— первые автотесты на Cypress (JavaScript)\n— SQL-запросы для проверки данных\n\nСтек: TypeScript, JavaScript, Playwright, Cypress, WebdriverIO, Jest, Allure, Postman, k6, Docker, GitHub Actions, SQL, Git",
+  "gold": {
+   "full_name": "Роман Яковлев",
+   "email": "r.yakovlev.qa@gmail.com",
+   "phone": "+79372214805",
+   "telegram": "@ryakovlev",
+   "city": null,
+   "city_aliases": [],
+   "years_experience": 3.2,
+   "specialization": "qa",
+   "skills": [
+    "test_automation",
+    "typescript",
+    "javascript",
+    "http_api",
+    "ci_cd",
+    "docker",
+    "test_design",
+    "sql",
+    "git"
+   ],
+   "skills_optional": []
+  }
+ },
+ {
+  "id": "r27",
+  "style": "career switcher (bank economist to data science)",
+  "text": "Павлова Анастасия Григорьевна\nJunior+ Data Scientist\n\nКрасноярск\nТел.: 8 902 941 15 77\nEmail: a.pavlova.ds@mail.ru\nTelegram: @nastya_pavlova_ds\n\nО себе\nПришла в Data Science из экономики: шесть лет работала экономистом в банке, строила отчёты в Excel и поняла, что хочу заниматься моделями, а не сводными таблицами. В 2023 году прошла профессиональную переподготовку по Data Science и перешла в IT.\n\nОпыт работы\n\nНоябрь 2023 — н.в. — Data Scientist (junior → junior+), ООО «КрасТех»\n• Скоринговые модели для микрофинансового партнёра: логистическая регрессия, CatBoost, калибровка вероятностей\n• Подготовка признаков на Python (pandas, NumPy), выгрузка данных SQL-запросами из Greenplum\n• Проверка статистических гипотез при оценке пилотов, доверительные интервалы\n• Код и эксперименты храню в Git, ревью у старшего DS\n• Начинаю использовать Docker для упаковки моделей\n\nИюль 2016 — Август 2022 — Экономист, отдел планирования, ПАО «Енисей Банк»\n• Бюджетирование, отчётность для ЦБ, анализ в Excel\n\nОбразование\nСФУ, 2016, «Экономика»\n2023 — профессиональная переподготовка «Data Science» (онлайн-университет, 9 месяцев)\n\nНавыки: Python, pandas, NumPy, scikit-learn, CatBoost, SQL, статистика, matplotlib, Git. Сейчас изучаю PyTorch.",
+  "gold": {
+   "full_name": "Павлова Анастасия Григорьевна",
+   "email": "a.pavlova.ds@mail.ru",
+   "phone": "+79029411577",
+   "telegram": "@nastya_pavlova_ds",
+   "city": "Красноярск",
+   "city_aliases": [
+    "Krasnoyarsk"
+   ],
+   "years_experience": 3.0,
+   "specialization": "data_science",
+   "skills": [
+    "python",
+    "pandas",
+    "ml",
+    "sql",
+    "statistics",
+    "git"
+   ],
+   "skills_optional": [
+    "docker",
+    "deep_learning"
+   ]
+  }
+ },
+ {
+  "id": "r28",
+  "style": "terse, stack-first, DevOps (AWS)",
+  "text": "Денис Ким\nDevOps Engineer\n\nСочи · +7 (928) 600-71-34 · denis.kim.devops@gmail.com\n\nСтек: AWS (EC2, EKS, RDS, S3, IAM, VPC), Terraform, Kubernetes, Helm, Docker, GitHub Actions, Jenkins, Prometheus, Grafana, Datadog, Linux, Bash, Python, Nginx, PostgreSQL, MySQL, Git\n\nОпыт\n\n01.2023 — сейчас — DevOps Engineer, Gamebox (игровая студия, remote)\n• Инфраструктура в AWS на Terraform, кластеры EKS для игровых бэкендов\n• CI/CD на GitHub Actions, blue-green деплой\n• Мониторинг и алертинг: Prometheus, Grafana, Datadog\n• Сетевая часть: VPC, subnets, Route53, балансировщики (ALB/NLB)\n• Обслуживание PostgreSQL в RDS, бэкапы и восстановление\n\n06.2021 — 12.2022 — Junior DevOps, HostLine (хостинг-провайдер)\n• Linux-серверы, Docker, Jenkins-пайплайны, скрипты на Bash и Python\n\nОбразование: Сочинский государственный университет, 2021, прикладная информатика",
+  "gold": {
+   "full_name": "Денис Ким",
+   "email": "denis.kim.devops@gmail.com",
+   "phone": "+79286007134",
+   "telegram": null,
+   "city": "Сочи",
+   "city_aliases": [
+    "Sochi"
+   ],
+   "years_experience": 5.4,
+   "specialization": "devops",
+   "skills": [
+    "kubernetes",
+    "docker",
+    "ci_cd",
+    "monitoring",
+    "linux",
+    "python",
+    "postgresql",
+    "git",
+    "networking"
+   ],
+   "skills_optional": [
+    "security"
+   ]
+  }
+ },
+ {
+  "id": "r29",
+  "style": "fullstack PHP/Vue with backend lean (ambiguous), explicit total",
+  "text": "Сафин Айдар\nFullstack-разработчик (PHP / Vue)\n\nНабережные Челны\n+7 (917) 263-90-14\naidar.safin@mail.ru\nTelegram: aidar_dev\n\nОпыт работы — 5 лет 5 месяцев\n\nИюнь 2021 — по настоящее время\nООО «ЧелныВеб», Fullstack-разработчик\nДелаю B2B-портал для дилеров автозапчастей и несколько сайтов для клиентов студии.\nBackend:\n- PHP 8, Laravel (основной фреймворк), немного Symfony\n- MySQL и PostgreSQL, сложные SQL-запросы с джойнами и подзапросами, индексы\n- Очереди Laravel на Redis (Horizon), кэширование\n- REST API для мобильного приложения и интеграции с 1С\nFrontend:\n- Vue 3, JavaScript, HTML/CSS, Tailwind\nИнфраструктура:\n- Docker, docker-compose, деплой на Ubuntu-серверы, nginx\n- Git (GitLab)\n\nОбразование\nКФУ, Набережночелнинский институт, 2021, «Информатика и вычислительная техника»\n\nО себе\nБольше люблю бэкенд, но могу закрыть задачу целиком. Хочу расти в сторону сильного backend-разработчика.",
+  "gold": {
+   "full_name": "Сафин Айдар",
+   "email": "aidar.safin@mail.ru",
+   "phone": "+79172639014",
+   "telegram": "@aidar_dev",
+   "city": "Набережные Челны",
+   "city_aliases": [
+    "Челны",
+    "Naberezhnye Chelny"
+   ],
+   "years_experience": 5.4,
+   "specialization": "backend",
+   "skills": [
+    "web_frameworks",
+    "sql",
+    "postgresql",
+    "caching_queues",
+    "http_api",
+    "javascript",
+    "html_css",
+    "docker",
+    "linux",
+    "git"
+   ],
+   "skills_optional": []
+  }
+ },
+ {
+  "id": "r30",
+  "style": "student, no commercial experience, unclear target role",
+  "text": "Рыбаков Владислав\nСтудент, ищу стажировку в IT\n\nЛипецк | vlad.rybakov2006@gmail.com | 8 (904) 289 11 36 | Telegram: @vladrybakov\n\nУчусь на 2 курсе ЛГТУ по направлению «Программная инженерия». Пока не определился окончательно между разработкой и тестированием, поэтому рассматриваю любые стажировки — хочу попробовать реальные задачи и понять, что ближе.\n\nЧто умею:\n- Python — основы, прошёл курс на Stepik, писал консольные игры и простого Telegram-бота\n- C++ — учебные задачи и лабораторные в вузе\n- HTML/CSS — сделал сайт-визитку и выложил на GitHub Pages\n- SQL — учебная база данных библиотеки в SQLite, запросы с JOIN и GROUP BY\n- Git, GitHub\n- Linux — дома стоит Ubuntu, пользуюсь терминалом\n\nСейчас прохожу курс по алгоритмам и структурам данных в университете.\n\nОпыта работы нет. Летом 2025 был вожатым в лагере — умею работать с людьми и не теряюсь в стрессовых ситуациях.\n\nАнглийский — читаю документацию.",
+  "gold": {
+   "full_name": "Рыбаков Владислав",
+   "email": "vlad.rybakov2006@gmail.com",
+   "phone": "+79042891136",
+   "telegram": "@vladrybakov",
+   "city": "Липецк",
+   "city_aliases": [
+    "Lipetsk"
+   ],
+   "years_experience": 0,
+   "specialization": null,
+   "skills": [
+    "python",
+    "cpp",
+    "html_css",
+    "sql",
+    "git",
+    "linux"
+   ],
+   "skills_optional": [
+    "algorithms"
+   ]
+  }
+ },
+ {
+  "id": "r31",
+  "style": "terse, few technologies, no city, backend Go, explicit total",
+  "text": "Цыренов Баир\nGo-разработчик\n\n89025674433, tsyrenov.bair@gmail.com\n\nОпыт: 2 года 10 месяцев\n\n01.2024 — н.в., «Байкал Финтех», Go-разработчик\nПишу микросервисы для процессинга платежей, gRPC API между сервисами, PostgreSQL, всё в Docker. Покрыл сервис лимитов тестами с 30% до 85%.\n\nВ команде 5 человек, работаем по Scrum, релизы раз в неделю. Участвую в дежурствах и разборе инцидентов.\n\nДо этого делал pet-проекты на Go: URL-шортенер и бот для учёта расходов.\n\nСтек: Go, PostgreSQL, gRPC, Docker, Git\n\nОбразование: ИРНИТУ, 2023\n\nИщу команду с сильным код-ревью, готов к удалёнке или офису.",
+  "gold": {
+   "full_name": "Цыренов Баир",
+   "email": "tsyrenov.bair@gmail.com",
+   "phone": "+79025674433",
+   "telegram": null,
+   "city": null,
+   "city_aliases": [],
+   "years_experience": 2.8,
+   "specialization": "backend",
+   "skills": [
+    "go",
+    "postgresql",
+    "docker",
+    "git"
+   ],
+   "skills_optional": [
+    "http_api"
+   ]
+  }
+ },
+ {
+  "id": "r32",
+  "style": "English LinkedIn-like, junior frontend, no phone",
+  "text": "Alina Sharipova\nJunior Frontend Developer\nKazan, Russia · alina.sharipova.dev@gmail.com · Telegram: @alina_shrp · github.com/alinashrp\n\nSummary\nJunior frontend developer with about a year of commercial experience in React. Before that I studied web development on my own and built several pet projects. Looking for a team where I can grow to middle level.\n\nExperience\nJunior Frontend Developer — TatSoft Digital\nNov 2025 – Present\n- Develop UI features for a clinic management web app in React and Redux Toolkit\n- Integrate REST APIs with axios, handle loading and error states\n- Responsive layouts with HTML, CSS and Tailwind based on Figma mockups\n- Fix bugs, take part in code reviews, work with Git (feature branches, rebase)\n\nFrontend Intern — TatSoft Digital\nSep 2025 – Oct 2025\n- Paid internship: small components, styling fixes, unit tests\n\nEducation\nKazan National Research Technological University, Information Systems, 2025\n\nSkills\nJavaScript, React, Redux Toolkit, HTML, CSS, Tailwind, REST API, Git, Figma\nCurrently learning TypeScript.",
+  "gold": {
+   "full_name": "Alina Sharipova",
+   "email": "alina.sharipova.dev@gmail.com",
+   "phone": null,
+   "telegram": "@alina_shrp",
+   "city": "Казань",
+   "city_aliases": [
+    "Kazan"
+   ],
+   "years_experience": 1.2,
+   "specialization": "frontend",
+   "skills": [
+    "react",
+    "javascript",
+    "html_css",
+    "http_api",
+    "git"
+   ],
+   "skills_optional": [
+    "typescript",
+    "test_automation"
+   ]
+  }
+ },
+ {
+  "id": "r33",
+  "style": "skills table flattened into text, contacts at bottom, manual QA incl. crowdtesting freelance",
+  "text": "Фролова Наталья\nQA Engineer (manual)\n\nОпыт работы\n\nQA Engineer — ООО «ВолгаСофт»\nОктябрь 2022 — настоящее время\nТестирование CRM-системы для застройщиков: веб-интерфейс, API, интеграции с телефонией.\n— Анализ требований, составление тест-кейсов и чек-листов в TestRail\n— Проверка API через Postman, чтение Swagger-документации\n— SQL-запросы к PostgreSQL для проверки данных после операций\n— Регресс перед релизами, приёмка задач, работа в Jira\n\nТестировщик (краудтестинг, фриланс) — платформы краудтестинга\nМарт 2021 — Сентябрь 2022\nТестирование мобильных приложений и сайтов для разных заказчиков, поиск и оформление багов, исследовательское тестирование.\n\nНавыки\nНавык | Уровень\nТест-дизайн | продвинутый\nТест-кейсы, чек-листы | продвинутый\nSQL | средний\nPostman / REST API | средний\nJira, TestRail | продвинутый\nPython | начальный\nGit | начальный\nLinux | базовый\n\nОбразование\nВолгГТУ, 2019, «Автоматизация технологических процессов»\n\nКонтакты\nВолгоград\n8-937-554-09-12\nfrolova.n@inbox.ru\nTelegram: @nfrolova_test",
+  "gold": {
+   "full_name": "Фролова Наталья",
+   "email": "frolova.n@inbox.ru",
+   "phone": "+79375540912",
+   "telegram": "@nfrolova_test",
+   "city": "Волгоград",
+   "city_aliases": [
+    "Volgograd"
+   ],
+   "years_experience": 5.7,
+   "specialization": "qa",
+   "skills": [
+    "test_design",
+    "sql",
+    "postgresql",
+    "http_api"
+   ],
+   "skills_optional": [
+    "python",
+    "git",
+    "linux"
+   ]
+  }
+ },
+ {
+  "id": "r34",
+  "style": "hh.ru export, senior data scientist / lead, explicit total",
+  "text": "Ершов Константин Олегович\nМужчина, 35 лет, родился 2 марта 1991\n\n+7 (985) 330-17-29 — предпочитаемый способ связи\nk.ershov@gmail.com\nTelegram: @kershov\n\nПроживает: Москва\nГражданство: Россия\n\nЖелаемая должность и зарплата\nSenior Data Scientist / ML Team Lead\n450 000 ₽\nЗанятость: полная занятость\nГрафик работы: полный день, удаленная работа\n\nОпыт работы — 8 лет 6 месяцев\n\nИюнь 2021 — настоящее время\n5 лет 5 месяцев\nФинансовая группа «Вектор»\nLead Data Scientist\n— Руковожу командой из 6 DS, отвечаю за кредитный скоринг и антифрод\n— Спроектировал архитектуру ML-платформы: feature store, обучение на Spark, онлайн-инференс в Kubernetes\n— Модели: LightGBM, CatBoost, нейросети на PyTorch для последовательностей транзакций\n— Внедрил MLflow и Airflow, стандарты код-ревью и воспроизводимости экспериментов\n— Методология A/B-тестов и оценки экономического эффекта моделей\n\nМай 2018 — Май 2021\n3 года 1 месяц\nПАО «Телеком-Аналитика»\nData Scientist\n— Модели оттока и next best offer для абонентов (scikit-learn, XGBoost)\n— Обработка данных в Hadoop/PySpark, SQL, pandas\n— Стриминговые признаки из Kafka\n\nОбразование\nВысшее\n2014\nМГУ им. М.В. Ломоносова, факультет ВМК\n2016 — Школа анализа данных (ШАД)\n\nКлючевые навыки\nPython  SQL  PySpark  pandas  NumPy  scikit-learn  LightGBM  CatBoost  PyTorch  Статистика  A/B-тесты  MLflow  Airflow  Docker  Kubernetes  Git  Linux",
+  "gold": {
+   "full_name": "Ершов Константин Олегович",
+   "email": "k.ershov@gmail.com",
+   "phone": "+79853301729",
+   "telegram": "@kershov",
+   "city": "Москва",
+   "city_aliases": [
+    "Moscow",
+    "Мск"
+   ],
+   "years_experience": 8.5,
+   "specialization": "data_science",
+   "skills": [
+    "python",
+    "sql",
+    "pandas",
+    "ml",
+    "deep_learning",
+    "statistics",
+    "system_design",
+    "docker",
+    "kubernetes",
+    "git",
+    "linux"
+   ],
+   "skills_optional": [
+    "caching_queues"
+   ]
+  }
+ },
+ {
+  "id": "r35",
+  "style": "informal with typos and slang, DevOps/sysadmin, explicit total",
+  "text": "Мкртчян Артур\nдевопс / сисадмин\n\nБарнаул\nтел 8 913 274 66 10\nmkrtchyan.artur@bk.ru\ntg: @artur_mk\n\nОпыт в айти 5,5 лет.\n\nапр 2022 - сейчас — девопс в ООО \"АлтайСофт\"\nподнимал и поддерживаю кубер (k8s) кластер для внутренних сервисов, докер везде, пайплайны в гитлаб ci, ансибл для настройки серверов. мониторинг прометей+графана, алерты в телегу. постгрес — бэкапы, репликация. nginx\n\nмай 2021 - март 2022 — сисадмин/эникей в \"АлтайТелеком\"\nлинукс сервера (убунта, центос), винда у бухов, сеть в офисе, принтеры)\n\nНавыки: линукс, докер, k8s, gitlab ci, ansible, prometheus, grafana, nginx, postgresql, немного питон для скриптов, сети базово\n\nищу удаленку, зп от 200к",
+  "gold": {
+   "full_name": "Мкртчян Артур",
+   "email": "mkrtchyan.artur@bk.ru",
+   "phone": "+79132746610",
+   "telegram": "@artur_mk",
+   "city": "Барнаул",
+   "city_aliases": [
+    "Barnaul"
+   ],
+   "years_experience": 5.5,
+   "specialization": "devops",
+   "skills": [
+    "docker",
+    "kubernetes",
+    "ci_cd",
+    "monitoring",
+    "linux",
+    "postgresql"
+   ],
+   "skills_optional": [
+    "python",
+    "networking",
+    "git"
+   ]
+  }
+ },
+ {
+  "id": "r36",
+  "style": "detailed achievement bullets, backend Python (async)",
+  "text": "Жуков Илья\nBackend-разработчик (Python)\n\nВладимир · +7 (920) 018-45-62 · ilya.zhukov.py@gmail.com · Telegram: @izhukov\n\nО себе\nPython-разработчик, 4,5+ года в коммерческой разработке. Работал в adtech и медицине, люблю асинхронщину, нагруженные API и когда метрики в Grafana показывают, что всё хорошо.\n\nОпыт\n\n«МедСофт» — Backend Engineer\nОктябрь 2024 — настоящее время\nПлатформа телемедицины.\n• Разработал сервис записи к врачам на FastAPI + SQLAlchemy (async), PostgreSQL\n• Реализовал авторизацию по OAuth2/JWT, закрыл замечания пентеста по OWASP Top-10\n• Обмен событиями между сервисами через Kafka, кэш расписаний в Redis\n• Настроил Sentry и дашборды в Grafana для своих сервисов\n• Деплой в Kubernetes через Helm, пайплайны в GitLab CI\n\n«AdTech Lab» — Python-разработчик\nМарт 2022 — Сентябрь 2024\nСистема показа рекламы, ~15k RPS.\n• Сервисы на aiohttp и asyncio, фоновые задачи на Celery\n• Внутренние REST API на Flask, документация OpenAPI\n• Оптимизация SQL-запросов, партиционирование таблиц в PostgreSQL, MongoDB для сырых логов\n• Тесты на pytest, контейнеризация в Docker\n\nНавыки\nPython, FastAPI, Flask, aiohttp, asyncio, SQLAlchemy, SQL, PostgreSQL, MongoDB, Redis, Kafka, Celery, Docker, Kubernetes, GitLab CI, Linux, Git, REST, OpenAPI, Sentry, Grafana\n\nОбразование\nВлГУ, 2022, «Программная инженерия»",
+  "gold": {
+   "full_name": "Жуков Илья",
+   "email": "ilya.zhukov.py@gmail.com",
+   "phone": "+79200184562",
+   "telegram": "@izhukov",
+   "city": "Владимир",
+   "city_aliases": [
+    "Vladimir"
+   ],
+   "years_experience": 4.7,
+   "specialization": "backend",
+   "skills": [
+    "python",
+    "web_frameworks",
+    "async",
+    "sql",
+    "postgresql",
+    "caching_queues",
+    "http_api",
+    "docker",
+    "kubernetes",
+    "ci_cd",
+    "linux",
+    "git",
+    "monitoring"
+   ],
+   "skills_optional": [
+    "security",
+    "test_automation"
+   ]
+  }
+ },
+ {
+  "id": "r37",
+  "style": "career switcher (graphic designer to frontend)",
+  "text": "Королёва Полина\nFrontend-разработчик (React)\n\nТула\n+7 (953) 187-60-42\npolina.koroleva.design@gmail.com\nt.me/polina_k_front\n\nОбо мне\nПять лет работала графическим дизайнером в рекламном агентстве, рисовала макеты для полиграфии и наружной рекламы. Постепенно начала сама верстать лендинги для клиентов и поняла, что код мне нравится больше. С 2023 года работаю во фронтенде. Дизайнерский бэкграунд помогает: вижу, когда отступы «поехали», и легко общаюсь с дизайнерами.\n\nОпыт работы\n\nМай 2023 — настоящее время\nFrontend-разработчик, ООО «Тула Диджитал»\n— Разработка интерфейсов на React + TypeScript, переход проекта на Next.js\n— UI-кит компании: компоненты, анимации на Framer Motion, доступность (ARIA, фокус, контраст)\n— Вёрстка сложных адаптивных экранов на HTML/CSS (CSS Grid, кастомные свойства)\n— Git, код-ревью, работа по Scrum\n\nЯнварь 2023 — Апрель 2023\nСтажёр-верстальщик (оплачиваемая стажировка), ООО «Тула Диджитал»\n— Вёрстка лендингов, правки по JavaScript\n\nАвгуст 2017 — Декабрь 2022\nГрафический дизайнер, рекламное агентство «Формат»\n\nОбразование\nТулГУ, 2017, «Дизайн»\n2022 — онлайн-курс «Frontend-разработчик»\n\nНавыки: JavaScript, TypeScript, React, Next.js, HTML, CSS, Figma, Framer Motion, Git",
+  "gold": {
+   "full_name": "Королёва Полина",
+   "email": "polina.koroleva.design@gmail.com",
+   "phone": "+79531876042",
+   "telegram": "@polina_k_front",
+   "city": "Тула",
+   "city_aliases": [
+    "Tula"
+   ],
+   "years_experience": 3.8,
+   "specialization": "frontend",
+   "skills": [
+    "react",
+    "typescript",
+    "javascript",
+    "html_css",
+    "git"
+   ],
+   "skills_optional": []
+  }
+ },
+ {
+  "id": "r38",
+  "style": "long resume with project descriptions, senior QA automation / SDET",
+  "text": "Захарченко Тимофей\nSenior QA Automation Engineer / SDET\n\nОренбург, готов к удалённой работе\n+7 (922) 815-03-47 | t.zakharchenko@yandex.ru | tg: @tzakh_qa\n\nОбщий опыт в тестировании — почти 9 лет, из них 7 лет в автоматизации.\n\nОПЫТ РАБОТЫ\n\n03.2022 — н.в. ООО «ОренСофт», Senior QA Automation Engineer\nПроект: экосистема сервисов для АЗС (мобильное приложение, личный кабинет, 30+ микросервисов).\n— С нуля построил фреймворк автотестов на Kotlin + JUnit 5 + Selenide, API-тесты на RestAssured\n— Внедрил контрактное тестирование (Pact) между командами\n— Развернул Selenoid в Docker для параллельного прогона UI-тестов, время регресса — с 5 часов до 35 минут\n— Встроил тесты в GitLab CI: smoke на каждый MR, полный регресс ночью\n— Нагрузочное тестирование на Gatling и JMeter\n— Мобильные автотесты на Appium\n— Проверки сообщений в Kafka и данных в PostgreSQL\n— Ревью тест-кейсов и обучение тест-дизайну ручных тестировщиков\n\n07.2019 — 02.2022 АО «Банк Степной», QA Automation Engineer\n— Автотесты UI и API на Java (Selenium, TestNG, RestAssured), Allure\n— Запуск в Jenkins, SQL-проверки в Oracle\n\n01.2018 — 06.2019 АО «Банк Степной», тестировщик\n— Ручное тестирование интернет-банка, тест-кейсы, тест-дизайн\n\nСТЕК\nJava, Kotlin, JUnit 5, TestNG, Selenide, Selenium, RestAssured, Appium, Pact, Gatling, JMeter, Allure, Docker, Selenoid, GitLab CI, Jenkins, SQL, PostgreSQL, Oracle, Kafka, Git\n\nОбразование: ОГУ, 2017, «Программная инженерия»",
+  "gold": {
+   "full_name": "Захарченко Тимофей",
+   "email": "t.zakharchenko@yandex.ru",
+   "phone": "+79228150347",
+   "telegram": "@tzakh_qa",
+   "city": "Оренбург",
+   "city_aliases": [
+    "Orenburg"
+   ],
+   "years_experience": 8.8,
+   "specialization": "qa",
+   "skills": [
+    "java",
+    "test_automation",
+    "test_design",
+    "http_api",
+    "ci_cd",
+    "docker",
+    "sql",
+    "postgresql",
+    "git"
+   ],
+   "skills_optional": [
+    "caching_queues"
+   ]
+  }
+ },
+ {
+  "id": "r39",
+  "style": "cover-letter style, no dates (experience unknown), BI analyst",
+  "text": "Алиева Сабина\nАналитик данных / BI-аналитик\n\nМахачкала, готова к удалённой работе\n+79882901473\nsabina.alieva@mail.ru\n\nЗдравствуйте! Меня зовут Сабина, я аналитик данных. Несколько лет занимаюсь отчётностью и аналитикой — сначала в розничной сети, сейчас в региональном банке. Строю дашборды в Power BI, пишу SQL-запросы любой сложности (CTE, оконные функции), автоматизирую подготовку данных на Python (pandas). Знаю основы статистики.\n\nЧем могу быть полезна:\n- построю систему отчётности с нуля: от сбора требований до дашборда\n- переведу ручные Excel-отчёты в автоматические\n- помогу бизнесу сформулировать метрики и следить за ними\n\nИнструменты: SQL (MS SQL, PostgreSQL), Power BI, DAX, Power Query, Excel, Python (pandas)\n\nОбразование: ДГУ, «Прикладная математика», 2019\n\nБуду рада обсудить вакансию!",
+  "gold": {
+   "full_name": "Алиева Сабина",
+   "email": "sabina.alieva@mail.ru",
+   "phone": "+79882901473",
+   "telegram": null,
+   "city": "Махачкала",
+   "city_aliases": [
+    "Makhachkala"
+   ],
+   "years_experience": null,
+   "specialization": "data_science",
+   "skills": [
+    "sql",
+    "postgresql",
+    "python",
+    "pandas"
+   ],
+   "skills_optional": [
+    "statistics"
+   ]
+  }
+ },
+ {
+  "id": "r40",
+  "style": "hh.ru export, senior C++ backend, explicit total",
+  "text": "Белоусов Георгий Николаевич\nМужчина, 34 года, родился 19 ноября 1991\n\n+7 (911) 604-33-81 — предпочитаемый способ связи\ng.belousov@yandex.ru\nTelegram: belousov_cpp\n\nПроживает: Великий Новгород\nГражданство: Россия\nНе готов к переезду, готов к редким командировкам\n\nЖелаемая должность и зарплата\nВедущий C++ разработчик\nЗанятость: полная занятость\nГрафик работы: удаленная работа\n\nОпыт работы — 11 лет 2 месяца\n\nОктябрь 2019 — настоящее время\n7 лет 1 месяц\nАО «НовТехСистемы»\nВедущий разработчик C++\n— Архитектура и разработка высоконагруженного шлюза обработки телеметрии (до 200 тыс. сообщений в секунду)\n— C++17/20, Boost.Asio, асинхронный сетевой ввод-вывод, многопоточность, lock-free очереди\n— Хранение данных в PostgreSQL, кэш в Redis\n— Профилирование (perf, valgrind), отладка под Linux в gdb\n— CI на Jenkins, сборка в Docker, CMake\n— Тесты и утилиты на Python\n— Руководство группой из 4 разработчиков\n\nСентябрь 2015 — Сентябрь 2019\n4 года 1 месяц\nООО «Связь-Софт»\nПрограммист C++\n— Разработка ПО для сетевого оборудования: реализация протоколов поверх TCP/UDP, разбор пакетов\n— Оптимизация алгоритмов маршрутизации, работа со структурами данных\n— Qt для утилит конфигурирования\n\nОбразование\nВысшее\n2015\nНовгородский государственный университет им. Ярослава Мудрого\nПрикладная математика и информатика\n\nКлючевые навыки\nC++  STL  Boost  Многопоточность  Linux  TCP/IP  CMake  PostgreSQL  Redis  Python  Git  Docker  Jenkins  Алгоритмы и структуры данных  Проектирование архитектуры",
+  "gold": {
+   "full_name": "Белоусов Георгий Николаевич",
+   "email": "g.belousov@yandex.ru",
+   "phone": "+79116043381",
+   "telegram": "@belousov_cpp",
+   "city": "Великий Новгород",
+   "city_aliases": [
+    "Veliky Novgorod",
+    "В. Новгород"
+   ],
+   "years_experience": 11.2,
+   "specialization": "backend",
+   "skills": [
+    "cpp",
+    "async",
+    "linux",
+    "networking",
+    "algorithms",
+    "postgresql",
+    "caching_queues",
+    "python",
+    "git",
+    "docker",
+    "ci_cd",
+    "system_design"
+   ],
+   "skills_optional": [
+    "sql"
+   ]
+  }
+ }
+]

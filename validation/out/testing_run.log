@@ -1,0 +1,141 @@
+E1/E2: точность и повторяемость…
+  E1/E2 backend: {'n': 300, 'pool': 45, 'decision_accuracy': 0.807, 'decision_accuracy_far_from_cut': 0.892, 'decision_accuracy_near_cut': 0.648, 'false_pass': 0.13, 'false_fail': 0.229, 'retest_agreement': 0.77, 'retest_kappa': 0.536, 'theta_corr': 0.862, 'theta_rmse': 0.561, 'retest_theta_corr': 0.782, 'mean_len': 18.3, 'p90_len': 25, 'final_category_exact': 0.697, 'final_category_retest_agreement': 0.73, 'honest_flagged_share': 0.0, 'final_category_within1': 0.993, 'mean_items_full_path': 22.6, 'auc_weak_vs_strong': 0.772}
+  E1/E2 frontend: {'n': 300, 'pool': 29, 'decision_accuracy': 0.783, 'decision_accuracy_far_from_cut': 0.893, 'decision_accuracy_near_cut': 0.602, 'false_pass': 0.306, 'false_fail': 0.164, 'retest_agreement': 0.727, 'retest_kappa': 0.425, 'theta_corr': 0.844, 'theta_rmse': 0.588, 'retest_theta_corr': 0.728, 'mean_len': 20.0, 'p90_len': 25, 'final_category_exact': 0.74, 'final_category_retest_agreement': 0.697, 'honest_flagged_share': 0.007, 'final_category_within1': 0.997, 'mean_items_full_path': 22.0, 'auc_weak_vs_strong': 0.722}
+  E1/E2 data_science: {'n': 300, 'pool': 37, 'decision_accuracy': 0.787, 'decision_accuracy_far_from_cut': 0.885, 'decision_accuracy_near_cut': 0.615, 'false_pass': 0.211, 'false_fail': 0.215, 'retest_agreement': 0.727, 'retest_kappa': 0.443, 'theta_corr': 0.853, 'theta_rmse': 0.627, 'retest_theta_corr': 0.745, 'mean_len': 18.9, 'p90_len': 25, 'final_category_exact': 0.72, 'final_category_retest_agreement': 0.647, 'honest_flagged_share': 0.01, 'final_category_within1': 1.0, 'mean_items_full_path': 21.7, 'auc_weak_vs_strong': 0.735}
+  E1/E2 devops: {'n': 300, 'pool': 38, 'decision_accuracy': 0.82, 'decision_accuracy_far_from_cut': 0.934, 'decision_accuracy_near_cut': 0.647, 'false_pass': 0.198, 'false_fail': 0.17, 'retest_agreement': 0.757, 'retest_kappa': 0.488, 'theta_corr': 0.856, 'theta_rmse': 0.572, 'retest_theta_corr': 0.76, 'mean_len': 19.3, 'p90_len': 25, 'final_category_exact': 0.727, 'final_category_retest_agreement': 0.757, 'honest_flagged_share': 0.007, 'final_category_within1': 1.0, 'mean_items_full_path': 21.3, 'auc_weak_vs_strong': 0.732}
+  E1/E2 qa: {'n': 300, 'pool': 35, 'decision_accuracy': 0.817, 'decision_accuracy_far_from_cut': 0.932, 'decision_accuracy_near_cut': 0.615, 'false_pass': 0.267, 'false_fail': 0.13, 'retest_agreement': 0.753, 'retest_kappa': 0.473, 'theta_corr': 0.847, 'theta_rmse': 0.596, 'retest_theta_corr': 0.763, 'mean_len': 19.0, 'p90_len': 25, 'final_category_exact': 0.753, 'final_category_retest_agreement': 0.727, 'honest_flagged_share': 0.003, 'final_category_within1': 1.0, 'mean_items_full_path': 21.4, 'auc_weak_vs_strong': 0.76}
+E3: операционные характеристики…
+E4: дискриминативность…
+E5: утечки…
+E6: сопоставимость и калибровка…
+{
+ "overall": {
+  "decision_accuracy": 0.803,
+  "decision_accuracy_far_from_cut": 0.907,
+  "decision_accuracy_near_cut": 0.625,
+  "false_pass": 0.222,
+  "false_fail": 0.182,
+  "retest_agreement": 0.747,
+  "retest_kappa": 0.473,
+  "theta_corr": 0.852,
+  "theta_rmse": 0.589,
+  "retest_theta_corr": 0.756,
+  "mean_len": 19.1,
+  "p90_len": 25.0,
+  "final_category_exact": 0.727,
+  "final_category_retest_agreement": 0.712,
+  "honest_flagged_share": 0.005,
+  "final_category_within1": 0.998,
+  "mean_items_full_path": 21.8,
+  "auc_weak_vs_strong": 0.744
+ },
+ "discrimination": {
+  "items_evaluated": 73,
+  "point_biserial_median": 0.468,
+  "share_above_0_2": 0.986,
+  "share_above_0_3": 0.945,
+  "weakest": [
+   [
+    "js_var_let_closure",
+    0.13490627102909547
+   ],
+   [
+    "http_cors_preflight",
+    0.2508530071980528
+   ],
+   [
+    "py_gil_choice",
+    0.2518946004835848
+   ],
+   [
+    "ds_ab_test",
+    0.29032769317150053
+   ],
+   [
+    "browser_storage",
+    0.31539117551877904
+   ]
+  ]
+ },
+ "leakage": {
+  "target": "middle",
+  "attacker_theta": -0.6,
+  "dump_candidates": 300,
+  "dump_instances": 5328,
+  "ours": {
+   "no_leak": {
+    "pass_rate_raw": 0.037,
+    "pass_rate": 0.037,
+    "flagged_share": 0.0,
+    "mean_theta_hat": -0.813,
+    "dump_hit_rate": 0.044
+   },
+   "leak_no_defense": {
+    "pass_rate_raw": 0.662,
+    "pass_rate": 0.662,
+    "flagged_share": 0.0,
+    "mean_theta_hat": 0.167,
+    "dump_hit_rate": 0.4
+   },
+   "leak": {
+    "pass_rate_raw": 0.102,
+    "pass_rate": 0.102,
+    "flagged_share": 0.0,
+    "mean_theta_hat": -0.666,
+    "dump_hit_rate": 0.087
+   }
+  },
+  "static_form": {
+   "no_leak": {
+    "pass_rate": 0.045,
+    "mean_theta_hat": -0.799
+   },
+   "leak": {
+    "pass_rate": 1.0,
+    "mean_theta_hat": 2.591
+   }
+  },
+  "template_overlap_mean": 0.673,
+  "instance_overlap_mean": 0.0009,
+  "variant_space_median": 1388,
+  "templates_with_lt_20_variants": 10,
+  "templates_total": 45
+ },
+ "comparability": {
+  "studies": [
+   {
+    "label": "Параметрические шаблоны, экспертные параметры",
+    "decision_accuracy": 0.764,
+    "retest_agreement": 0.73,
+    "theta_corr": 0.855
+   },
+   {
+    "label": "Параметрические шаблоны после калибровки (MML-EM)",
+    "decision_accuracy": 0.748,
+    "retest_agreement": 0.732,
+    "theta_corr": 0.871
+   },
+   {
+    "label": "Идеально известные параметры (верхняя граница)",
+    "decision_accuracy": 0.804,
+    "retest_agreement": 0.77,
+    "theta_corr": 0.867
+   },
+   {
+    "label": "Уникальные задания без калибровки (разброс трудности 0.7)",
+    "decision_accuracy": 0.768,
+    "retest_agreement": 0.724,
+    "theta_corr": 0.834
+   }
+  ],
+  "calibration": {
+   "b_corr_expert": 0.916,
+   "b_corr_calibrated": 0.992,
+   "b_rmse_expert": 0.33,
+   "b_rmse_calibrated": 0.184,
+   "a_corr_calibrated": 0.882,
+   "n_respondents": 3000,
+   "responses": 62533
+  }
+ }
+}

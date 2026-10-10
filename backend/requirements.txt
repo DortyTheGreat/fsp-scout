@@ -1,0 +1,19 @@
+# Python 3.10–3.13 (протестировано на 3.12 и 3.13; для 3.10–3.11 numpy подбирается совместимый)
+fastapi==0.143.0
+uvicorn[standard]==0.54.0
+SQLAlchemy==2.1.4; python_version >= "3.11"
+SQLAlchemy==2.0.44; python_version < "3.11"
+alembic==1.20.0
+psycopg[binary]==3.3.6
+pydantic==2.13.5
+pydantic-settings==2.15.0
+email-validator==2.3.0
+PyJWT==2.15.1
+cryptography==50.0.2
+argon2-cffi==25.1.0
+httpx==0.28.1
+python-multipart==0.0.32
+pypdf==6.19.0
+reportlab==5.0.1
+numpy==2.5.3; python_version >= "3.12"
+numpy==2.2.6; python_version < "3.12"

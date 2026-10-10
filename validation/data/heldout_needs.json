@@ -1,0 +1,1486 @@
+[
+  {
+    "id": "n01",
+    "style": "hh.ru formal vacancy with sections and benefits; Middle+",
+    "text": "Python-разработчик (Middle+)\n\nКомпания «ТрансЛогик» — разработчик платформы для управления грузоперевозками.\n\nОбязанности:\n— разработка и поддержка микросервисов на Python (FastAPI);\n— проектирование REST API для внутренних и внешних клиентов;\n— оптимизация запросов к PostgreSQL;\n— участие в код-ревью.\n\nТребования:\n— коммерческий опыт разработки на Python от 3 лет;\n— уверенное знание FastAPI или Django;\n— PostgreSQL, умение читать планы запросов;\n— опыт работы с RabbitMQ или Kafka;\n— Docker, Git.\n\nБудет плюсом:\n— опыт с Kubernetes;\n— знание Go.\n\nУсловия:\n— зарплата 250–320 тыс. ₽ на руки;\n— гибридный формат, офис в Москве (м. Белорусская);\n— ДМС со стоматологией, компенсация спортзала;\n— оплачиваемое участие в конференциях.",
+    "gold": {
+      "specialization": "backend",
+      "grades": [
+        "middle"
+      ],
+      "grades_acceptable": [
+        [
+          "middle"
+        ],
+        [
+          "middle",
+          "senior"
+        ]
+      ],
+      "must": [
+        "python",
+        "web_frameworks",
+        "http_api",
+        "postgresql",
+        "caching_queues",
+        "docker",
+        "git"
+      ],
+      "nice": [
+        "kubernetes",
+        "go"
+      ],
+      "skills_optional": [
+        "sql",
+        "system_design"
+      ],
+      "salary_from": 250000,
+      "salary_to": 320000,
+      "work_formats": [
+        "hybrid"
+      ],
+      "city": "Москва"
+    }
+  },
+  {
+    "id": "n02",
+    "style": "Telegram channel post with hashtags; gross salary in k",
+    "text": "#вакансия #java #senior #удалёнка\n\nИщем Senior Java Developer в финтех-проект «КредоПэй».\n\nСтек: Java 17, Spring Boot, Kafka, PostgreSQL, k8s.\nЧто делать: высоконагруженный процессинг платежей, микросервисы, интеграции с банками-партнёрами.\nЗП: 350–450k gross\nФормат: удалёнка по РФ\n\nПисать: @hr_credopay",
+    "gold": {
+      "specialization": "backend",
+      "grades": [
+        "senior"
+      ],
+      "grades_acceptable": [
+        [
+          "senior"
+        ]
+      ],
+      "must": [
+        "java",
+        "web_frameworks",
+        "caching_queues",
+        "postgresql",
+        "kubernetes"
+      ],
+      "nice": [],
+      "skills_optional": [
+        "system_design",
+        "async"
+      ],
+      "salary_from": 350000,
+      "salary_to": 450000,
+      "work_formats": [
+        "remote"
+      ],
+      "city": null
+    }
+  },
+  {
+    "id": "n03",
+    "style": "chatty CTO message, startup; experience instead of grade; 'от 280к'",
+    "text": "Привет! Ищу толкового бэкендера к нам в команду. Мы маленький стартап — доставка фермерских продуктов, «Грядка». Пишем на Go, база постгрес, всё крутится в докере. Нужен человек, который не просто таски закрывает, а может подумать над архитектурой: сейчас начинаем пилить монолит на сервисы. Опыт года 3-4 хотя бы, джунов сейчас не потянем, честно. Про деньги — от 280к, обсуждаемо. Сидим в Казани, но можно и удалённо, если человек норм. Пишите в личку 🙌",
+    "gold": {
+      "specialization": "backend",
+      "grades": [
+        "middle",
+        "senior"
+      ],
+      "grades_acceptable": [
+        [
+          "middle",
+          "senior"
+        ],
+        [
+          "middle"
+        ],
+        [
+          "senior"
+        ]
+      ],
+      "must": [
+        "go",
+        "postgresql",
+        "docker",
+        "system_design"
+      ],
+      "nice": [],
+      "skills_optional": [],
+      "salary_from": 280000,
+      "salary_to": null,
+      "work_formats": [
+        "office",
+        "remote"
+      ],
+      "city": "Казань"
+    }
+  },
+  {
+    "id": "n04",
+    "style": "English job post with sections; experience '2+ years'",
+    "text": "Backend Engineer (Python) — Remote\n\nNorthwind Analytics is building a B2B reporting platform for retail chains.\n\nWhat you'll do:\n- Build and maintain REST APIs with Django REST Framework\n- Design async data ingestion pipelines (asyncio, Celery + Redis)\n- Write clean, tested code and review PRs\n\nRequirements:\n- 2+ years of professional Python experience\n- Solid SQL and PostgreSQL knowledge\n- Understanding of HTTP, REST and API design\n- Git, Docker\n\nNice to have:\n- Kubernetes, CI/CD (GitLab CI)\n- Experience with Prometheus/Grafana\n\nCompensation: 200,000–260,000 RUB per month. Fully remote, candidates based in Russia.",
+    "gold": {
+      "specialization": "backend",
+      "grades": [
+        "middle"
+      ],
+      "grades_acceptable": [
+        [
+          "middle"
+        ],
+        [
+          "junior",
+          "middle"
+        ],
+        [
+          "middle",
+          "senior"
+        ]
+      ],
+      "must": [
+        "python",
+        "web_frameworks",
+        "http_api",
+        "async",
+        "caching_queues",
+        "sql",
+        "postgresql",
+        "git",
+        "docker"
+      ],
+      "nice": [
+        "kubernetes",
+        "ci_cd",
+        "monitoring"
+      ],
+      "skills_optional": [],
+      "salary_from": 200000,
+      "salary_to": 260000,
+      "work_formats": [
+        "remote"
+      ],
+      "city": null
+    }
+  },
+  {
+    "id": "n05",
+    "style": "recruiter brief with negations; middle/middle+; 'до ... на руки'",
+    "text": "Бриф по позиции: Backend-разработчик C#/.NET, уровень middle/middle+.\nЗаказчик: «Ростеплосбыт», внутренняя автоматизация расчётов с потребителями.\n\nКлючевое: .NET 6+, ASP.NET Core, MS SQL или PostgreSQL, EF Core. Важно умение писать нормальный SQL руками, а не только через ORM.\nФронт не нужен совсем — есть отдельная команда. 1С не нужен, интеграцию делают другие.\nЖелательно: RabbitMQ, Docker.\n\nВилка: до 230 000 на руки.\nОфис, Екатеринбург, 5/2. Удалёнку не рассматривают.",
+    "gold": {
+      "specialization": "backend",
+      "grades": [
+        "middle"
+      ],
+      "grades_acceptable": [
+        [
+          "middle"
+        ],
+        [
+          "middle",
+          "senior"
+        ]
+      ],
+      "must": [
+        "csharp",
+        "web_frameworks",
+        "sql"
+      ],
+      "nice": [
+        "caching_queues",
+        "docker"
+      ],
+      "skills_optional": [
+        "postgresql"
+      ],
+      "salary_from": null,
+      "salary_to": 230000,
+      "work_formats": [
+        "office"
+      ],
+      "city": "Екатеринбург"
+    }
+  },
+  {
+    "id": "n06",
+    "style": "chatty slang message with negations; no salary",
+    "text": "Ребят, кто сейчас в поиске — нам в команду нужен сеньор на бэк. Пыха и 1С не надо, пишем на питоне + джанга, немного го. Хайлоад, кеши на редисе, очереди на кафке, деплой через гитлаб си-ай в кубер. Ищем чела, который шарит в системном дизайне и может менторить джунов. ЗП по рынку, обсуждаем по итогам собеса. Удалёнка или офис в СПб, как удобно. Компания — «Сфера Медиа». Кидайте резюме в лс 👇",
+    "gold": {
+      "specialization": "backend",
+      "grades": [
+        "senior"
+      ],
+      "grades_acceptable": [
+        [
+          "senior"
+        ]
+      ],
+      "must": [
+        "python",
+        "web_frameworks",
+        "caching_queues",
+        "ci_cd",
+        "kubernetes",
+        "system_design"
+      ],
+      "nice": [],
+      "skills_optional": [
+        "go",
+        "async"
+      ],
+      "salary_from": null,
+      "salary_to": null,
+      "work_formats": [
+        "remote",
+        "office"
+      ],
+      "city": "Санкт-Петербург"
+    }
+  },
+  {
+    "id": "n07",
+    "style": "hh.ru formal vacancy, junior, benefits; 'от 90 000'",
+    "text": "Junior Java-разработчик\n\nООО «Модуль Софт» приглашает начинающего разработчика в команду внутренних сервисов.\n\nОбязанности:\n• доработка бэкенда на Java/Spring;\n• написание SQL-запросов и unit-тестов;\n• исправление багов под руководством наставника.\n\nТребования:\n• коммерческий опыт от полугода или сильные пет-проекты;\n• знание Java Core, ООП, коллекций;\n• базовое понимание SQL и реляционных БД;\n• понимание принципов REST;\n• Git.\n\nБудет плюсом: Linux на уровне пользователя, Docker.\n\nМы предлагаем: оклад от 90 000 ₽, гибрид в Новосибирске (3 дня в офисе), ДМС после испытательного срока, обучение за счёт компании, корпоративные завтраки.",
+    "gold": {
+      "specialization": "backend",
+      "grades": [
+        "junior"
+      ],
+      "grades_acceptable": [
+        [
+          "junior"
+        ],
+        [
+          "intern",
+          "junior"
+        ]
+      ],
+      "must": [
+        "java",
+        "web_frameworks",
+        "sql",
+        "http_api",
+        "git"
+      ],
+      "nice": [
+        "linux",
+        "docker"
+      ],
+      "skills_optional": [
+        "algorithms",
+        "test_automation"
+      ],
+      "salary_from": 90000,
+      "salary_to": null,
+      "work_formats": [
+        "hybrid"
+      ],
+      "city": "Новосибирск"
+    }
+  },
+  {
+    "id": "n08",
+    "style": "formal Russian post, grade not named (experience only), no salary",
+    "text": "Ищем Go-разработчика в команду платёжного шлюза (компания «ПэйГейт»).\n\nЧем заниматься: развивать сервисы обработки транзакций, проектировать взаимодействие между сервисами, участвовать в дежурствах.\n\nЧто ждём:\n- опыт промышленной разработки от 5 лет, из них на Go — от 2;\n- глубокое понимание конкурентности в Go (горутины, каналы, пакет sync);\n- опыт проектирования распределённых систем;\n- PostgreSQL, Redis;\n- gRPC и REST.\n\nПлюсом будет опыт с Kafka и понимание сетевого стека (TCP, TLS).\n\nЗарплата обсуждается по итогам собеседования. Работа удалённая, оформление по ТК РФ.",
+    "gold": {
+      "specialization": "backend",
+      "grades": [
+        "senior"
+      ],
+      "grades_acceptable": [
+        [
+          "senior"
+        ]
+      ],
+      "must": [
+        "go",
+        "async",
+        "system_design",
+        "postgresql",
+        "caching_queues",
+        "http_api"
+      ],
+      "nice": [
+        "networking"
+      ],
+      "skills_optional": [],
+      "salary_from": null,
+      "salary_to": null,
+      "work_formats": [
+        "remote"
+      ],
+      "city": null
+    }
+  },
+  {
+    "id": "n09",
+    "style": "hh.ru formal vacancy with sections and benefits; experience only",
+    "text": "Frontend-разработчик (React)\n\n«Медиацентр Восход» — онлайн-кинотеатр с аудиторией 2 млн пользователей в месяц.\n\nОбязанности:\n- разработка новых экранов веб-плеера и личного кабинета;\n- оптимизация производительности интерфейса;\n- взаимодействие с дизайнерами (Figma) и бэкендом.\n\nТребования:\n- от 2 лет коммерческой разработки на React;\n- уверенный TypeScript;\n- глубокое знание HTML/CSS, адаптивная вёрстка;\n- понимание работы браузера: event loop, рендеринг, Web APIs;\n- опыт работы с REST API.\n\nБудет плюсом: Next.js, опыт написания тестов (Jest, Playwright).\n\nУсловия: 220–280 тыс. ₽ net, удалённо или гибрид (Москва), ДМС, бюджет на обучение, техника на выбор.",
+    "gold": {
+      "specialization": "frontend",
+      "grades": [
+        "middle"
+      ],
+      "grades_acceptable": [
+        [
+          "middle"
+        ],
+        [
+          "junior",
+          "middle"
+        ],
+        [
+          "middle",
+          "senior"
+        ]
+      ],
+      "must": [
+        "react",
+        "typescript",
+        "html_css",
+        "browser",
+        "http_api"
+      ],
+      "nice": [
+        "test_automation"
+      ],
+      "skills_optional": [
+        "javascript",
+        "async",
+        "web_frameworks"
+      ],
+      "salary_from": 220000,
+      "salary_to": 280000,
+      "work_formats": [
+        "remote",
+        "hybrid"
+      ],
+      "city": "Москва"
+    }
+  },
+  {
+    "id": "n10",
+    "style": "Telegram post with emoji, junior; 'от 70 000'",
+    "text": "🔥 Вакансия: Junior Frontend (React)\nКомпания: «Пиксель Лаб», Нижний Новгород\n\n💻 Стек: JavaScript, React, HTML/CSS, Git\n📍 Офис, после испытательного срока можно гибрид\n💰 от 70 000 ₽\n🎓 Рассматриваем без коммерческого опыта, но с портфолио на GitHub\n\n👉 Резюме: @pixellab_hr",
+    "gold": {
+      "specialization": "frontend",
+      "grades": [
+        "junior"
+      ],
+      "grades_acceptable": [
+        [
+          "junior"
+        ],
+        [
+          "intern",
+          "junior"
+        ]
+      ],
+      "must": [
+        "javascript",
+        "react",
+        "html_css",
+        "git"
+      ],
+      "nice": [],
+      "skills_optional": [],
+      "salary_from": 70000,
+      "salary_to": null,
+      "work_formats": [
+        "office",
+        "hybrid"
+      ],
+      "city": "Нижний Новгород"
+    }
+  },
+  {
+    "id": "n11",
+    "style": "chatty team lead message; 'senior или крепкий middle'; negations",
+    "text": "Коллеги, ищу к себе в команду сильного фронтенд-разработчика, уровень senior или очень крепкий middle. У нас большой SPA на React + TypeScript, своя дизайн-система, монорепа. Хочется человека, который понимает, как устроен браузер изнутри, может разобраться, почему всё тормозит, и пояснить за архитектуру фронта. Vue и Angular не нужны вообще, jQuery тоже не вспоминаем 🙂 Из бонусов было бы круто знание Node.js на уровне «написать BFF». Деньги хорошие: 300–380к. Работаем полностью удалённо. Компания — «Нордсофт».",
+    "gold": {
+      "specialization": "frontend",
+      "grades": [
+        "middle",
+        "senior"
+      ],
+      "grades_acceptable": [
+        [
+          "middle",
+          "senior"
+        ],
+        [
+          "senior"
+        ]
+      ],
+      "must": [
+        "react",
+        "typescript",
+        "browser"
+      ],
+      "nice": [],
+      "skills_optional": [
+        "javascript",
+        "system_design",
+        "http_api"
+      ],
+      "salary_from": 300000,
+      "salary_to": 380000,
+      "work_formats": [
+        "remote"
+      ],
+      "city": null
+    }
+  },
+  {
+    "id": "n12",
+    "style": "English job post, senior; gross salary",
+    "text": "Senior Frontend Engineer\n\nLumen Health is hiring a senior frontend engineer to own our patient-facing web app.\n\nResponsibilities:\n- Lead frontend architecture decisions for a large React/TypeScript codebase\n- Improve Core Web Vitals and accessibility\n- Mentor two mid-level engineers\n\nMust have:\n- 5+ years building web applications\n- Expert knowledge of React, TypeScript and modern CSS\n- Strong understanding of browser internals and performance profiling\n- Experience with CI/CD pipelines and automated testing\n\nNice to have:\n- GraphQL\n- Experience with web security (CSP, XSS, CSRF)\n\nSalary: 330,000–420,000 RUB gross per month. Hybrid, office in Saint Petersburg.",
+    "gold": {
+      "specialization": "frontend",
+      "grades": [
+        "senior"
+      ],
+      "grades_acceptable": [
+        [
+          "senior"
+        ]
+      ],
+      "must": [
+        "react",
+        "typescript",
+        "html_css",
+        "browser",
+        "ci_cd",
+        "test_automation"
+      ],
+      "nice": [
+        "security"
+      ],
+      "skills_optional": [
+        "javascript",
+        "system_design"
+      ],
+      "salary_from": 330000,
+      "salary_to": 420000,
+      "work_formats": [
+        "hybrid"
+      ],
+      "city": "Санкт-Петербург"
+    }
+  },
+  {
+    "id": "n13",
+    "style": "recruiter brief; experience only; no salary; negations",
+    "text": "Запрос от заказчика (интернет-магазин «ДомМаркет»): нужен фронтендер на поддержку и развитие витрины.\n\nОпыт — от 3 лет на React, обязательно Redux или другой стейт-менеджер. Желательно TypeScript, но можно и на чистом JS, если человек сильный. Вёрстка — обязательно, макеты в Figma. Важно понимание SEO и SSR (Next.js). Бэк не трогаем, PHP-часть остаётся у другой команды.\n\nОплата — по итогам интервью, вилку заказчик пока не раскрывает.\nФормат — гибрид, Краснодар.",
+    "gold": {
+      "specialization": "frontend",
+      "grades": [
+        "middle"
+      ],
+      "grades_acceptable": [
+        [
+          "middle"
+        ],
+        [
+          "middle",
+          "senior"
+        ]
+      ],
+      "must": [
+        "react",
+        "html_css"
+      ],
+      "nice": [
+        "typescript"
+      ],
+      "skills_optional": [
+        "javascript",
+        "web_frameworks"
+      ],
+      "salary_from": null,
+      "salary_to": null,
+      "work_formats": [
+        "hybrid"
+      ],
+      "city": "Краснодар"
+    }
+  },
+  {
+    "id": "n14",
+    "style": "short studio ad with negations; 'до 120 000'; experience only",
+    "text": "Ищем верстальщика-фронтендера в небольшую веб-студию «Квадрат». Задачи: вёрстка лендингов и корпоративных сайтов по макетам, анимации, кроссбраузерность. Нужны: HTML, CSS (Flexbox, Grid, SCSS), JavaScript на уровне работы с DOM и событиями, Git. React не обязателен, фреймворки вообще не требуем. Бэкенд, WordPress и PHP — не нужны. Опыт от года. Зарплата до 120 000 рублей. Офис в Томске, удалёнку не предлагаем.",
+    "gold": {
+      "specialization": "frontend",
+      "grades": [
+        "junior"
+      ],
+      "grades_acceptable": [
+        [
+          "junior"
+        ],
+        [
+          "junior",
+          "middle"
+        ]
+      ],
+      "must": [
+        "html_css",
+        "javascript",
+        "browser",
+        "git"
+      ],
+      "nice": [],
+      "skills_optional": [],
+      "salary_from": null,
+      "salary_to": 120000,
+      "work_formats": [
+        "office"
+      ],
+      "city": "Томск"
+    }
+  },
+  {
+    "id": "n15",
+    "style": "Telegram post in slang; миддл/миддл+",
+    "text": "Ищем фронта миддл/миддл+ на проект для логистов 🚚\nстек: реакт, тс, редакс тулкит, вебпак/вайт, тесты на джесте\nчто нужно уметь: пилить сложные формы и таблицы, дружить с апишкой бэка (рест), понимать почему компонент лишний раз ререндерится\nвилка 200-260к, можно ИП\nудалёнка, часовой пояс ±2 от мск\nкомпания: «ГрузТех»",
+    "gold": {
+      "specialization": "frontend",
+      "grades": [
+        "middle"
+      ],
+      "grades_acceptable": [
+        [
+          "middle"
+        ],
+        [
+          "middle",
+          "senior"
+        ]
+      ],
+      "must": [
+        "react",
+        "typescript",
+        "http_api"
+      ],
+      "nice": [],
+      "skills_optional": [
+        "javascript",
+        "test_automation"
+      ],
+      "salary_from": 200000,
+      "salary_to": 260000,
+      "work_formats": [
+        "remote"
+      ],
+      "city": null
+    }
+  },
+  {
+    "id": "n16",
+    "style": "English casual post; junior+/middle",
+    "text": "Hey folks! 👋 Brightline Games is looking for a frontend dev (junior+ / middle) to help build the web version of our puzzle games. You'll work with TypeScript, React and Canvas/WebGL. A good grasp of JS fundamentals, browser APIs and rendering performance is a must. Bonus points if you've played with Three.js or know some Node. Pay: 150–210k RUB/month. Remote-friendly, or join us at our Moscow office. DM me!",
+    "gold": {
+      "specialization": "frontend",
+      "grades": [
+        "junior",
+        "middle"
+      ],
+      "grades_acceptable": [
+        [
+          "junior",
+          "middle"
+        ],
+        [
+          "middle"
+        ]
+      ],
+      "must": [
+        "typescript",
+        "react",
+        "javascript",
+        "browser"
+      ],
+      "nice": [],
+      "skills_optional": [],
+      "salary_from": 150000,
+      "salary_to": 210000,
+      "work_formats": [
+        "remote",
+        "office"
+      ],
+      "city": "Москва"
+    }
+  },
+  {
+    "id": "n17",
+    "style": "hh.ru formal vacancy with sections and benefits; middle",
+    "text": "Data Scientist (Middle)\n\n«Банк Северный» развивает направление кредитного скоринга.\n\nОбязанности:\n- построение и валидация моделей оценки кредитного риска;\n- подготовка признаков из транзакционных данных;\n- проведение A/B-тестов и анализ их результатов.\n\nТребования:\n- опыт работы в DS от 2 лет;\n- Python (pandas, numpy, scikit-learn);\n- SQL на уровне оконных функций;\n- знание классического ML: градиентный бустинг, логистическая регрессия, метрики качества;\n- хорошая база в математической статистике.\n\nБудет плюсом: опыт с PySpark, Airflow, знание Docker.\n\nУсловия: 260–330 тыс. руб., гибрид (Москва, Пресненская наб.), ДМС, годовой бонус, льготная ипотека для сотрудников.",
+    "gold": {
+      "specialization": "data_science",
+      "grades": [
+        "middle"
+      ],
+      "grades_acceptable": [
+        [
+          "middle"
+        ]
+      ],
+      "must": [
+        "python",
+        "pandas",
+        "ml",
+        "sql",
+        "statistics"
+      ],
+      "nice": [
+        "docker"
+      ],
+      "skills_optional": [],
+      "salary_from": 260000,
+      "salary_to": 330000,
+      "work_formats": [
+        "hybrid"
+      ],
+      "city": "Москва"
+    }
+  },
+  {
+    "id": "n18",
+    "style": "Telegram post with hashtags; junior analyst; salary in k",
+    "text": "#вакансия #junior #аналитик\n\nJunior продуктовый аналитик в «ФудБокс» (доставка еды)\n\nНужно: SQL (джойны, группировки, оконки), Python + pandas, базовая статистика (p-value, доверительные интервалы)\nПлюсом: Tableau или DataLens, опыт A/B-тестов\nЗП: 100–130к\nОфис или гибрид, Москва\nКонтакт: @foodbox_data",
+    "gold": {
+      "specialization": "data_science",
+      "grades": [
+        "junior"
+      ],
+      "grades_acceptable": [
+        [
+          "junior"
+        ]
+      ],
+      "must": [
+        "sql",
+        "python",
+        "pandas",
+        "statistics"
+      ],
+      "nice": [],
+      "skills_optional": [],
+      "salary_from": 100000,
+      "salary_to": 130000,
+      "work_formats": [
+        "office",
+        "hybrid"
+      ],
+      "city": "Москва"
+    }
+  },
+  {
+    "id": "n19",
+    "style": "chatty ML team lead; 'ведущий'; experience stated",
+    "text": "Всем привет! Я руковожу ML-командой в «Визион Ритейл». Ищем ведущего специалиста по компьютерному зрению. Задачи — детекция товаров на полках по фото с камер, модели должны работать на edge-устройствах. Нужен человек с хорошим опытом в PyTorch, свёрточных сетях и трансформерах, который умеет доводить модели до прода (ONNX, TensorRT, Docker). С++ будет большим плюсом для инференса. Опыт от 5 лет. Платим 400–500 тыс. на руки. Удалённо, можно из любого города РФ.",
+    "gold": {
+      "specialization": "data_science",
+      "grades": [
+        "senior"
+      ],
+      "grades_acceptable": [
+        [
+          "senior"
+        ]
+      ],
+      "must": [
+        "deep_learning",
+        "docker"
+      ],
+      "nice": [
+        "cpp"
+      ],
+      "skills_optional": [
+        "python",
+        "ml"
+      ],
+      "salary_from": 400000,
+      "salary_to": 500000,
+      "work_formats": [
+        "remote"
+      ],
+      "city": null
+    }
+  },
+  {
+    "id": "n20",
+    "style": "English job post; experience range '1–3 years', no grade",
+    "text": "Data Analyst — Marketplace Analytics\n\nKestrel Market (e-commerce) is looking for a data analyst to support our category management team.\n\nYou will:\n- Build dashboards and ad-hoc reports\n- Design and analyse A/B tests\n- Investigate metric changes and present findings to stakeholders\n\nYou have:\n- 1–3 years in analytics\n- Strong SQL (PostgreSQL / ClickHouse)\n- Python with pandas\n- Solid statistics: hypothesis testing, confidence intervals\n\nNice to have: basic ML (regression, clustering), Airflow, Git.\n\nWe offer 160–210k RUB/month, hybrid in Yekaterinburg.",
+    "gold": {
+      "specialization": "data_science",
+      "grades": [
+        "junior",
+        "middle"
+      ],
+      "grades_acceptable": [
+        [
+          "junior",
+          "middle"
+        ],
+        [
+          "middle"
+        ],
+        [
+          "junior"
+        ]
+      ],
+      "must": [
+        "sql",
+        "python",
+        "pandas",
+        "statistics"
+      ],
+      "nice": [
+        "ml",
+        "git"
+      ],
+      "skills_optional": [
+        "postgresql"
+      ],
+      "salary_from": 160000,
+      "salary_to": 210000,
+      "work_formats": [
+        "hybrid"
+      ],
+      "city": "Екатеринбург"
+    }
+  },
+  {
+    "id": "n21",
+    "style": "recruiter brief; 'senior, допускаем сильного middle'; no salary",
+    "text": "Ищу для клиента (крупный телеком, NDA) NLP-инженера. Уровень — senior, допускаем сильного middle с релевантными проектами.\n\nОбязательно: Python, PyTorch, опыт файнтюнинга трансформеров (BERT, LLM), понимание метрик и валидации моделей, опыт выкатки моделей в продакшн (FastAPI, Docker).\nЖелательно: Kubernetes, векторные БД, RAG.\n\nКомпенсация — обсуждается индивидуально, ориентир по рынку.\nОфис или гибрид в Москве.",
+    "gold": {
+      "specialization": "data_science",
+      "grades": [
+        "middle",
+        "senior"
+      ],
+      "grades_acceptable": [
+        [
+          "middle",
+          "senior"
+        ],
+        [
+          "senior"
+        ]
+      ],
+      "must": [
+        "python",
+        "deep_learning",
+        "web_frameworks",
+        "docker"
+      ],
+      "nice": [
+        "kubernetes"
+      ],
+      "skills_optional": [
+        "ml"
+      ],
+      "salary_from": null,
+      "salary_to": null,
+      "work_formats": [
+        "office",
+        "hybrid"
+      ],
+      "city": "Москва"
+    }
+  },
+  {
+    "id": "n22",
+    "style": "hh.ru formal vacancy; experience only; 'от ... gross'",
+    "text": "ML-инженер (рекомендательные системы)\n\nОнлайн-библиотека «Читай-Град» ищет инженера в команду персонализации.\n\nЧто предстоит: развивать рекомендательную систему, проводить офлайн- и онлайн-эксперименты, оптимизировать инференс.\n\nМы ожидаем:\n• от 3 лет опыта в ML;\n• Python, pandas, NumPy, scikit-learn, CatBoost/LightGBM;\n• SQL;\n• понимание матричных разложений и нейросетевых подходов к рекомендациям;\n• умение писать продакшн-код, Git, Docker.\n\nБудет плюсом: Spark, опыт с Kafka, Linux.\n\nУсловия: от 250 000 ₽ gross, удалёнка или офис в Санкт-Петербурге, ДМС, гибкий график.",
+    "gold": {
+      "specialization": "data_science",
+      "grades": [
+        "middle"
+      ],
+      "grades_acceptable": [
+        [
+          "middle"
+        ],
+        [
+          "middle",
+          "senior"
+        ]
+      ],
+      "must": [
+        "python",
+        "pandas",
+        "ml",
+        "sql",
+        "deep_learning",
+        "git",
+        "docker"
+      ],
+      "nice": [
+        "caching_queues",
+        "linux"
+      ],
+      "skills_optional": [
+        "statistics"
+      ],
+      "salary_from": 250000,
+      "salary_to": null,
+      "work_formats": [
+        "remote",
+        "office"
+      ],
+      "city": "Санкт-Петербург"
+    }
+  },
+  {
+    "id": "n23",
+    "style": "short ad with negations (Python/ML/1С not needed); experience only",
+    "text": "Ищем аналитика данных в отдел продаж компании «Агроплюс». Работа с отчётностью и выгрузками, построение дашбордов в Power BI, расчёт KPI менеджеров. Требования: уверенный SQL, Excel, понимание основ статистики. Python — не обязателен, машинное обучение не требуется, 1С знать не нужно (выгрузки делает ИТ). Опыт от 1 года. Зарплата 90–110 тыс. руб. на руки. Офис в Воронеже, пятидневка.",
+    "gold": {
+      "specialization": "data_science",
+      "grades": [
+        "junior"
+      ],
+      "grades_acceptable": [
+        [
+          "junior"
+        ],
+        [
+          "junior",
+          "middle"
+        ]
+      ],
+      "must": [
+        "sql",
+        "statistics"
+      ],
+      "nice": [],
+      "skills_optional": [],
+      "salary_from": 90000,
+      "salary_to": 110000,
+      "work_formats": [
+        "office"
+      ],
+      "city": "Воронеж"
+    }
+  },
+  {
+    "id": "n24",
+    "style": "chatty slang message; middle",
+    "text": "Народ, нужен дата-сайентист, мидл. Задачка — антифрод, бустинги, фичи из логов, вот это вот всё. Питон, пандас, склёрн — база, без этого никак. Скуль тоже must have, данные в кликхаусе. Если шаришь в графовых фичах и нейронках — вообще огонь, но не обязательно. Вилка 230-290к, работа из дома. Пиши в тг, расскажу подробнее. Компания «Щит Финанс».",
+    "gold": {
+      "specialization": "data_science",
+      "grades": [
+        "middle"
+      ],
+      "grades_acceptable": [
+        [
+          "middle"
+        ]
+      ],
+      "must": [
+        "python",
+        "pandas",
+        "ml",
+        "sql"
+      ],
+      "nice": [
+        "deep_learning"
+      ],
+      "skills_optional": [],
+      "salary_from": 230000,
+      "salary_to": 290000,
+      "work_formats": [
+        "remote"
+      ],
+      "city": null
+    }
+  },
+  {
+    "id": "n25",
+    "style": "hh.ru formal vacancy with sections and benefits; experience only",
+    "text": "DevOps-инженер\n\n«Облачные Решения Сибири» — провайдер облачной инфраструктуры.\n\nОбязанности:\n— поддержка и развитие Kubernetes-кластеров;\n— построение CI/CD (GitLab CI);\n— настройка мониторинга и алертинга (Prometheus, Grafana, Alertmanager);\n— автоматизация рутинных задач.\n\nТребования:\n— опыт администрирования Linux от 2 лет;\n— Docker, Kubernetes, Helm;\n— Terraform или Ansible;\n— понимание сетей: TCP/IP, DNS, балансировка;\n— умение писать скрипты на Bash или Python.\n\nБудет плюсом: опыт с Ceph, знание Go.\n\nУсловия: 230–290 тыс. ₽, удалённо или гибрид (офис в Новосибирске), ДМС, компенсация обучения и сертификаций, 28 дней отпуска.",
+    "gold": {
+      "specialization": "devops",
+      "grades": [
+        "middle"
+      ],
+      "grades_acceptable": [
+        [
+          "middle"
+        ],
+        [
+          "junior",
+          "middle"
+        ],
+        [
+          "middle",
+          "senior"
+        ]
+      ],
+      "must": [
+        "linux",
+        "docker",
+        "kubernetes",
+        "ci_cd",
+        "monitoring",
+        "networking"
+      ],
+      "nice": [
+        "go"
+      ],
+      "skills_optional": [
+        "python"
+      ],
+      "salary_from": 230000,
+      "salary_to": 290000,
+      "work_formats": [
+        "remote",
+        "hybrid"
+      ],
+      "city": "Новосибирск"
+    }
+  },
+  {
+    "id": "n26",
+    "style": "Telegram post with hashtags; senior SRE; salary in k",
+    "text": "#vacancy #SRE #senior\n«Тикет Плюс» ищет Senior SRE\n\n— k8s в проде (несколько кластеров, 500+ подов)\n— Prometheus, VictoriaMetrics, Loki, Grafana\n— Terraform, Ansible\n— on-call, постмортемы, SLO/SLI\n— Go или Python для автоматизации\n\n💰 380–450k\n🌍 remote\n✉️ @ticketplus_jobs",
+    "gold": {
+      "specialization": "devops",
+      "grades": [
+        "senior"
+      ],
+      "grades_acceptable": [
+        [
+          "senior"
+        ]
+      ],
+      "must": [
+        "kubernetes",
+        "monitoring"
+      ],
+      "nice": [],
+      "skills_optional": [
+        "go",
+        "python",
+        "linux"
+      ],
+      "salary_from": 380000,
+      "salary_to": 450000,
+      "work_formats": [
+        "remote"
+      ],
+      "city": null
+    }
+  },
+  {
+    "id": "n27",
+    "style": "chatty CTO message; negation (no k8s); 'до 200 000 на руки'",
+    "text": "Слушайте, нужен админ-девопс, который возьмёт на себя всю нашу инфру. Сейчас это пара десятков виртуалок на Linux, всё в докере, деплоим руками — хочется наконец завести нормальный CI/CD. Кубер не нужен, не надо нам его тащить ради хайпа 😅 Важно понимать сети, уметь настроить nginx, VPN, бэкапы, и думать про безопасность (у нас медицинские данные). Опыт от 2-3 лет. Бюджет до 200 000 на руки. Офис в Самаре, но пару дней в неделю можно работать из дома. Компания «МедЛайн».",
+    "gold": {
+      "specialization": "devops",
+      "grades": [
+        "middle"
+      ],
+      "grades_acceptable": [
+        [
+          "middle"
+        ],
+        [
+          "junior",
+          "middle"
+        ]
+      ],
+      "must": [
+        "linux",
+        "docker",
+        "ci_cd",
+        "networking",
+        "security"
+      ],
+      "nice": [],
+      "skills_optional": [],
+      "salary_from": null,
+      "salary_to": 200000,
+      "work_formats": [
+        "hybrid"
+      ],
+      "city": "Самара"
+    }
+  },
+  {
+    "id": "n28",
+    "style": "English job post; Middle/Senior; '300-400k gross'",
+    "text": "Platform Engineer (Middle/Senior)\n\nArctic Cloud is building an internal developer platform for 40+ product teams.\n\nWhat you'll do:\n- Operate Kubernetes clusters on bare metal\n- Develop CI/CD templates (GitLab CI, Argo CD)\n- Own observability: metrics, logs, traces (Prometheus, Loki, Tempo)\n\nRequirements:\n- 3+ years in DevOps/SRE\n- Strong Linux and networking fundamentals\n- Docker, Kubernetes, Helm\n- Infrastructure as Code (Terraform)\n- Scripting in Go or Python\n\nNice to have: Kafka operations, security hardening (CIS benchmarks, Vault)\n\nSalary: 300-400k gross. Remote or hybrid (Moscow office).",
+    "gold": {
+      "specialization": "devops",
+      "grades": [
+        "middle",
+        "senior"
+      ],
+      "grades_acceptable": [
+        [
+          "middle",
+          "senior"
+        ],
+        [
+          "middle"
+        ],
+        [
+          "senior"
+        ]
+      ],
+      "must": [
+        "kubernetes",
+        "ci_cd",
+        "monitoring",
+        "linux",
+        "networking",
+        "docker"
+      ],
+      "nice": [
+        "caching_queues",
+        "security"
+      ],
+      "skills_optional": [
+        "go",
+        "python"
+      ],
+      "salary_from": 300000,
+      "salary_to": 400000,
+      "work_formats": [
+        "remote",
+        "hybrid"
+      ],
+      "city": "Москва"
+    }
+  },
+  {
+    "id": "n29",
+    "style": "recruiter brief; lead/ведущий; no salary",
+    "text": "Позиция: Ведущий DevOps-инженер / Team Lead DevOps\nКлиент: федеральная розничная сеть «Ларец», ИТ-департамент ~300 человек.\n\nЗадачи: выстроить процессы DevOps с нуля в новом направлении, руководить командой из 4 человек, участвовать в проектировании архитектуры.\nMust-have: Kubernetes (OpenShift ок), CI/CD, Linux, мониторинг, опыт руководства.\nЖелательно: опыт работы с требованиями ИБ (ФСТЭК), знание сетевого оборудования.\n\nКомпенсация — обсуждается с финалистами.\nФормат: гибрид, Москва.",
+    "gold": {
+      "specialization": "devops",
+      "grades": [
+        "senior"
+      ],
+      "grades_acceptable": [
+        [
+          "senior"
+        ]
+      ],
+      "must": [
+        "kubernetes",
+        "ci_cd",
+        "linux",
+        "monitoring"
+      ],
+      "nice": [
+        "security",
+        "networking"
+      ],
+      "skills_optional": [
+        "system_design"
+      ],
+      "salary_from": null,
+      "salary_to": null,
+      "work_formats": [
+        "hybrid"
+      ],
+      "city": "Москва"
+    }
+  },
+  {
+    "id": "n30",
+    "style": "chatty slang message; 'джун или сильный стажёр'",
+    "text": "Йо, ищем джуна-девопса 👀 ну или прям сильного стажёра. Что нужно: линукс на уровне «не боюсь консоли», докер, гит, базовое понимание того, как работают сети (айпишники, порты, днс). Если трогал дженкинс или гитлаб си-ай — плюс. Кубу и всему остальному научим. Платим 60–80к, офис в Перми, компания «Пермь Телеком Сервис».",
+    "gold": {
+      "specialization": "devops",
+      "grades": [
+        "junior"
+      ],
+      "grades_acceptable": [
+        [
+          "junior"
+        ],
+        [
+          "intern",
+          "junior"
+        ]
+      ],
+      "must": [
+        "linux",
+        "docker",
+        "git",
+        "networking"
+      ],
+      "nice": [
+        "ci_cd"
+      ],
+      "skills_optional": [],
+      "salary_from": 60000,
+      "salary_to": 80000,
+      "work_formats": [
+        "office"
+      ],
+      "city": "Пермь"
+    }
+  },
+  {
+    "id": "n31",
+    "style": "formal list with negations; experience only; salary before tax",
+    "text": "DevSecOps-инженер в «КиберЩит».\n\nТребования:\n- опыт работы DevOps-инженером от 4 лет;\n- встраивание SAST/DAST-сканеров в пайплайны GitLab CI;\n- уверенные знания Kubernetes и Docker, понимание RBAC, network policies;\n- знание основ информационной безопасности, OWASP Top 10;\n- Linux на уровне администратора.\n\nWindows-инфраструктура и Active Directory не нужны. Разработка не требуется.\n\nБудет плюсом: сертификация CKS, опыт с HashiCorp Vault.\n\nЗП: от 300 000 до 360 000 рублей до вычета НДФЛ.\nУдалённо, Россия.",
+    "gold": {
+      "specialization": "devops",
+      "grades": [
+        "senior"
+      ],
+      "grades_acceptable": [
+        [
+          "senior"
+        ],
+        [
+          "middle",
+          "senior"
+        ]
+      ],
+      "must": [
+        "ci_cd",
+        "kubernetes",
+        "docker",
+        "security",
+        "linux"
+      ],
+      "nice": [],
+      "skills_optional": [
+        "networking"
+      ],
+      "salary_from": 300000,
+      "salary_to": 360000,
+      "work_formats": [
+        "remote"
+      ],
+      "city": null
+    }
+  },
+  {
+    "id": "n32",
+    "style": "Telegram-style post; junior; 'от 90 тыс.'",
+    "text": "[Вакансия] Junior DevOps в «Полар Дата» (Казань)\n\nМы небольшая команда дата-платформы. Ищем человека с опытом около года (стажировки тоже считаем), который знает Linux, Docker и Git и уже писал CI-пайплайны (GitHub Actions / GitLab CI). Скрипты на Python — плюс. Kubernetes не требуется, научим.\n\nЗарплата от 90 тыс. руб. Офис в Казани, после испытательного срока — гибрид.",
+    "gold": {
+      "specialization": "devops",
+      "grades": [
+        "junior"
+      ],
+      "grades_acceptable": [
+        [
+          "junior"
+        ],
+        [
+          "intern",
+          "junior"
+        ]
+      ],
+      "must": [
+        "linux",
+        "docker",
+        "git",
+        "ci_cd"
+      ],
+      "nice": [
+        "python"
+      ],
+      "skills_optional": [],
+      "salary_from": 90000,
+      "salary_to": null,
+      "work_formats": [
+        "office",
+        "hybrid"
+      ],
+      "city": "Казань"
+    }
+  },
+  {
+    "id": "n33",
+    "style": "hh.ru formal vacancy with sections and benefits; experience only",
+    "text": "QA Automation Engineer (Python)\n\n«ТревелХаб» — сервис онлайн-бронирования отелей и билетов.\n\nОбязанности:\n- разработка и поддержка автотестов для API и веба (pytest, Playwright);\n- интеграция тестов в CI/CD;\n- анализ требований и составление тест-кейсов;\n- участие в регрессе перед релизами.\n\nТребования:\n- опыт в автоматизации тестирования от 2 лет;\n- Python, pytest;\n- опыт тестирования REST API (Postman, requests);\n- SQL на уровне простых запросов;\n- Git, Docker.\n\nБудет плюсом: нагрузочное тестирование (Locust, JMeter), опыт с Allure TestOps.\n\nМы предлагаем: 200–250 тыс. ₽, удалёнка или офис в Москве на выбор, ДМС, корпоративный психолог, компенсация английского.",
+    "gold": {
+      "specialization": "qa",
+      "grades": [
+        "middle"
+      ],
+      "grades_acceptable": [
+        [
+          "middle"
+        ],
+        [
+          "junior",
+          "middle"
+        ],
+        [
+          "middle",
+          "senior"
+        ]
+      ],
+      "must": [
+        "test_automation",
+        "python",
+        "ci_cd",
+        "test_design",
+        "http_api",
+        "sql",
+        "git",
+        "docker"
+      ],
+      "nice": [],
+      "skills_optional": [],
+      "salary_from": 200000,
+      "salary_to": 250000,
+      "work_formats": [
+        "remote",
+        "office"
+      ],
+      "city": "Москва"
+    }
+  },
+  {
+    "id": "n34",
+    "style": "Telegram post with hashtags; junior manual QA",
+    "text": "#вакансия #QA #junior\n\nИщем ручного тестировщика (junior) в «Мобайл Банк Лайт»\nЗадачи: тестирование веб- и мобильного приложения, заведение багов в Jira, тест-кейсы и чек-листы\nТребования: знание техник тест-дизайна (классы эквивалентности, граничные значения), базовый SQL, умение пользоваться DevTools\nБудет плюсом: Postman, понимание клиент-серверной архитектуры\nЗП: 70–90 тыс.\nОфис, Ростов-на-Дону\nРезюме → @mbl_hr",
+    "gold": {
+      "specialization": "qa",
+      "grades": [
+        "junior"
+      ],
+      "grades_acceptable": [
+        [
+          "junior"
+        ]
+      ],
+      "must": [
+        "test_design",
+        "sql"
+      ],
+      "nice": [
+        "http_api"
+      ],
+      "skills_optional": [
+        "browser"
+      ],
+      "salary_from": 70000,
+      "salary_to": 90000,
+      "work_formats": [
+        "office"
+      ],
+      "city": "Ростов-на-Дону"
+    }
+  },
+  {
+    "id": "n35",
+    "style": "chatty QA lead message; senior; no salary",
+    "text": "Привет! Я лид QA в «Карго Онлайн». Ищу себе в команду сеньора-автоматизатора, по сути правую руку. Задача — с нуля поднять фреймворк автотестов на Java (JUnit 5, Selenide, RestAssured), прикрутить Allure и встроить всё это в наш пайплайн на Jenkins. Нужен человек, который не только тесты пишет, но и понимает, ЧТО тестировать, то есть с сильным тест-дизайном. Мобилка не нужна, только веб и API. По деньгам — обсудим, не обидим, зависит от собеса. Работаем удалённо.",
+    "gold": {
+      "specialization": "qa",
+      "grades": [
+        "senior"
+      ],
+      "grades_acceptable": [
+        [
+          "senior"
+        ]
+      ],
+      "must": [
+        "java",
+        "test_automation",
+        "ci_cd",
+        "test_design",
+        "http_api"
+      ],
+      "nice": [],
+      "skills_optional": [],
+      "salary_from": null,
+      "salary_to": null,
+      "work_formats": [
+        "remote"
+      ],
+      "city": null
+    }
+  },
+  {
+    "id": "n36",
+    "style": "English job post; experience '1+ year', no grade",
+    "text": "QA Engineer (Manual + some automation)\n\nFernway Logistics is hiring a QA engineer for our warehouse management system.\n\nResponsibilities:\n- Test new features of the web app and REST API\n- Write test cases and maintain the regression suite\n- Work closely with developers and analysts\n\nRequirements:\n- 1+ year of experience in software testing\n- Test design techniques (boundary values, equivalence partitioning, decision tables)\n- API testing with Postman\n- Basic SQL\n\nNice to have:\n- Experience writing autotests (any language)\n- Linux command line\n\nSalary: 110–150k RUB/month. Office or hybrid, Saint Petersburg.",
+    "gold": {
+      "specialization": "qa",
+      "grades": [
+        "junior"
+      ],
+      "grades_acceptable": [
+        [
+          "junior"
+        ],
+        [
+          "junior",
+          "middle"
+        ]
+      ],
+      "must": [
+        "test_design",
+        "http_api",
+        "sql"
+      ],
+      "nice": [
+        "test_automation",
+        "linux"
+      ],
+      "skills_optional": [],
+      "salary_from": 110000,
+      "salary_to": 150000,
+      "work_formats": [
+        "office",
+        "hybrid"
+      ],
+      "city": "Санкт-Петербург"
+    }
+  },
+  {
+    "id": "n37",
+    "style": "recruiter brief with negations; experience only",
+    "text": "Бриф: QA-инженер (ручное + автоматизация на JS/TS) для проекта онлайн-школы «Знание+».\n\nОпыт в тестировании — от 3 лет, из них минимум год в автоматизации.\nСтек автотестов: TypeScript, Playwright. Нужно понимание браузера (DevTools, сеть, куки, localStorage).\nТестирование API — обязательно. SQL — на уровне выборок с JOIN.\nНагрузочное тестирование не нужно, мобильное — тоже нет. Java не нужна.\n\nВилка: 180–230 тыс. на руки.\nПолная удалёнка.",
+    "gold": {
+      "specialization": "qa",
+      "grades": [
+        "middle"
+      ],
+      "grades_acceptable": [
+        [
+          "middle"
+        ],
+        [
+          "middle",
+          "senior"
+        ]
+      ],
+      "must": [
+        "typescript",
+        "test_automation",
+        "browser",
+        "http_api",
+        "sql"
+      ],
+      "nice": [],
+      "skills_optional": [
+        "test_design",
+        "javascript"
+      ],
+      "salary_from": 180000,
+      "salary_to": 230000,
+      "work_formats": [
+        "remote"
+      ],
+      "city": null
+    }
+  },
+  {
+    "id": "n38",
+    "style": "chatty slang message; middle",
+    "text": "Нужен тестер-мидл на финтех 🙏 Ручник с уклоном в апи. Тест-дизайн чтобы от зубов отскакивал, постман/сваггер, логи в кибане смотреть, sql-запросы писать самому. Автотесты не обязательны, но если умеешь писать их на питоне — будет круто. Банковский домен — сильный плюс. Деньги: 150-180к. Гибрид, Москва, «ФинКорд». Кидайте резюме в лс",
+    "gold": {
+      "specialization": "qa",
+      "grades": [
+        "middle"
+      ],
+      "grades_acceptable": [
+        [
+          "middle"
+        ]
+      ],
+      "must": [
+        "test_design",
+        "http_api",
+        "sql"
+      ],
+      "nice": [
+        "test_automation",
+        "python"
+      ],
+      "skills_optional": [
+        "monitoring"
+      ],
+      "salary_from": 150000,
+      "salary_to": 180000,
+      "work_formats": [
+        "hybrid"
+      ],
+      "city": "Москва"
+    }
+  },
+  {
+    "id": "n39",
+    "style": "hh.ru formal vacancy; QA Lead/ведущий; benefits",
+    "text": "Ведущий инженер по тестированию (QA Lead)\n\nАО «НефтеГазИнформ» ищет лидера направления тестирования.\n\nОбязанности:\n• выстраивание процессов тестирования в 3 продуктовых командах;\n• планирование и оценка трудозатрат, тест-стратегия;\n• менторинг тестировщиков, участие в найме;\n• развитие автоматизации регресса.\n\nТребования:\n• опыт в тестировании от 5 лет, из них от 1 года в роли лида;\n• глубокое знание теории тестирования и техник тест-дизайна;\n• опыт построения автоматизации (любой стек);\n• понимание CI/CD;\n• SQL, работа с логами в Linux.\n\nБудет плюсом: опыт тестирования безопасности, нагрузочного тестирования.\n\nУсловия: 320 000 – 380 000 руб., офис в Тюмени, релокационный пакет, ДМС для семьи, спортивная компенсация, корпоративный транспорт.",
+    "gold": {
+      "specialization": "qa",
+      "grades": [
+        "senior"
+      ],
+      "grades_acceptable": [
+        [
+          "senior"
+        ]
+      ],
+      "must": [
+        "test_design",
+        "test_automation",
+        "ci_cd",
+        "sql",
+        "linux"
+      ],
+      "nice": [
+        "security"
+      ],
+      "skills_optional": [
+        "monitoring"
+      ],
+      "salary_from": 320000,
+      "salary_to": 380000,
+      "work_formats": [
+        "office"
+      ],
+      "city": "Тюмень"
+    }
+  },
+  {
+    "id": "n40",
+    "style": "Telegram post; internship; fixed stipend",
+    "text": "🎓 Стажировка в QA — «Эпсилон Софт», Иваново\n\nЖдём студентов старших курсов и выпускников без опыта работы.\nЧто важно: понимание, зачем нужно тестирование, логика, внимательность, базовые знания SQL и HTML.\nБудет плюсом: знание любого языка программирования, Git.\n\nСтажировка оплачиваемая: 40 000 ₽ в месяц, 3 месяца, после — оффер на позицию junior.\nФормат: только офис.",
+    "gold": {
+      "specialization": "qa",
+      "grades": [
+        "intern"
+      ],
+      "grades_acceptable": [
+        [
+          "intern"
+        ]
+      ],
+      "must": [
+        "sql",
+        "html_css"
+      ],
+      "nice": [
+        "git"
+      ],
+      "skills_optional": [
+        "test_design"
+      ],
+      "salary_from": 40000,
+      "salary_to": 40000,
+      "work_formats": [
+        "office"
+      ],
+      "city": "Иваново"
+    }
+  }
+]

@@ -1,0 +1,67 @@
+# ФСП Скаут: docker compose up --build  →  http://localhost:3000
+# Память: ~600 МБ без LLM. С профилем llm (Ollama + qwen2.5:3b) — ещё ~3 ГБ.
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: scout
+      POSTGRES_USER: scout
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-scout}
+    volumes: [pgdata:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U scout -d scout"]
+      interval: 5s
+      retries: 20
+    restart: unless-stopped
+
+  fsp-mock:
+    build: ./fsp-mock
+    environment:
+      FSP_PUBLIC_URL: ${FSP_PUBLIC_URL:-http://localhost:8001}
+      FSP_ALLOWED_REDIRECTS: ${PUBLIC_WEB_URL:-http://localhost:3000}
+    ports: ["8001:8001"]
+    restart: unless-stopped
+
+  backend:
+    build: ./backend
+    depends_on:
+      db: {condition: service_healthy}
+      fsp-mock: {condition: service_healthy}
+    environment:
+      DATABASE_URL: postgresql+psycopg://scout:${POSTGRES_PASSWORD:-scout}@db:5432/scout
+      SECRET_KEY: ${SECRET_KEY:-change-me-in-production-please-32b}
+      DEMO_MODE: ${DEMO_MODE:-true}
+      PUBLIC_WEB_URL: ${PUBLIC_WEB_URL:-http://localhost:3000}
+      PUBLIC_API_URL: ${PUBLIC_WEB_URL:-http://localhost:3000}
+      CORS_ORIGINS: ${PUBLIC_WEB_URL:-http://localhost:3000}
+      COOKIE_SECURE: ${COOKIE_SECURE:-false}
+      FSP_PUBLIC_URL: ${FSP_PUBLIC_URL:-http://localhost:8001}
+      FSP_INTERNAL_URL: http://fsp-mock:8001
+      LLM_PROVIDER: ${LLM_PROVIDER:-none}
+      LLM_BASE_URL: ${LLM_BASE_URL:-http://ollama:11434/v1}
+      LLM_MODEL: ${LLM_MODEL:-qwen2.5:3b}
+      SMTP_HOST: ${SMTP_HOST:-}
+      SEED_ON_START: ${SEED_ON_START:-true}
+    ports: ["8000:8000"]
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      args: {BACKEND_URL: http://backend:8000}
+    depends_on:
+      backend: {condition: service_healthy}
+    ports: ["3000:3000"]
+    restart: unless-stopped
+
+  # Локальная LLM (необязательно): docker compose --profile llm up -d
+  # затем: docker compose exec ollama ollama pull qwen2.5:3b  и  LLM_PROVIDER=openai в .env
+  ollama:
+    image: ollama/ollama:latest
+    profiles: [llm]
+    volumes: [ollama:/root/.ollama]
+    ports: ["11434:11434"]
+
+volumes:
+  pgdata:
+  ollama:

@@ -1,0 +1,164 @@
+{
+ "resume": {
+  "n": 150,
+  "method": "rules",
+  "llm": "none",
+  "field_accuracy": {
+   "full_name": 1.0,
+   "email": 1.0,
+   "phone": 1.0,
+   "telegram": 1.0,
+   "city": 1.0,
+   "years_experience": 1.0
+  },
+  "skills_precision": 0.972,
+  "skills_recall": 1.0,
+  "skills_f1": 0.986,
+  "soft_skills_f1": 0.927,
+  "fully_correct_share": 0.833,
+  "needs_review_share": 0.167,
+  "error_examples": []
+ },
+ "needs": {
+  "n": 10,
+  "method": "rules",
+  "specialization_acc": 1.0,
+  "grade_acc": 1.0,
+  "salary_acc": 1.0,
+  "formats_acc": 1.0,
+  "skills_precision": 1.0,
+  "skills_recall": 1.0,
+  "rows": [
+   {
+    "text": "Ищем Middle Python-разработчика в платёжный сервис. Обязател",
+    "spec": "backend",
+    "grades": [
+     "middle"
+    ],
+    "salary": [
+     250000,
+     320000
+    ],
+    "missed_skills": [],
+    "extra_skills": []
+   },
+   {
+    "text": "Senior frontend на React и TypeScript, вёрстка, производител",
+    "spec": "frontend",
+    "grades": [
+     "senior"
+    ],
+    "salary": [
+     350000,
+     450000
+    ],
+    "missed_skills": [],
+    "extra_skills": []
+   },
+   {
+    "text": "Junior QA: тест-дизайн, SQL, git. Желательно pytest. до 120 ",
+    "spec": "qa",
+    "grades": [
+     "junior"
+    ],
+    "salary": [
+     null,
+     120000
+    ],
+    "missed_skills": [],
+    "extra_skills": []
+   },
+   {
+    "text": "DevOps-инженер (senior): Kubernetes, Terraform, GitLab CI, P",
+    "spec": "devops",
+    "grades": [
+     "senior"
+    ],
+    "salary": [
+     400000,
+     null
+    ],
+    "missed_skills": [],
+    "extra_skills": []
+   },
+   {
+    "text": "Data Scientist middle: Python, pandas, статистика, CatBoost.",
+    "spec": "data_science",
+    "grades": [
+     "middle"
+    ],
+    "salary": [
+     230000,
+     300000
+    ],
+    "missed_skills": [],
+    "extra_skills": []
+   },
+   {
+    "text": "Нужен бэкендер на Go с опытом от 3 лет: gRPC, PostgreSQL, Re",
+    "spec": "backend",
+    "grades": [
+     "middle"
+    ],
+    "salary": [
+     300000,
+     380000
+    ],
+    "missed_skills": [],
+    "extra_skills": []
+   },
+   {
+    "text": "Стажёр в команду аналитики данных: SQL, Python. Без опыта. 6",
+    "spec": "data_science",
+    "grades": [
+     "intern"
+    ],
+    "salary": [
+     60000,
+     80000
+    ],
+    "missed_skills": [],
+    "extra_skills": []
+   },
+   {
+    "text": "Ведущий Java-разработчик: Spring Boot, Kafka, микросервисы, ",
+    "spec": "backend",
+    "grades": [
+     "senior"
+    ],
+    "salary": [
+     400000,
+     500000
+    ],
+    "missed_skills": [],
+    "extra_skills": []
+   },
+   {
+    "text": "AQA middle: Python, Playwright, REST API, CI/CD. Плюсом буде",
+    "spec": "qa",
+    "grades": [
+     "middle"
+    ],
+    "salary": [
+     200000,
+     260000
+    ],
+    "missed_skills": [],
+    "extra_skills": []
+   },
+   {
+    "text": "Фронтенд-разработчик junior: JavaScript, HTML, CSS, Git. Нас",
+    "spec": "frontend",
+    "grades": [
+     "junior"
+    ],
+    "salary": [
+     100000,
+     140000
+    ],
+    "missed_skills": [],
+    "extra_skills": []
+   }
+  ]
+ }
+}

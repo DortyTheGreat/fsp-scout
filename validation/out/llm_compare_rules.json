@@ -1,0 +1,444 @@
+{
+ "model": null,
+ "base_url": null,
+ "date": "2026-10-09T13:22:58",
+ "quick": false,
+ "thinking_disabled": true,
+ "machine": {
+  "os": "Linux-6.18.44-fc-v80-x86_64-with-glibc2.39",
+  "cpu": "x86_64",
+  "python": "3.13.16"
+ },
+ "partial": false,
+ "resume": {
+  "rules": {
+   "n": 40,
+   "fields": {
+    "full_name": 0.825,
+    "email": 1.0,
+    "phone": 1.0,
+    "telegram": 1.0,
+    "city": 0.425,
+    "years_experience": 0.575,
+    "specialization": 0.9
+   },
+   "all_fields_ok": 0.2,
+   "skills": {
+    "precision": 0.95,
+    "recall": 0.962,
+    "f1": 0.956
+   },
+   "errors": [
+    {
+     "id": "r02",
+     "field": "specialization",
+     "gold": "frontend",
+     "got": "backend"
+    },
+    {
+     "id": "r03",
+     "field": "years_experience",
+     "gold": 4.7,
+     "got": 1.6
+    },
+    {
+     "id": "r05",
+     "field": "years_experience",
+     "gold": 2.7,
+     "got": 10.5
+    },
+    {
+     "id": "r06",
+     "field": "full_name",
+     "gold": "Artem Volkov",
+     "got": null
+    },
+    {
+     "id": "r06",
+     "field": "city",
+     "gold": "Санкт-Петербург",
+     "got": null
+    },
+    {
+     "id": "r06",
+     "field": "years_experience",
+     "gold": 8.3,
+     "got": 3.8
+    },
+    {
+     "id": "r07",
+     "field": "city",
+     "gold": "Нижний Новгород",
+     "got": "Москва"
+    },
+    {
+     "id": "r08",
+     "field": "years_experience",
+     "gold": 0,
+     "got": null
+    },
+    {
+     "id": "r10",
+     "field": "full_name",
+     "gold": "Ruslan Akhmetov",
+     "got": null
+    },
+    {
+     "id": "r10",
+     "field": "city",
+     "gold": "Уфа",
+     "got": null
+    },
+    {
+     "id": "r10",
+     "field": "years_experience",
+     "gold": 7.4,
+     "got": 4.8
+    },
+    {
+     "id": "r11",
+     "field": "years_experience",
+     "gold": 3.3,
+     "got": 0.8
+    },
+    {
+     "id": "r12",
+     "field": "full_name",
+     "gold": "Ekaterina Orlova",
+     "got": null
+    },
+    {
+     "id": "r12",
+     "field": "city",
+     "gold": "Калининград",
+     "got": null
+    },
+    {
+     "id": "r12",
+     "field": "years_experience",
+     "gold": 6.7,
+     "got": 5.8
+    },
+    {
+     "id": "r13",
+     "field": "years_experience",
+     "gold": 9.2,
+     "got": 2.5
+    },
+    {
+     "id": "r14",
+     "field": "years_experience",
+     "gold": 0,
+     "got": null
+    },
+    {
+     "id": "r15",
+     "field": "city",
+     "gold": "Ижевск",
+     "got": null
+    },
+    {
+     "id": "r16",
+     "field": "full_name",
+     "gold": "Aigerim Sarsenbayeva",
+     "got": null
+    },
+    {
+     "id": "r16",
+     "field": "city",
+     "gold": "Омск",
+     "got": null
+    },
+    {
+     "id": "r16",
+     "field": "years_experience",
+     "gold": 6.2,
+     "got": 4.8
+    },
+    {
+     "id": "r18",
+     "field": "full_name",
+     "gold": "Nikita Fedorov",
+     "got": null
+    },
+    {
+     "id": "r18",
+     "field": "city",
+     "gold": "Москва",
+     "got": null
+    },
+    {
+     "id": "r18",
+     "field": "years_experience",
+     "gold": 5.3,
+     "got": 3.8
+    },
+    {
+     "id": "r19",
+     "field": "city",
+     "gold": "Ярославль",
+     "got": null
+    }
+   ]
+  }
+ },
+ "needs": {
+  "rules": {
+   "n": 40,
+   "specialization": 0.975,
+   "grades_exact": 0.9,
+   "grades_overlap": 0.9,
+   "salary": 0.925,
+   "formats": 0.75,
+   "city": 0.675,
+   "skills": {
+    "precision": 0.932,
+    "recall": 0.901,
+    "f1": 0.916
+   },
+   "must_nice_placement": 0.979,
+   "errors": [
+    {
+     "id": "n01",
+     "field": "formats",
+     "gold": [
+      "hybrid"
+     ],
+     "got": [
+      "hybrid",
+      "office"
+     ]
+    },
+    {
+     "id": "n01",
+     "field": "city",
+     "gold": "Москва",
+     "got": null
+    },
+    {
+     "id": "n03",
+     "field": "grades_exact",
+     "gold": [
+      "middle",
+      "senior"
+     ],
+     "got": [
+      "junior"
+     ]
+    },
+    {
+     "id": "n03",
+     "field": "grades_overlap",
+     "gold": [
+      "middle",
+      "senior"
+     ],
+     "got": [
+      "junior"
+     ]
+    },
+    {
+     "id": "n03",
+     "field": "formats",
+     "gold": [
+      "office",
+      "remote"
+     ],
+     "got": [
+      "remote"
+     ]
+    },
+    {
+     "id": "n03",
+     "field": "city",
+     "gold": "Казань",
+     "got": null
+    },
+    {
+     "id": "n04",
+     "field": "salary",
+     "gold": [
+      200000,
+      260000
+     ],
+     "got": [
+      null,
+      null
+     ]
+    },
+    {
+     "id": "n05",
+     "field": "formats",
+     "gold": [
+      "office"
+     ],
+     "got": [
+      "remote",
+      "office"
+     ]
+    },
+    {
+     "id": "n07",
+     "field": "formats",
+     "gold": [
+      "hybrid"
+     ],
+     "got": [
+      "hybrid",
+      "office"
+     ]
+    },
+    {
+     "id": "n09",
+     "field": "specialization",
+     "gold": "frontend",
+     "got": "backend"
+    },
+    {
+     "id": "n12",
+     "field": "salary",
+     "gold": [
+      330000,
+      420000
+     ],
+     "got": [
+      null,
+      null
+     ]
+    },
+    {
+     "id": "n12",
+     "field": "formats",
+     "gold": [
+      "hybrid"
+     ],
+     "got": [
+      "hybrid",
+      "office"
+     ]
+    },
+    {
+     "id": "n12",
+     "field": "city",
+     "gold": "Санкт-Петербург",
+     "got": null
+    },
+    {
+     "id": "n14",
+     "field": "grades_exact",
+     "gold": [
+      "junior"
+     ],
+     "got": [
+      "middle"
+     ]
+    },
+    {
+     "id": "n14",
+     "field": "grades_overlap",
+     "gold": [
+      "junior"
+     ],
+     "got": [
+      "middle"
+     ]
+    },
+    {
+     "id": "n14",
+     "field": "formats",
+     "gold": [
+      "office"
+     ],
+     "got": [
+      "remote",
+      "office"
+     ]
+    },
+    {
+     "id": "n15",
+     "field": "city",
+     "gold": null,
+     "got": "Москва"
+    },
+    {
+     "id": "n16",
+     "field": "city",
+     "gold": "Москва",
+     "got": null
+    },
+    {
+     "id": "n20",
+     "field": "city",
+     "gold": "Екатеринбург",
+     "got": null
+    },
+    {
+     "id": "n21",
+     "field": "city",
+     "gold": "Москва",
+     "got": null
+    },
+    {
+     "id": "n22",
+     "field": "salary",
+     "gold": [
+      250000,
+      null
+     ],
+     "got": [
+      250000,
+      250000
+     ]
+    },
+    {
+     "id": "n24",
+     "field": "formats",
+     "gold": [
+      "remote"
+     ],
+     "got": []
+    },
+    {
+     "id": "n25",
+     "field": "formats",
+     "gold": [
+      "remote",
+      "hybrid"
+     ],
+     "got": [
+      "remote",
+      "hybrid",
+      "office"
+     ]
+    },
+    {
+     "id": "n27",
+     "field": "formats",
+     "gold": [
+      "hybrid"
+     ],
+     "got": [
+      "office"
+     ]
+    },
+    {
+     "id": "n27",
+     "field": "city",
+     "gold": "Самара",
+     "got": null
+    }
+   ]
+  }
+ },
+ "rubric": {
+  "rules": {
+   "n_answers": 32,
+   "n_criteria": 128,
+   "criteria_accuracy": 0.789,
+   "kappa": 0.577,
+   "false_met": 15,
+   "missed_met": 12,
+   "score_mae": 2.29
+  }
+ }
+}
