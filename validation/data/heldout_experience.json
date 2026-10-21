@@ -1,0 +1,369 @@
+{
+ "_note": "Разметка мест работы (компания, должность) для отложенного набора validation/data/heldout_resumes.json. Тексты писали независимо от кода; разметку добавили 20.10.2026 после того, как извлекатель опыта был зафиксирован (коммит «Разбор опыта работы правилами»). Альтернативы через «|». Порядок — как в резюме.",
+ "gold": {
+  "r01": [
+   {
+    "company": "ООО «ФинТехСервис»",
+    "position": "Python-разработчик"
+   },
+   {
+    "company": "ООО «Веб Решения»",
+    "position": "Python-разработчик"
+   }
+  ],
+  "r02": [
+   {
+    "company": "«Ритейл Тех»",
+    "position": "Frontend-разработчик"
+   },
+   {
+    "company": "ООО «Студия Лайм»",
+    "position": "Junior Frontend-разработчик"
+   }
+  ],
+  "r03": [
+   {
+    "company": "АО «КазаньБанк Технологии»",
+    "position": "Data Scientist"
+   },
+   {
+    "company": "ООО «ТатМаркет»",
+    "position": "Младший аналитик данных"
+   }
+  ],
+  "r04": [
+   {
+    "company": "ООО «СибСофт»",
+    "position": "DevOps-инженер"
+   },
+   {
+    "company": "«НовоНет»",
+    "position": "Системный администратор Linux"
+   }
+  ],
+  "r05": [
+   {
+    "company": "ООО «УралСофт»",
+    "position": "QA-инженер"
+   },
+   {
+    "company": "МАОУ СОШ № 47",
+    "position": "Учитель математики"
+   }
+  ],
+  "r06": [
+   {
+    "company": "Logistix",
+    "position": "Senior Backend Engineer"
+   },
+   {
+    "company": "PayFlow",
+    "position": "Backend Developer (Go)"
+   },
+   {
+    "company": "WebCraft Studio",
+    "position": "Junior PHP Developer"
+   }
+  ],
+  "r07": [
+   {
+    "company": "ООО «НН Софт»",
+    "position": "QA Automation Engineer"
+   },
+   {
+    "company": "ПАО «Телеком Плюс»",
+    "position": "QA Engineer"
+   }
+  ],
+  "r08": [],
+  "r09": [
+   {
+    "company": "«ДонМаркет»",
+    "position": "Продуктовый аналитик"
+   },
+   {
+    "company": "«Агро Юг»",
+    "position": "Аналитик данных (BI)"
+   }
+  ],
+  "r10": [
+   {
+    "company": "CloudNest",
+    "position": "Site Reliability Engineer"
+   },
+   {
+    "company": "UfaNet Solutions",
+    "position": "System Engineer"
+   }
+  ],
+  "r11": [
+   {
+    "company": "ООО \"ЮгДиджитал\"",
+    "position": "QA инженер"
+   },
+   {
+    "company": "ООО \"ЮгДиджитал\"",
+    "position": "стажер-тестировщик"
+   }
+  ],
+  "r12": [
+   {
+    "company": "Baltic Soft",
+    "position": "Frontend Developer"
+   },
+   {
+    "company": "Amber Studio",
+    "position": "Junior Frontend Developer"
+   }
+  ],
+  "r13": [
+   {
+    "company": "ООО «Волга Телеком Софт»",
+    "position": "ведущий Java-разработчик"
+   },
+   {
+    "company": "АО «СамараИнформ»",
+    "position": "Java-разработчик"
+   }
+  ],
+  "r14": [],
+  "r15": [
+   {
+    "company": "ООО «ИжТехСофт»",
+    "position": "DevOps-инженер"
+   },
+   {
+    "company": "ООО «Удмурт Диджитал»",
+    "position": "Младший DevOps-инженер"
+   },
+   {
+    "company": "ООО «ИжТехСофт»",
+    "position": "Инженер технической поддержки"
+   }
+  ],
+  "r16": [
+   {
+    "company": "FinPoint",
+    "position": "QA Automation Engineer"
+   },
+   {
+    "company": "EduTech Lab",
+    "position": "Manual QA Engineer"
+   }
+  ],
+  "r17": [
+   {
+    "company": "Фриланс|самозанятый",
+    "position": "Python-разработчик"
+   }
+  ],
+  "r18": [
+   {
+    "company": "VisionAI",
+    "position": "ML Engineer"
+   },
+   {
+    "company": "RetailData",
+    "position": "Data Scientist"
+   }
+  ],
+  "r19": [
+   {
+    "company": "веб-студия «Пиксель»",
+    "position": "верстальщик"
+   }
+  ],
+  "r20": [
+   {
+    "company": "«ТНС Диджитал»",
+    "position": "Platform Engineer"
+   },
+   {
+    "company": "«СибИнтегратор»",
+    "position": "DevOps Engineer"
+   },
+   {
+    "company": "«СибИнтегратор»",
+    "position": "Linux sysadmin"
+   }
+  ],
+  "r21": [
+   {
+    "company": "ООО «УралПромСофт»",
+    "position": "C#-разработчик"
+   },
+   {
+    "company": "ООО «Цифровые решения»",
+    "position": "Младший разработчик C#"
+   }
+  ],
+  "r22": [
+   {
+    "company": "ООО «ДВ Софт»",
+    "position": "Тестировщик ПО"
+   }
+  ],
+  "r23": [
+   {
+    "company": "ShopLine",
+    "position": "Senior Frontend"
+   },
+   {
+    "company": "Агентство «Цифра»",
+    "position": "Frontend-разработчик"
+   }
+  ],
+  "r24": [
+   {
+    "company": "сервис доставки «Быстро»",
+    "position": "Продуктовый аналитик"
+   },
+   {
+    "company": "ООО «ЕдаТех»",
+    "position": "Младший аналитик данных"
+   }
+  ],
+  "r25": [
+   {
+    "company": "«Софт Лаб»",
+    "position": "Backend dev"
+   },
+   {
+    "company": "«WebMint»",
+    "position": "Junior fullstack"
+   }
+  ],
+  "r26": [
+   {
+    "company": "«Nord Code»",
+    "position": "QA Automation Engineer"
+   },
+   {
+    "company": "«ГородТакси»",
+    "position": "QA Engineer"
+   }
+  ],
+  "r27": [
+   {
+    "company": "ООО «КрасТех»",
+    "position": "Data Scientist"
+   },
+   {
+    "company": "ПАО «Енисей Банк»",
+    "position": "Экономист"
+   }
+  ],
+  "r28": [
+   {
+    "company": "Gamebox",
+    "position": "DevOps Engineer"
+   },
+   {
+    "company": "HostLine",
+    "position": "Junior DevOps"
+   }
+  ],
+  "r29": [
+   {
+    "company": "ООО «ЧелныВеб»",
+    "position": "Fullstack-разработчик"
+   }
+  ],
+  "r30": [],
+  "r31": [
+   {
+    "company": "«Байкал Финтех»",
+    "position": "Go-разработчик"
+   }
+  ],
+  "r32": [
+   {
+    "company": "TatSoft Digital",
+    "position": "Junior Frontend Developer"
+   },
+   {
+    "company": "TatSoft Digital",
+    "position": "Frontend Intern"
+   }
+  ],
+  "r33": [
+   {
+    "company": "ООО «ВолгаСофт»",
+    "position": "QA Engineer"
+   },
+   {
+    "company": "платформы краудтестинга|краудтестинг|фриланс",
+    "position": "Тестировщик"
+   }
+  ],
+  "r34": [
+   {
+    "company": "Финансовая группа «Вектор»",
+    "position": "Lead Data Scientist"
+   },
+   {
+    "company": "ПАО «Телеком-Аналитика»",
+    "position": "Data Scientist"
+   }
+  ],
+  "r35": [
+   {
+    "company": "ООО \"АлтайСофт\"",
+    "position": "девопс"
+   },
+   {
+    "company": "\"АлтайТелеком\"",
+    "position": "сисадмин"
+   }
+  ],
+  "r36": [
+   {
+    "company": "«МедСофт»",
+    "position": "Backend Engineer"
+   },
+   {
+    "company": "«AdTech Lab»",
+    "position": "Python-разработчик"
+   }
+  ],
+  "r37": [
+   {
+    "company": "ООО «Тула Диджитал»",
+    "position": "Frontend-разработчик"
+   },
+   {
+    "company": "ООО «Тула Диджитал»",
+    "position": "Стажёр-верстальщик"
+   },
+   {
+    "company": "рекламное агентство «Формат»",
+    "position": "Графический дизайнер"
+   }
+  ],
+  "r38": [
+   {
+    "company": "ООО «ОренСофт»",
+    "position": "Senior QA Automation Engineer"
+   },
+   {
+    "company": "АО «Банк Степной»",
+    "position": "QA Automation Engineer"
+   },
+   {
+    "company": "АО «Банк Степной»",
+    "position": "тестировщик"
+   }
+  ],
+  "r39": [],
+  "r40": [
+   {
+    "company": "АО «НовТехСистемы»",
+    "position": "Ведущий разработчик C++"
+   },
+   {
+    "company": "ООО «Связь-Софт»",
+    "position": "Программист C++"
+   }
+  ]
+ }
+}

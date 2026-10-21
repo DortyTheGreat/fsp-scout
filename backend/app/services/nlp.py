@@ -123,12 +123,23 @@ _MONTHS = {"янв": 1, "фев": 2, "мар": 3, "апр": 4, "мая": 5, "м�
            "окт": 10, "ноя": 11, "дек": 12}
 
 
+_TOTAL_RE = re.compile(r"опыт\w*(?:\s+\w+){0,3}?[:\s—-]+(\d+)\s*(?:год|лет)(?:\D{0,4}(\d+)\s*мес)?")
+
+
+def extract_years_total(text: str) -> float | None:
+    """Явно написанный итог стажа: «Опыт работы — 6 лет 2 месяца»."""
+    m = _TOTAL_RE.search(text.lower())
+    if m:
+        return round(int(m.group(1)) + (int(m.group(2)) / 12 if m.group(2) else 0), 1)
+    return None
+
+
 def extract_years_experience(text: str, today: date | None = None) -> float | None:
     today = today or date.today()
     t = text.lower()
-    m = re.search(r"опыт\w*(?:\s+\w+){0,3}?[:\s—-]+(\d+)\s*(?:год|лет)(?:\D{0,4}(\d+)\s*мес)?", t)
-    if m:
-        return round(int(m.group(1)) + (int(m.group(2)) / 12 if m.group(2) else 0), 1)
+    total = extract_years_total(text)
+    if total is not None:
+        return total
     # диапазоны «03.2021 — 06.2023», «март 2020 — настоящее время», «2019–2022»
     total = 0.0
     rng_re = re.compile(r"(?:(\d{1,2})[./]|([а-я]{3})[а-я]*\s+)?((?:19|20)\d{2})\s*[-–—]\s*(?:(?:(\d{1,2})[./]|([а-я]{3})[а-я]*\s+)?((?:19|20)\d{2})|(настоящ|н\.в|по сей|сейчас|now|present))")

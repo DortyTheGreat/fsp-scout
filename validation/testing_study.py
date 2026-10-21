@@ -8,6 +8,10 @@ E5. Устойчивость к утечкам: атакующему слили 
     Сравнение с фиксированным набором заданий (единый тест для всех).
 E6. Сопоставимость сложности: параметрические шаблоны против «уникальных заданий от нейросети без калибровки»
     и эффект калибровки (MML-EM) по сравнению с экспертными параметрами.
+E7. Решения у порога грейда: точность в зависимости от расстояния до порога против «идеального» теста той же
+    длины (параметры заданий известны точно, способность одномерна) — это предел для любого теста такой длины;
+    итоговая категория с предложением повысить грейд (как в продукте) и доля кандидатов, которых работодатель
+    видит в их истинной категории с учётом пометки «на границе грейда».
 
 Запуск: python validation/testing_study.py [--n 600]
 """
@@ -188,7 +192,7 @@ def e5_leakage(logs, seed: int, n_attackers: int = 400, dump_size: int = 300) ->
     def leak_override(item: TrueItem, inst_key):
         return True if inst_key in dump else None
 
-    confirm_cfg = cat.CatConfig(min_variants=50, min_items=6, max_items=15)
+    confirm_cfg = cat.CatConfig(min_variants=50, min_items=6, max_items=15, extend_max_items=0)
     no_cap = cat.CatConfig(max_low_variety=99)  # без ограничения малоизменчивых шаблонов и без журнала показов
     stats = {}
     for name, override, cfg in (("no_leak", None, None), ("leak_no_defense", leak_override, no_cap),
@@ -316,6 +320,107 @@ def e6_comparability(seed: int, n: int = 500) -> dict:
             "_scatter": {"b_true": b_true.tolist(), "b_expert": b_known.tolist(), "b_cal": b_est.tolist()}}
 
 
+DIST_BINS = [(0.0, 0.1), (0.1, 0.2), (0.2, 0.3), (0.3, 0.5), (0.5, 0.8), (0.8, 9.0)]
+
+
+def _path_with_obs(cand, pool, bp, claimed, rr, take_upgrade: bool):
+    """Путь как в продукте, плюс (take_upgrade) тест на грейд выше, если система его предложила."""
+    d, log, st = run_cat(cand, pool, claimed, rr, bp, return_state=True)
+    obs, target = list(st.obs), claimed
+    if d["passed"]:
+        while take_upgrade and d.get("upgrade_suggested"):
+            nxt = d["upgrade_suggested"]
+            d2, _, st2 = run_cat(cand, pool, nxt, rr, bp, return_state=True)
+            if not d2["passed"]:
+                break
+            d, obs, target = d2, list(st2.obs), nxt
+        return target, d
+    while True:
+        lower = d["lower_grade"]
+        if not lower or lower == "intern":
+            return "intern", d
+        if d["can_accept_lower"]:
+            return lower, d
+        d, _, st = run_cat(cand, pool, lower, rr, bp, prior_obs=obs, return_state=True)
+        obs = obs + list(st.obs)
+        if d["passed"]:
+            return lower, d
+
+
+def e7_borderline(seed: int, n: int = 400) -> dict:
+    from types import SimpleNamespace
+    from app.services.matching import ranker
+    rng = np.random.default_rng(seed)
+    rr = random.Random(seed)
+    rows = []
+    for spec in SPECS:
+        pool = make_pool(spec, rng)
+        oracle = [TrueItem(p.id, p.skills, p.a_true, p.b_true, p.c, p.a_true, p.b_true) for p in pool]
+        bp = blueprint_for(spec, pool)
+        for _ in range(n):
+            c = new_candidate(rng, spec)
+            ideal = new_candidate(rng, spec, theta=c.theta, skill_sd=0.0)  # одномерная способность
+            g = claimed_grade(c.theta, rng)
+            d1, _ = run_cat(c, pool, g, rr, bp)
+            di, _ = run_cat(ideal, oracle, g, rr, bp)
+            final, dfin = _path_with_obs(c, pool, bp, g, rr, take_upgrade=False)
+            final_up, _ = _path_with_obs(c, pool, bp, g, rr, take_upgrade=True)
+            tg = true_grade(c.theta)
+            vis = final == tg
+            if not vis and final != "intern":
+                nxt, p_up = ranker.borderline_up(SimpleNamespace(grade=final, theta=dfin["theta"], theta_se=dfin["se"]))
+                vis = nxt == tg and p_up >= ranker.BORDER_P
+                border = p_up >= ranker.BORDER_P
+            else:
+                border = final != "intern" and ranker.borderline_up(
+                    SimpleNamespace(grade=final, theta=dfin["theta"], theta_se=dfin["se"]))[1] >= ranker.BORDER_P
+            rows.append({"dist": abs(c.theta - grade_cut(g)), "ok": d1["passed"] == passes(c.theta, g),
+                         "ok_ideal": di["passed"] == passes(c.theta, g), "len": d1["n_items"], "len_ideal": di["n_items"],
+                         "exact": final == tg, "exact_up": final_up == tg, "visible": vis, "border": border})
+    col = {k: np.array([r[k] for r in rows], dtype=float) for k in rows[0]}
+    dist, ok, ok_i = col["dist"], col["ok"].astype(bool), col["ok_ideal"].astype(bool)
+    bins = []
+    for lo, hi in DIST_BINS:
+        m = (dist >= lo) & (dist < hi)
+        bins.append({"lo": lo, "hi": hi if hi < 9 else None, "n": int(m.sum()), "ours": round(float(ok[m].mean()), 3),
+                     "ideal": round(float(ok_i[m].mean()), 3)})
+    near = dist < 0.3
+    return {"bins": bins,
+            "near_ours": round(float(ok[near].mean()), 3), "near_ideal": round(float(ok_i[near].mean()), 3),
+            "far_ours": round(float(ok[~near].mean()), 3), "far_ideal": round(float(ok_i[~near].mean()), 3),
+            "beyond_05_ours": round(float(ok[dist >= 0.5].mean()), 3),
+            "near_share": round(float(near.mean()), 3),
+            "mean_len": round(float(col["len"].mean()), 1), "mean_len_ideal": round(float(col["len_ideal"].mean()), 1),
+            "final_exact": round(float(col["exact"].mean()), 3), "final_exact_with_upgrade": round(float(col["exact_up"].mean()), 3),
+            "visible_in_true_category": round(float(col["visible"].mean()), 3),
+            "borderline_share": round(float(col["border"].mean()), 3), "n": len(rows)}
+
+
+def chart_distance(e7: dict):
+    plt = setup_matplotlib()
+    bins = e7["bins"]
+    labels = [f"{b['lo']:.1f}–{b['hi']:.1f}".replace(".", ",") if b["hi"] else f"≥ {b['lo']:.1f}".replace(".", ",")
+              for b in bins]
+    x = np.arange(len(bins))
+    fig, ax = plt.subplots(figsize=(7.0, 3.5))
+    ax.axvspan(-0.4, 2.5, color="#F1EFF8", zorder=0)
+    ax.text(1.0, 0.43, "у порога (|θ − порог| < 0,3)", ha="center", fontsize=8, color=PALETTE["ink"])
+    ax.axhline(0.5, color="#C9D2D0", lw=1, ls=":", zorder=1)
+    ax.plot(x, [b["ideal"] for b in bins], "o--", color="#8A83D1", lw=2, ms=6, label="идеальный тест той же длины")
+    ax.plot(x, [b["ours"] for b in bins], "o-", color="#5B3A8E", lw=2, ms=6, label="наш тест")
+    for i, b in enumerate(bins):
+        ax.text(i, b["ours"] - 0.07, f"{b['ours']:.0%}", ha="center", fontsize=8, color=PALETTE["ink"])
+    ax.set_xticks(x, labels)
+    ax.set_xlabel("расстояние истинного уровня до порога грейда, θ")
+    ax.set_ylabel("доля верных решений")
+    ax.set_ylim(0.38, 1.03)
+    ax.set_xlim(-0.4, len(bins) - 0.6)
+    ax.legend(frameon=False, fontsize=8, loc="lower right")
+    fig.tight_layout()
+    fig.savefig(OUT / "fig_accuracy_distance.png")
+    plt.close(fig)
+
+
 def charts(oc, e1rows, leak, e6):
     plt = setup_matplotlib()
     # OC-кривые
@@ -377,11 +482,16 @@ def main():
     leak = e5_leakage(extra["logs"], a.seed)
     print("E6: сопоставимость и калибровка…")
     e6 = e6_comparability(a.seed)
+    print("E7: решения у порога…")
+    e7 = e7_borderline(a.seed)
     charts(oc, extra["rows"], leak, e6)
+    chart_distance(e7)
     result = {"per_spec": per_spec, "overall": summary(per_spec), "oc": oc, "discrimination": disc, "leakage": leak,
+              "borderline": e7,
               "comparability": {k: v for k, v in e6.items() if not k.startswith("_")}, "seconds": round(time.time() - t0)}
     (OUT / "testing_results.json").write_text(json.dumps(result, ensure_ascii=False, indent=1))
-    print(json.dumps({k: result[k] for k in ("overall", "discrimination", "leakage", "comparability")}, ensure_ascii=False, indent=1))
+    print(json.dumps({k: result[k] for k in ("overall", "discrimination", "leakage", "comparability", "borderline")},
+                     ensure_ascii=False, indent=1))
     _ = (GRADE_ORDER, grade_shift, cat)
 
 

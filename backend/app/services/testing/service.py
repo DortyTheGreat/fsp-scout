@@ -22,12 +22,14 @@ FRESH_TRIES = 12  # попыток найти ещё не показанный �
 
 
 def cfg(kind: str = "grade") -> cat.CatConfig:
-    c = cat.CatConfig(min_items=settings.test_min_items, max_items=settings.test_max_items, z=settings.test_confidence_z)
+    c = cat.CatConfig(min_items=settings.test_min_items, max_items=settings.test_max_items, z=settings.test_confidence_z,
+                      extend_max_items=settings.test_extend_max_items)
     if kind == "confirm":
         # подтверждающий тест: только шаблоны с практически неисчерпаемыми вариантами — шпаргалка не поможет
         c.min_variants = c.low_variety_threshold
         c.min_items = 6
         c.max_items = 15
+        c.extend_max_items = 0
     return c
 
 

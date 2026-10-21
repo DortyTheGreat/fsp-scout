@@ -11,6 +11,7 @@ from app.core.config import settings
 from app.models import CandidateProfile, Consent, Invitation, Need, RankingModel, ShortlistEntry
 from app.services import nlp
 from app.services.llm import get_llm
+from app.services.fsp import scoring as fsp_scoring
 from app.services.matching import ranker
 from app.taxonomy import (ADJACENT_SPECS, DECLINE_REASONS, GRADE_BY_SLUG, GRADE_ORDER, SKILL_BY_SLUG, SPEC_BY_SLUG,
                           SPECIALIZATIONS, grade_shift)
@@ -189,7 +190,10 @@ def apply_filters(rows: list[dict], f: dict) -> list[dict]:
         c = r["candidate"]
         if f.get("grades") and c.grade not in f["grades"]:
             continue
-        if f.get("has_fsp") and not ((c.fsp_data or {}).get("summary") or {}).get("has_history"):
+        summ = fsp_scoring.ensure_summary(c.fsp_data)
+        if f.get("has_fsp") and not summ.get("has_history"):
+            continue
+        if f.get("fsp_prize") and not summ.get("prizes"):
             continue
         if f.get("skills"):
             ok = all(((c.skill_scores or {}).get(s) or {}).get("score", 0) >= f.get("min_skill_score", 50)
@@ -210,11 +214,12 @@ def apply_filters(rows: list[dict], f: dict) -> list[dict]:
     return out
 
 
-def need_results(db: Session, need: Need, filters: dict | None = None, include_adjacent: bool | None = None) -> dict:
+def need_results(db: Session, need: Need, filters: dict | None = None, include_adjacent: bool | None = None,
+                 include_borderline: bool = True) -> dict:
     filters = filters or {}
     req = ranker.Requirement.from_obj(need)
     weights = active_weights(db)
-    ranked = ranker.rank(req, visible_candidates(db), weights, include_adjacent)
+    ranked = ranker.rank(req, visible_candidates(db), weights, include_adjacent, include_borderline=include_borderline)
     filtered = apply_filters(ranked, filters)
     pinned_ids = {e.candidate_id: e for e in db.scalars(select(ShortlistEntry).where(ShortlistEntry.need_id == need.id))}
     shown_ids = {r["candidate"].id for r in filtered}
@@ -233,7 +238,10 @@ def search(db: Session, f: dict) -> list[dict]:
             continue
         if f.get("grade") and c.grade != f["grade"]:
             continue
-        if f.get("has_fsp") and not ((c.fsp_data or {}).get("summary") or {}).get("has_history"):
+        summ = fsp_scoring.ensure_summary(c.fsp_data)
+        if f.get("has_fsp") and not summ.get("has_history"):
+            continue
+        if f.get("fsp_prize") and not summ.get("prizes"):
             continue
         if f.get("skills") and not all(((c.skill_scores or {}).get(s) or {}).get("score", 0) >= f.get("min_skill_score", 50)
                                        for s in f["skills"]):
@@ -252,7 +260,10 @@ def search(db: Session, f: dict) -> list[dict]:
         strength = round(100 * (0.6 * feats["test_strength"] + 0.3 * feats["fsp"] + 0.1 * feats["freshness"]), 1)
         rows.append({"candidate": c, "score": strength, "features": feats,
                      "explanation": ranker.explain(req, c, feats, detail)})
-    rows.sort(key=lambda r: (-r["score"], r["candidate"].id))
+    if f.get("sort") == "fsp":  # сначала самые сильные результаты ФСП (под выбранные навыки, если они заданы)
+        rows.sort(key=lambda r: (-r["features"]["fsp"], -r["score"], r["candidate"].id))
+    else:
+        rows.sort(key=lambda r: (-r["score"], r["candidate"].id))
     return rows
 
 

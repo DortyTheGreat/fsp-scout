@@ -372,6 +372,16 @@ class Invitation(Base):
     candidate: Mapped[CandidateProfile] = relationship()
 
 
+class InvitationMessage(Base):
+    """Вопросы и ответы по приглашению до раскрытия контактов: кандидат уточняет условия, не открывая себя."""
+    __tablename__ = "invitation_messages"
+    id: Mapped[int] = mapped_column(primary_key=True)
+    invitation_id: Mapped[int] = mapped_column(ForeignKey("invitations.id", ondelete="CASCADE"), index=True)
+    author_role: Mapped[str] = mapped_column(String(20))  # candidate | employer
+    text: Mapped[str] = mapped_column(Text)
+    created_at: Mapped[datetime] = mapped_column(UTCDateTime, default=_now)
+
+
 class StatusEvent(Base):
     """История смены статусов приглашений и откликов (видна обеим сторонам)."""
     __tablename__ = "status_events"

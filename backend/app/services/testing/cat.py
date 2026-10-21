@@ -51,6 +51,12 @@ class CatConfig:
     max_low_variety: int = 1
     min_variants: int = 0             # для подтверждающего теста: только шаблоны с вариантами ≥ этого
     aberrant_lz: float = -1.96        # порог person-fit для флага «неправдоподобный паттерн»
+    # дотестирование пограничных: после max_items тест продолжается до extend_max_items заданий, пока
+    # апостериорная вероятность «выше порога» остаётся в extend_band (решение — почти монетка)
+    # Введено после экспертизы: на двух независимых прогонах симуляции даёт +3 п. п. точности у порога ценой
+    # +2–2,5 задания в среднем (validation/threshold_options.py). 0 — без дотестирования.
+    extend_max_items: int = 35
+    extend_band: tuple[float, float] = (0.2, 0.8)
 
 
 @dataclass
@@ -79,12 +85,15 @@ def should_stop(state: CatState, cfg: CatConfig) -> bool:
     min_items = max(4, cfg.min_items - len(state.prior_obs) // 2) if state.prior_obs else cfg.min_items
     if state.n < min_items:
         return False
-    if state.n >= cfg.max_items:
-        return True
     theta, se = estimate(state)
     cut = grade_cut(state.target_grade)
     if theta - cfg.z * se >= cut or theta + cfg.z * se < cut:
         return True
+    if state.n >= cfg.max_items:
+        if state.n >= max(cfg.max_items, cfg.extend_max_items):
+            return True
+        lo, hi = cfg.extend_band
+        return not (lo <= irt.prob_above(state.all_obs(), cut) <= hi)
     return se <= cfg.se_floor
 
 

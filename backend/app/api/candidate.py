@@ -24,6 +24,13 @@ router = APIRouter(prefix="/candidate", tags=["Кандидат"], responses=AUT
 log = logging.getLogger("resume")
 
 
+class ExperienceIn(BaseModel):
+    company: str = Field("", max_length=200, description="Место работы")
+    position: str = Field("", max_length=200, description="Должность")
+    period: str = Field("", max_length=100, description="Период, например «03.2021 — настоящее время»")
+    description: str = Field("", max_length=1000, description="Чем занимались")
+
+
 class ProfileIn(BaseModel):
     full_name: str | None = Field(None, max_length=200)
     phone: str | None = Field(None, max_length=40)
@@ -35,7 +42,7 @@ class ProfileIn(BaseModel):
     claimed_skills: list[str] | None = None
     roles: list[str] | None = None
     soft_skills: list[str] | None = None
-    experience: list[dict] | None = None
+    experience: list[ExperienceIn] | None = Field(None, max_length=15)
     education: str | None = Field(None, max_length=2000)
     salary_from: int | None = Field(None, ge=0, le=10_000_000)
     salary_to: int | None = Field(None, ge=0, le=10_000_000)
@@ -110,7 +117,7 @@ RESUME_MAPPING = {"full_name": "full_name", "email": "contact_email", "phone": "
 FIELD_LIMITS = {"full_name": 200, "contact_email": 255, "phone": 40, "telegram": 64, "city": 100, "about": 5000,
                 "education": 2000}
 PARSED_KEYS = ("full_name", "email", "phone", "telegram", "city", "years_experience", "grade", "specialization",
-               "skills", "roles", "soft_skills")
+               "skills", "roles", "soft_skills", "experience")
 
 
 def _clean(dst: str, v):
@@ -228,6 +235,12 @@ def survey(data: SurveyIn, p: CandidateProfile = Depends(candidate_profile), db:
     return {"profile": profile_out(db, p), "recommended_test_grade": recommended}
 
 
+def _borderline(p: CandidateProfile) -> dict | None:
+    from app.services.matching import ranker
+    nxt, prob = ranker.borderline_up(p)
+    return {"to": nxt, "p": round(prob, 2)} if nxt and prob >= ranker.BORDER_P else None
+
+
 @router.get("/status", summary="Категория, грейд, доступность тестов, история опросов и тестов")
 def status(p: CandidateProfile = Depends(candidate_profile), db: Session = Depends(get_db)):
     attempts = db.scalars(select(TestAttempt).where(TestAttempt.candidate_id == p.id).order_by(TestAttempt.id.desc())).all()
@@ -246,6 +259,7 @@ def status(p: CandidateProfile = Depends(candidate_profile), db: Session = Depen
     active = next((a for a in attempts if a.status == "in_progress"), None)
     return {
         "category": category(p), "claimed_grade": p.claimed_grade, "theta": p.theta, "theta_se": p.theta_se,
+        "borderline": _borderline(p),
         "grade_assigned_at": p.grade_assigned_at, "steps": steps,
         "visible_to_employers": bool(p.grade and p.open_to_offers and consent.get("publication")),
         "availability": testing.availability(db, p) if p.specialization else {},

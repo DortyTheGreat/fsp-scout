@@ -10,6 +10,7 @@ ARG BACKEND_URL=http://backend:8000
 ENV BACKEND_URL=$BACKEND_URL NEXT_TELEMETRY_DISABLED=1
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
+ENV NEXT_OUTPUT=standalone
 RUN npm run build
 
 FROM node:22-alpine

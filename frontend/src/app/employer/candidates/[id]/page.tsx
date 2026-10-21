@@ -77,7 +77,7 @@ function Card() {
       {c.explanation && <Panel title="Из чего сложилась оценка" className="mt-6"><ExplanationView e={c.explanation} /></Panel>}
 
       <div className="mt-6 grid gap-6 lg:grid-cols-2">
-        <Panel title="Достижения ФСП"><FspBlock fsp={c.fsp} /></Panel>
+        <Panel title="Достижения ФСП — подтверждены подписью реестра"><FspBlock fsp={c.fsp} /></Panel>
         <Panel title="Опыт и о себе">
           {c.about && <p className="text-[15px] leading-relaxed">{c.about}</p>}
           {c.experience?.map((e, i) => (

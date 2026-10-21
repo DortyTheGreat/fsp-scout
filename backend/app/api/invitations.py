@@ -11,7 +11,8 @@ from app.api.serializers import invitation_view
 from app.core.db import get_db
 from app.core.errors import ServiceError, forbidden, not_found
 from app.core.security import utcnow
-from app.models import AuditLog, CandidateProfile, Company, Invitation, Need, StatusEvent, User, Vacancy
+from app.models import (AuditLog, CandidateProfile, Company, Invitation, InvitationMessage, Need, StatusEvent, User,
+                        Vacancy)
 from app.services import mailer
 from app.services.matching import ranker
 from app.services.matching import service as matching
@@ -36,6 +37,10 @@ class InvitationIn(BaseModel):
         if self.salary_from > self.salary_to:
             raise ValueError("Нижняя граница вилки больше верхней")
         return self
+
+
+class MessageIn(BaseModel):
+    text: str = Field(min_length=2, max_length=2000, description="Вопрос или ответ по приглашению")
 
 
 class DeclineIn(BaseModel):
@@ -136,9 +141,48 @@ def get_invitation(inv_id: int, user: User = Depends(current_user), db: Session 
         _event(db, inv, "viewed", "candidate")
         db.commit()
     d = invitation_view(inv, user.role, db)
+    d["messages"] = _messages(db, inv)
+    if user.role == "candidate" and inv.candidate.specialization and inv.candidate.grade:
+        d["salary_context"]["category_median"] = matching._salary_median(db, inv.candidate.specialization,
+                                                                         inv.candidate.grade)
     d["history"] = [{"status": e.status, "at": e.created_at, "by": e.actor_role} for e in db.scalars(
         select(StatusEvent).where(StatusEvent.entity == "invitation", StatusEvent.entity_id == inv.id).order_by(StatusEvent.id))]
     return d
+
+
+def _messages(db: Session, inv: Invitation) -> list[dict]:
+    return [{"id": m.id, "author_role": m.author_role, "text": m.text, "created_at": m.created_at}
+            for m in db.scalars(select(InvitationMessage).where(InvitationMessage.invitation_id == inv.id)
+                                .order_by(InvitationMessage.id))]
+
+
+@router.get("/{inv_id}/messages", summary="Вопросы и ответы по приглашению (обе стороны)")
+def list_messages(inv_id: int, user: User = Depends(current_user), db: Session = Depends(get_db)):
+    return _messages(db, _get(db, user, inv_id))
+
+
+@router.post("/{inv_id}/messages", status_code=201, summary="Задать вопрос или ответить до раскрытия контактов",
+             description="Кандидат уточняет условия (формат, стек, вилку), не открывая контактов: работодатель видит "
+                         "вопрос от «Иван И.», а контакты — только после принятия приглашения. Работает, пока "
+                         "приглашение не отклонено и не отозвано.",
+             responses={409: {"description": "Приглашение отклонено или отозвано"}})
+def post_message(inv_id: int, data: MessageIn, user: User = Depends(current_user), db: Session = Depends(get_db)):
+    inv = _get(db, user, inv_id)
+    if inv.status in ("declined", "withdrawn"):
+        raise ServiceError(409, "bad_status", "Приглашение закрыто — переписка недоступна")
+    if user.role == "candidate" and inv.status == "sent":
+        inv.status, inv.viewed_at = "viewed", utcnow()
+        _event(db, inv, "viewed", "candidate")
+    db.add(InvitationMessage(invitation_id=inv.id, author_role=user.role, text=data.text.strip()))
+    if user.role == "candidate":
+        mailer.send(db, inv.company.contact_email or inv.company.owner.email, f"Вопрос по приглашению: {inv.title}",
+                    "Кандидат задал вопрос по приглашению. Ответьте в личном кабинете — контакты кандидата откроются, "
+                    "когда он примет приглашение.")
+    else:
+        mailer.send(db, inv.candidate.contact_email or inv.candidate.user.email, f"Ответ компании {inv.company.name}",
+                    f"Компания ответила на ваш вопрос по приглашению «{inv.title}». Ответ — в личном кабинете.")
+    db.commit()
+    return _messages(db, inv)
 
 
 @router.post("/{inv_id}/accept", summary="Принять приглашение (кандидат) — контакты раскрываются работодателю")

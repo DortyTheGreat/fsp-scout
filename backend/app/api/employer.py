@@ -140,11 +140,13 @@ def need_candidates(need_id: int, comp: Company = Depends(employer_company), db:
                     grades: list[str] = Query(default=[]), skills: list[str] = Query(default=[]),
                     has_fsp: bool = False, salary_max: int | None = None, formats: list[str] = Query(default=[]),
                     must_full: bool = False, min_score: float | None = None, include_adjacent: bool | None = None,
+                    include_borderline: bool = Query(True, description="Показывать кандидатов на границе с грейдом "
+                                                                        "запроса (вероятность ≥ 30%) — после точной категории"),
                     limit: int = Query(30, le=200), offset: int = 0):
     n = _need(db, comp, need_id)
     res = matching.need_results(db, n, {"grades": grades, "skills": skills, "has_fsp": has_fsp, "salary_max": salary_max,
                                         "formats": formats, "must_full": must_full, "min_score": min_score},
-                                include_adjacent)
+                                include_adjacent, include_borderline)
 
     def row(r, pinned=False, hidden=False):
         c = r["candidate"]
@@ -206,11 +208,14 @@ def categories(comp: Company = Depends(employer_company), db: Session = Depends(
                         "подтверждённых достижений ФСП, зарплата, формат. Сортировка — по силе подтверждённого профиля.")
 def search(comp: Company = Depends(employer_company), db: Session = Depends(get_db), specialization: str | None = None,
            grade: str | None = None, skills: list[str] = Query(default=[]), min_skill_score: int = 50,
-           has_fsp: bool = False, salary_max: int | None = None, formats: list[str] = Query(default=[]),
+           has_fsp: bool = False, fsp_prize: bool = Query(False, description="Только призёры соревнований ФСП"),
+           sort: Literal["strength", "fsp"] = Query("strength", description="strength — сила профиля (тест + ФСП), "
+                                                                             "fsp — сила результатов ФСП"),
+           salary_max: int | None = None, formats: list[str] = Query(default=[]),
            q: str | None = None, limit: int = Query(30, le=200), offset: int = 0):
     rows = matching.search(db, {"specialization": specialization, "grade": grade, "skills": skills,
-                                "min_skill_score": min_skill_score, "has_fsp": has_fsp, "salary_max": salary_max,
-                                "formats": formats, "q": q})
+                                "min_skill_score": min_skill_score, "has_fsp": has_fsp, "fsp_prize": fsp_prize,
+                                "sort": sort, "salary_max": salary_max, "formats": formats, "q": q})
     return {"total": len(rows), "items": [candidate_for_employer(db, r["candidate"], comp, brief=True,
                                                                   extra={"score": r["score"], "explanation": r["explanation"]})
                                           for r in rows[offset: offset + limit]]}

@@ -51,6 +51,9 @@ def parse_args():
     p.add_argument("--allow-thinking", action="store_true",
                    help="не отключать режим рассуждений у моделей вроде Qwen3 (медленнее)")
     p.add_argument("--yes", action="store_true", help="ничего не спрашивать (для запуска без консоли)")
+    p.add_argument("--replay", metavar="RAW.jsonl",
+                   help="пересчитать метрики по записанным ответам модели (llm_raw_*.jsonl) без сервера — "
+                        "например, после изменения правил или гибридной сборки")
     return p.parse_args()
 
 
@@ -173,6 +176,33 @@ def make_llm(base: str, model: str, timeout: float):
                 self.last = rec
 
     return MeasuredLLM()
+
+
+def make_replay_llm(raw_path: Path):
+    """Ответы модели из записи прошлого прогона: тот же разбор JSON и та же нормализация, что в продукте."""
+    from app.services.llm import OpenAICompatLLM
+
+    recs = {}
+    for line in raw_path.read_text(encoding="utf-8").splitlines():
+        if line.strip():
+            r = json.loads(line)
+            recs[(r["kind"], r["id"])] = r
+
+    class ReplayLLM(OpenAICompatLLM):
+        def __init__(self):
+            super().__init__(base_url="http://replay", model=raw_path.stem.removeprefix("llm_raw_"))
+            self.last: dict = {}
+            self.cur: tuple | None = None
+
+        def select(self, kind: str, item_id: str):
+            self.cur = (kind, item_id)
+
+        def _complete(self, messages, json_mode, timeout_s=None):
+            rec = recs.get(self.cur) or {"ok": False, "error": "нет записи", "seconds": 0}
+            self.last = {k: v for k, v in rec.items() if k not in ("kind", "id", "parsed")}
+            return rec.get("raw") if rec.get("ok") else None
+
+    return ReplayLLM(), set(recs)
 
 
 # ------------------------------------------------------------------ данные
@@ -370,7 +400,7 @@ EMPTY_NEED = {"specialization": None, "grades": [], "must_skills": [], "nice_ski
               "city": None, "salary_from": None, "salary_to": None}
 
 
-def run(data: dict, llm, raw_path: Path | None) -> dict:
+def run(data: dict, llm, raw_path: Path | None, llm_keys: set | None = None) -> dict:
     from app.services import llm as llm_mod
     from app.services import resume as resume_svc
     from app.services import rubric as rubric_svc
@@ -390,6 +420,10 @@ def run(data: dict, llm, raw_path: Path | None) -> dict:
         for k, (kind, i) in enumerate(jobs, 1):
             it = data[kind][i]
             lr = None
+            if hasattr(llm, "select"):
+                if (kind, it["id"]) not in llm_keys:
+                    continue  # в записанном прогоне этого текста нет (прерванный прогон)
+                llm.select(kind, it["id"])
             if kind == "resume":
                 rules = resume_svc.parse_rules(texts[i])
                 raw = resume_svc.llm_extract(texts[i]) if use_llm else None
@@ -420,8 +454,9 @@ def run(data: dict, llm, raw_path: Path | None) -> dict:
                 el = time.perf_counter() - started
                 eta = el / k * (len(jobs) - k)
                 status = "ok" if parsed else ("не JSON" if rec.get("ok") else rec.get("error", "ошибка")[:60])
-                print(f"  [{k:>3}/{len(jobs)}] {kind:<6} {it['id']:<6} {rec['seconds']:6.1f} с  {status:<12} "
-                      f"осталось ≈ {eta / 60:.0f} мин", flush=True)
+                if not hasattr(llm, "select"):
+                    print(f"  [{k:>3}/{len(jobs)}] {kind:<6} {it['id']:<6} {rec['seconds']:6.1f} с  {status:<12} "
+                          f"осталось ≈ {eta / 60:.0f} мин", flush=True)
                 if fails_in_row >= 3:
                     print("Три запроса подряд завершились ошибкой — сервер недоступен или модель не загружается. "
                           "Останавливаю прогон.")
@@ -533,6 +568,27 @@ def main():
     data = load_data(args.quick)
     n = {k: len(v) for k, v in data.items()}
     print(f"Набор: {n['resume']} резюме, {n['need']} потребностей, {n['answer']} ответов на задания.")
+
+    if args.replay:
+        raw_path = Path(args.replay)
+        llm, keys = make_replay_llm(raw_path)
+        model = llm.model
+        old = OUT / f"llm_compare_{re.sub(r'[^a-z0-9]+', '-', model.lower()).strip('-')[:60]}.json"
+        prev = json.loads(old.read_text(encoding="utf-8")) if old.exists() else {}
+        res = run(data, llm, None, keys)
+        model = prev.get("model") or model
+        print_summary(res, model)
+        args.quick = prev.get("quick", args.quick)
+        args.allow_thinking = not prev.get("thinking_disabled", True)
+        path = save(res, model, prev.get("base_url"), args)
+        d = json.loads(path.read_text(encoding="utf-8"))
+        d.update(machine=prev.get("machine", d["machine"]), date=prev.get("date", d["date"]),
+                 replayed=datetime.now().isoformat(timespec="seconds"))
+        if prev.get("wall_minutes"):
+            d["wall_minutes"] = prev["wall_minutes"]  # время — из настоящего прогона, а не из пересчёта
+        path.write_text(json.dumps(d, ensure_ascii=False, indent=1), encoding="utf-8")
+        print(f"\nРезультаты (пересчёт по записанным ответам): {path}")
+        return
 
     if args.rules_only:
         res = run(data, None, None)

@@ -31,7 +31,8 @@ export default function Profile() {
     if (p && !f) setF({ full_name: p.full_name || "", phone: p.phone || "", telegram: p.telegram || "", contact_email: p.contact_email || "",
       city: p.city || "", about: p.about || "", years_experience: p.years_experience ?? "", claimed_skills: p.claimed_skills || [],
       soft_skills: p.soft_skills || [], salary_from: p.salary_from || "", salary_to: p.salary_to || "", work_formats: p.work_formats || [],
-      relocation: !!p.relocation, education: p.education || "" });
+      relocation: !!p.relocation, education: p.education || "",
+      experience: (p.experience || []).map((e: any) => ({ company: e.company || "", position: e.position || "", period: e.period || "", description: e.description || "" })) });
   }, [p, f]);
 
   // модель закончила уточнять черновик: обновляем форму, если кандидат её ещё не правил
@@ -57,7 +58,8 @@ export default function Profile() {
     setErr(null);
     try {
       const body = { ...f, years_experience: f.years_experience === "" ? null : Number(f.years_experience),
-        salary_from: f.salary_from ? Number(f.salary_from) : null, salary_to: f.salary_to ? Number(f.salary_to) : null };
+        salary_from: f.salary_from ? Number(f.salary_from) : null, salary_to: f.salary_to ? Number(f.salary_to) : null,
+        experience: f.experience.filter((e: any) => e.company.trim() || e.position.trim()) };
       await mutate(await api("/candidate/profile", { method: "PUT", body }), { revalidate: false });
       setDirty(false);
       toast.show("Профиль сохранён");
@@ -82,6 +84,9 @@ export default function Profile() {
 
   const upd = (patch: Record<string, unknown>) => { setF({ ...f, ...patch }); setDirty(true); };
   const set = (k: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => upd({ [k]: e.target.value });
+  const setJob = (i: number, k: string, v: string) => upd({ experience: f.experience.map((e: any, j: number) => (j === i ? { ...e, [k]: v } : e)) });
+  const addJob = () => upd({ experience: [...f.experience, { company: "", position: "", period: "", description: "" }] });
+  const delJob = (i: number) => upd({ experience: f.experience.filter((_: any, j: number) => j !== i) });
   const pending = llmPending(p);
   const skillGroups = Array.from(new Set(dict.skills.map((s) => s.group)));
 
@@ -91,7 +96,7 @@ export default function Profile() {
                 action={<Button variant="secondary" href="/api/v1/candidate/profile.pdf">Скачать PDF-профиль</Button>} />
       {toast.node}
       <Panel title="Загрузить резюме в PDF" className="mb-6">
-        <p className="text-[15px] text-ink/70">Распознаем ФИО, контакты, стек, стаж, роли и софт-скиллы и заполним пустые поля анкеты. Проверьте результат перед сохранением.</p>
+        <p className="text-[15px] text-ink/70">Распознаем ФИО, контакты, места работы, стек, стаж, роли и софт-скиллы и заполним пустые поля анкеты. Проверьте результат перед сохранением.</p>
         <div className="mt-4 flex flex-wrap items-center gap-3">
           <input ref={fileRef} type="file" accept="application/pdf" className="hidden" onChange={(e) => e.target.files?.[0] && upload(e.target.files[0])} />
           <Button variant="plum" loading={upBusy} onClick={() => fileRef.current?.click()}>Выбрать PDF</Button>
@@ -119,6 +124,25 @@ export default function Profile() {
                 );
               })}
             </dl>
+            <div className="mt-3 text-sm">
+              <div className="mb-1 flex items-center gap-1.5 text-ink/55">Места работы
+                {parsed.meta.fields?.experience === "llm" && <Chip tone="lavender" className="!text-[10px]">LLM</Chip>}</div>
+              {(parsed.parsed.experience || []).length ? (
+                <ul className="space-y-0.5">
+                  {parsed.parsed.experience.map((e: any, i: number) => (
+                    <li key={i}><b>{e.position || "должность не распознана"}</b>{e.company ? `, ${e.company}` : ""}<span className="text-ink/55">{e.period ? ` · ${e.period}` : ""}</span></li>
+                  ))}
+                </ul>
+              ) : <span className="text-ink/40">не найдено</span>}
+              {(parsed.parsed.experience || []).length > 0 && JSON.stringify(parsed.parsed.experience.map((e: any) => [e.company, e.position]))
+                !== JSON.stringify(f.experience.map((e: any) => [e.company, e.position])) && (
+                <Button type="button" variant="secondary" size="sm" className="mt-2"
+                        onClick={() => upd({ experience: parsed.parsed.experience.map((e: any) => ({ company: e.company || "", position: e.position || "",
+                          period: e.period || "", description: e.description || "" })) })}>
+                  Подставить места работы из резюме
+                </Button>
+              )}
+            </div>
           </div>
         )}
       </Panel>
@@ -151,6 +175,27 @@ export default function Profile() {
             <Field label="Коммерческий опыт, лет"><input className="input max-w-[10rem]" type="number" step={0.5} value={f.years_experience} onChange={set("years_experience")} /></Field>
           </div>
         </Panel>
+        <Panel title="Опыт работы" className="lg:col-span-2"
+               action={<Button type="button" variant="ghost" size="sm" onClick={addJob}>+ Место работы</Button>}>
+          <p className="mb-4 text-sm text-ink/60">Заполняется из PDF-резюме — проверьте компанию, должность и период. Работодатель видит опыт, если это разрешено в настройках приватности.</p>
+          {f.experience.length === 0 ? (
+            <p className="text-sm text-ink/50">Мест работы пока нет. Загрузите резюме или добавьте вручную.</p>
+          ) : (
+            <div className="space-y-4">
+              {f.experience.map((e: any, i: number) => (
+                <div key={i} className="rounded-xl border border-mist-300 p-4">
+                  <div className="grid gap-3 sm:grid-cols-3">
+                    <Field label="Компания"><input className="input" value={e.company} onChange={(ev) => setJob(i, "company", ev.target.value)} /></Field>
+                    <Field label="Должность"><input className="input" value={e.position} onChange={(ev) => setJob(i, "position", ev.target.value)} /></Field>
+                    <Field label="Период"><input className="input" value={e.period} placeholder="03.2021 — настоящее время" onChange={(ev) => setJob(i, "period", ev.target.value)} /></Field>
+                  </div>
+                  <Field label="Чем занимались" className="mt-3"><textarea className="input min-h-20" value={e.description} onChange={(ev) => setJob(i, "description", ev.target.value)} /></Field>
+                  <Button type="button" variant="ghost" size="sm" className="mt-2" onClick={() => delJob(i)}>Удалить</Button>
+                </div>
+              ))}
+            </div>
+          )}
+        </Panel>
         <Panel title="О себе" className="lg:col-span-2">
           <div className="grid gap-4">
             <Field label="Коротко о себе и опыте"><textarea className="input min-h-28" value={f.about} onChange={set("about")} /></Field>
@@ -179,7 +224,7 @@ export default function Profile() {
 
       <div className="mt-6 grid gap-6 lg:grid-cols-2">
         <Panel title="Навыки, подтверждённые тестом"><SkillList skills={p.skills} /></Panel>
-        <Panel title="Достижения ФСП"><FspBlock fsp={p.fsp} compact /></Panel>
+        <Panel title="Достижения ФСП"><FspBlock fsp={p.fsp} compact own /></Panel>
       </div>
     </>
   );

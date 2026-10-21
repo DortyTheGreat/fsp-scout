@@ -1,7 +1,7 @@
 "use client";
 import clsx from "clsx";
 import Link from "next/link";
-import { LevelScale, SkillList } from "@/components/domain";
+import { FspBlock, LevelScale, SkillList } from "@/components/domain";
 import { Button, Chip, Loading, PageHead, Panel } from "@/components/ui";
 import { daysAgo, rubRange, useApi } from "@/lib/api";
 import { useDict } from "@/lib/session";
@@ -42,7 +42,15 @@ export default function CandidateHome() {
             <LevelScale theta={st.theta} se={st.theta_se} current={cat.grade} />
           ) : (
             <p className="mt-4 text-[15px] text-ink/65">
-              Категорию определяет тест на выбранный вами грейд — не резюме. Обычно это 15–25 заданий и около 25 минут.
+              Категорию определяет тест на выбранный вами грейд — не резюме. Обычно это 15–25 заданий и около 25 минут; у самой границы грейда тест задаёт до 35 заданий, чтобы решение было увереннее.
+            </p>
+          )}
+          {st.borderline && (
+            <p className="mt-4 rounded-lg bg-amber-50 px-3 py-2 text-sm text-warn">
+              {st.borderline.p >= 0.7 ? `Ваш результат говорит, что уровень ${gradeName(st.borderline.to)} вероятен` : `Вы на границе с грейдом ${gradeName(st.borderline.to)}`}: вероятность {Math.round(st.borderline.p * 100)}%. Работодатели, которые ищут {gradeName(st.borderline.to)},
+              тоже видят вас — с пометкой. {st.availability?.[st.borderline.to]?.allowed
+                ? `Чтобы перейти в эту категорию, пройдите тест на ${gradeName(st.borderline.to)}.`
+                : `Тест на ${gradeName(st.borderline.to)} откроется ${new Date(st.availability?.[st.borderline.to]?.allowed_at).toLocaleDateString("ru-RU")}.`}
             </p>
           )}
           <div className="mt-6 flex flex-wrap gap-3">
@@ -107,6 +115,11 @@ export default function CandidateHome() {
           )}
         </Panel>
       </div>
+
+      <Panel title="Достижения ФСП" className="mt-6"
+             action={prof.fsp?.linked ? <Link href="/candidate/settings" className="link text-sm">ФСП ID</Link> : undefined}>
+        <FspBlock fsp={prof.fsp} compact own />
+      </Panel>
 
       {prof.skills?.length > 0 && (
         <Panel title="Подтверждённые навыки" className="mt-6" action={<Link href="/candidate/profile" className="link text-sm">Профиль и PDF</Link>}>

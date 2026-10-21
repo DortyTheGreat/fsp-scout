@@ -27,7 +27,9 @@ from types import SimpleNamespace
 import numpy as np
 
 from common import (OUT, PALETTE, blueprint_for, irt, make_pool, new_candidate, run_cat, setup_matplotlib)
+from app.services.fsp import scoring as fsp_scoring
 from app.services.matching import ltr, ranker
+from baselines import ranker_before_review as ranker_v1
 from app.services.testing.bank import TEMPLATES
 from app.taxonomy import GRADE_ORDER, SPEC_BY_SLUG, grade_cut, grade_from_theta
 
@@ -47,6 +49,70 @@ def claimed_grade(theta, rng, sd=0.5):
 RESUME_NOISE = {"почти честные резюме (corr ≈ 0.9)": {"grade_sd": 0.5, "stuff": 0.2, "years_sd": 0.45},
                 "умеренно (corr ≈ 0.6)": {"grade_sd": 1.3, "stuff": 0.4, "years_sd": 0.8},
                 "реалистично (corr ≈ 0.45)": {"grade_sd": 2.0, "stuff": 0.5, "years_sd": 1.0}}
+
+
+# ------------------------------------------------------------------ история ФСП в мире симуляции
+# Предпосылка ТЗ: результаты соревнований — объективное подтверждение практических навыков. В симуляции место
+# участника определяется ИСТИННЫМИ навыками, которые проверяет этот результат (дисциплина + стек + роль),
+# с шумом: командный состав, удача, сила поля. Уровень шума — параметр (FSP_NOISE); при «случайном» ФСП
+# место вообще не связано с навыками — проверка того, что учёт ФСП не вредит, когда он ничего не значит.
+FSP_DISC = {"backend": {"product": 0.55, "algorithmic": 0.3, "security": 0.15},
+            "frontend": {"product": 0.7, "algorithmic": 0.3},
+            "data_science": {"product": 0.5, "algorithmic": 0.4, "robotics": 0.1},
+            "devops": {"product": 0.4, "security": 0.5, "algorithmic": 0.1},
+            "qa": {"product": 0.5, "security": 0.4, "algorithmic": 0.1}}
+FSP_ROLE = {"backend": "Бэкенд-разработчик", "frontend": "Фронтенд-разработчик", "data_science": "ML-инженер",
+            "devops": "DevOps", "qa": "Участник"}
+SKILL_TAG = {"python": "python", "web_frameworks": "fastapi", "postgresql": "postgresql", "sql": "sql", "react": "react",
+             "docker": "docker", "kubernetes": "kubernetes", "caching_queues": "redis", "deep_learning": "pytorch",
+             "pandas": "pandas", "ml": "catboost", "typescript": "typescript", "javascript": "nodejs", "linux": "linux",
+             "networking": "networking"}
+LEVEL_P = {"regional": 0.45, "interregional": 0.25, "national": 0.25, "international": 0.05}
+LEVEL_FIELD = {"regional": (15, 25, 40, 60), "interregional": (40, 60, 80, 120), "national": (80, 120, 200, 350),
+               "international": (200, 350, 500)}
+LEVEL_OFFSET = {"regional": -0.5, "interregional": 0.0, "national": 0.6, "international": 1.0}
+FSP_NOISE = {"реалистично (шум 0.8)": 0.8, "слабая связь с навыками (шум 1.6)": 1.6, "случайные места": None}
+
+
+def make_fsp(rng, c, spec: str, noise: float | None) -> dict:
+    from math import erf, sqrt
+    n_res = int(rng.integers(1, 6))
+    items = []
+    discs = list(FSP_DISC[spec])
+    pd_ = np.array([FSP_DISC[spec][d] for d in discs])
+    for k in range(n_res):
+        disc = discs[rng.choice(len(discs), p=pd_ / pd_.sum())]
+        level = list(LEVEL_P)[rng.choice(4, p=list(LEVEL_P.values()))]
+        total = int(rng.choice(LEVEL_FIELD[level]))
+        fmt = "individual" if disc == "algorithmic" and rng.random() < 0.5 else "team"
+        a = {"id": f"sim-{c.theta:.3f}-{k}", "event_name": f"Соревнования ({disc})", "discipline": disc,
+             "discipline_name": disc, "level": level, "level_name": level, "format": fmt, "participants_total": total,
+             "date": (NOW - timedelta(days=int(rng.integers(30, 1400)))).date().isoformat(), "verified": True}
+        if disc == "product":
+            sk = [s for s in SPEC_BY_SLUG[spec].core_skills if s in SKILL_TAG]
+            if sk:
+                w = np.exp(np.array([c.skill_theta.get(s, c.theta) for s in sk]))  # на хакатонах берут сильный стек
+                pick = rng.choice(len(sk), size=min(len(sk), int(rng.integers(2, 5))), replace=False, p=w / w.sum())
+                a["stack"] = [SKILL_TAG[sk[i]] for i in pick]
+            a["role"] = FSP_ROLE[spec]
+        elif disc == "algorithmic":
+            a["stack"] = ["python"] if rng.random() < 0.5 else ["cpp"]
+        a["skills_true"] = list(fsp_scoring.achievement_skills(a))
+        if noise is None:
+            pct = float(rng.random())
+        else:
+            perf = np.mean([c.skill_theta.get(s, c.theta) for s in a["skills_true"]] or [c.theta])
+            perf += rng.normal(0, noise + (0.4 if fmt == "team" else 0.0))
+            z = (perf - LEVEL_OFFSET[level]) / 1.0
+            pct = 0.5 * (1 + erf(z / sqrt(2)))
+        a["place"] = max(1, min(total, int(round((1 - pct) * total)) + 1))
+        if disc == "algorithmic":
+            a["tasks_total"] = 10
+            a["tasks_solved"] = int(max(0, min(10, round(pct * 10 + rng.normal(0, 1)))))
+        items.append(a)
+    best = min(x["place"] / x["participants_total"] for x in items)
+    rank = "1 разряд" if best < 0.05 else ("2 разряд" if best < 0.15 else None)
+    return {"items": items, "summary": fsp_scoring.summarize(items, rank, NOW.date()), "participant": {"sport_rank": rank}}
 
 
 def make_world(n: int, seed: int, noise: dict | None = None):
@@ -103,20 +169,19 @@ def make_world(n: int, seed: int, noise: dict | None = None):
         years = max(0.0, {"intern": 0.3, "junior": 1.0, "middle": 3.0, "senior": 6.0}[true_g] * float(rng.lognormal(0, noise["years_sd"])))
         sal = SAL[true_g] * float(rng.lognormal(0, 0.15)) * 1000
         has_fsp = rng.random() < 0.15 + 0.35 / (1 + math.exp(-1.5 * c.theta))
-        fsp = {}
-        if has_fsp:
-            lvl = 1 / (1 + math.exp(-(c.theta + rng.normal(0, 0.6))))
-            fsp = {"summary": {"has_history": True, "score_by_spec": {s: round(lvl * (1 if s == spec else 0.6), 3) for s in SPECS},
-                               "skills": {"algorithms": {"level": 1 / (1 + math.exp(-c.skill_theta.get("algorithms", c.theta))),
-                                                          "evidence": []}} if rng.random() < 0.6 else {},
-                               "by_discipline": {}, "total": int(rng.integers(1, 8)), "prizes": 0}}
+        fsp_rng = np.random.default_rng(seed * 100003 + i)
+        fsp_variants = {lbl: (make_fsp(np.random.default_rng(seed * 100003 + i), c, spec, nz) if has_fsp else {})
+                        for lbl, nz in FSP_NOISE.items()}
+        fsp = fsp_variants["реалистично (шум 0.8)"]
+        _ = fsp_rng
         fmts = [["remote"], ["hybrid", "remote"], ["office", "hybrid"], ["hybrid"], ["office"]][int(rng.integers(0, 5))]
         cands.append(SimpleNamespace(
-            id=i, specialization=spec, grade=assigned, theta=theta_hat, skill_scores=scores, claimed_skills=claimed,
+            id=i, specialization=spec, grade=assigned, theta=theta_hat, theta_se=d["se"], skill_scores=scores,
+            claimed_skills=claimed,
             claimed_grade=g_resume, years=years, fsp_data=fsp, salary_from=int(sal), salary_to=int(sal * 1.2),
             work_formats=fmts, city="Москва", relocation=False,
             last_activity_at=NOW - timedelta(days=int(rng.integers(0, 300))), grade_assigned_at=None,
-            true_theta=c.theta, true_skill=c.skill_theta, true_grade=true_g))
+            true_theta=c.theta, true_skill=c.skill_theta, true_grade=true_g, fsp_variants=fsp_variants))
     return cands
 
 
@@ -178,9 +243,16 @@ def rank_category(v, cands, rng):
     return pool
 
 
-def rank_ours(v, cands, weights=None, adjacent=None):
+def rank_ours(v, cands, weights=None, adjacent=None, borderline=True):
     req = ranker.Requirement.from_obj(v)
-    return [r["candidate"] for r in ranker.rank(req, cands, weights, include_adjacent=adjacent)]
+    return [r["candidate"] for r in ranker.rank(req, cands, weights, include_adjacent=adjacent,
+                                                include_borderline=borderline)]
+
+
+def rank_v1(v, cands):
+    """Ранжировщик промежуточной сдачи без изменений (validation/baselines/ranker_before_review.py)."""
+    req = ranker_v1.Requirement.from_obj(v)
+    return [r["candidate"] for r in ranker_v1.rank(req, cands)]
 
 
 def metrics(ranked, v, all_rel_count):
@@ -196,7 +268,7 @@ def metrics(ranked, v, all_rel_count):
             "Recall@50": sum(hit) / all_rel_count if all_rel_count else float("nan")}
 
 
-def evaluate(vacs, cands, seed):
+def evaluate(vacs, cands, seed, only: list[str] | None = None):
     rng = random.Random(seed)
     no_fsp = dict(ranker.DEFAULT_WEIGHTS)
     no_fsp["fsp"] = 0.0
@@ -207,9 +279,13 @@ def evaluate(vacs, cands, seed):
         "Ключевые слова резюме": lambda v: rank_keyword(v, cands, rng),
         "Только категория по тесту": lambda v: rank_category(v, cands, rng),
         "Наш ранжировщик без ФСП": lambda v: rank_ours(v, cands, no_fsp),
+        "Наш до экспертизы (промежуточная сдача)": lambda v: rank_v1(v, cands),
+        "Наш без пограничных кандидатов": lambda v: rank_ours(v, cands, borderline=False),
         "Наш ранжировщик (полный)": lambda v: rank_ours(v, cands),
         "Наш + смежные категории": lambda v: rank_ours(v, cands, None, True),
     }
+    if only:
+        methods = {m: f for m, f in methods.items() if m in only}
     res = {m: [] for m in methods}
     for v in vacs:
         all_rels = [relevance(v, c) for c in cands]
@@ -231,6 +307,55 @@ def evaluate(vacs, cands, seed):
             out[m][k] = {"mean": round(float(vals.mean()), 3), "ci95": [round(float(np.percentile(bs, 2.5)), 3),
                                                                      round(float(np.percentile(bs, 97.5)), 3)]}
     return out
+
+
+def fsp_lift(vacs, cands) -> dict:
+    """Насколько один результат ФСП поднимает кандидата в выдаче под конкретную вакансию.
+
+    Берём кандидата из середины выдачи без истории ФСП и добавляем ему ровно одно достижение: (а) призёр
+    всероссийских соревнований со стеком из обязательных навыков вакансии; (б) тот же результат со стеком,
+    не связанным с вакансией; (в) середина таблицы регионального этапа со стеком вакансии. Сравниваем, на
+    сколько позиций он поднялся, у текущего ранжировщика и у версии до экспертизы."""
+    from copy import copy
+    other_stack = {"backend": ["react", "typescript"], "frontend": ["go", "postgresql"], "data_science": ["react", "nodejs"],
+                   "devops": ["react", "typescript"], "qa": ["pytorch", "pandas"]}
+    date = (NOW - timedelta(days=60)).date().isoformat()
+
+    def ach(v, level, place, total, stack):
+        a = {"id": "lift", "event_name": "Соревнования (проверка)", "discipline": "product", "discipline_name": "product",
+             "level": level, "level_name": level, "format": "team", "participants_total": total, "place": place,
+             "date": date, "stack": stack, "verified": True}
+        return {"items": [a], "summary": fsp_scoring.summarize([a], None, NOW.date()), "participant": {}}
+
+    variants = {
+        "призёр всероссийских, стек вакансии": lambda v: ach(v, "national", 2, 120, [SKILL_TAG[x] for x in v.must_skills if x in SKILL_TAG] or ["python"]),
+        "призёр всероссийских, чужой стек": lambda v: ach(v, "national", 2, 120, other_stack[v.specialization]),
+        "середина регионального этапа, стек вакансии": lambda v: ach(v, "regional", 20, 40, [SKILL_TAG[x] for x in v.must_skills if x in SKILL_TAG] or ["python"]),
+    }
+    out = {k: {"сейчас": [], "до экспертизы": []} for k in variants}
+    start, size = [], []
+    for v in vacs:
+        if not any(x in SKILL_TAG for x in v.must_skills):
+            continue
+        for label, mod in (("сейчас", ranker), ("до экспертизы", ranker_v1)):
+            req = mod.Requirement.from_obj(v)
+            base = [r["candidate"] for r in mod.rank(req, cands)]
+            pool = [c for c in base if not c.fsp_data and c.grade == v.grade]
+            if len(pool) < 9:
+                continue
+            c0 = pool[len(pool) // 2]
+            pos0 = base.index(c0)
+            if label == "сейчас":
+                start.append(pos0 + 1)
+                size.append(len(base))
+            for name, make in variants.items():
+                c1 = copy(c0)
+                c1.fsp_data = make(v)
+                ranked = [r["candidate"] for r in mod.rank(req, [c for c in cands if c is not c0] + [c1])]
+                out[name][label].append(pos0 - ranked.index(c1))
+    res = {k: {lbl: round(float(np.mean(x)), 1) if x else None for lbl, x in d.items()} | {"n": len(d["сейчас"])}
+           for k, d in out.items()}
+    return {"variants": res, "start_position": round(float(np.mean(start)), 1), "list_size": round(float(np.mean(size)), 1)}
 
 
 def ltr_experiment(vacs, cands, seed):
@@ -269,6 +394,9 @@ def ltr_experiment(vacs, cands, seed):
             "p10_default": round(expected_accept(None)[1], 3), "p10_learned": round(expected_accept(trained["weights"])[1], 3)}
 
 
+LAV, PLUM, PINK = "#8A83D1", "#5B3A8E", "#FF0053"
+
+
 def chart(res):
     plt = setup_matplotlib()
     names = list(res)
@@ -276,18 +404,49 @@ def chart(res):
     nd = [res[m]["nDCG@10"]["mean"] for m in names]
     err = [[res[m]["P@10"]["mean"] - res[m]["P@10"]["ci95"][0] for m in names],
            [res[m]["P@10"]["ci95"][1] - res[m]["P@10"]["mean"] for m in names]]
-    fig, ax = plt.subplots(figsize=(7.6, 3.6))
+    fig, ax = plt.subplots(figsize=(7.8, 0.45 * len(names) + 1.0))
     y = np.arange(len(names))
-    colors = [PALETTE["mist"], PALETTE["lavender"], PALETTE["blush"], PALETTE["signal"], PALETTE["plum"], PALETTE["ok"]]
-    ax.barh(y, p10, xerr=err, color=colors, error_kw={"ecolor": PALETTE["ink"], "lw": 1, "capsize": 3})
+    # один ряд: выделен итоговый ранжировщик, остальное — фон для сравнения; значения подписаны у столбцов
+    colors = [PLUM if m == "Наш ранжировщик (полный)" else LAV for m in names]
+    ax.barh(y, p10, height=0.62, xerr=err, color=colors, error_kw={"ecolor": PALETTE["ink"], "lw": 1, "capsize": 3})
     for i, (a, b) in enumerate(zip(p10, nd)):
-        ax.text(a + err[1][i] + 0.02, i, f"{a:.0%}   nDCG {b:.2f}", va="center", fontsize=9)
+        ax.text(a + err[1][i] + 0.02, i, f"{a:.0%}   nDCG {b:.2f}".replace(".", ","), va="center", fontsize=9,
+                color=PALETTE["ink"])
     ax.set_yticks(y, names)
-    ax.set_xlim(0, 1.15)
-    ax.set_xlabel("доля релевантных кандидатов в топ-10 (P@10)")
+    ax.set_xlim(0, 1.34)
+    ax.set_xticks([0, 0.2, 0.4, 0.6, 0.8, 1.0], ["0", "20%", "40%", "60%", "80%", "100%"])
+    ax.set_xlabel("доля релевантных кандидатов в топ-10 (P@10), 95% ДИ")
     ax.invert_yaxis()
     fig.tight_layout()
     fig.savefig(OUT / "fig_matching.png")
+    plt.close(fig)
+
+
+def chart_fsp(fsp_sens):
+    """P@10 трёх вариантов учёта ФСП при разной связи результатов ФСП с навыками."""
+    plt = setup_matplotlib()
+    conds = list(fsp_sens)
+    methods = [("Наш ранжировщик без ФСП", "сейчас без ФСП", LAV),
+               ("Наш до экспертизы (промежуточная сдача)", "до экспертизы", PINK),
+               ("Наш ранжировщик (полный)", "сейчас: ФСП под запрос", PLUM)]
+    fig, ax = plt.subplots(figsize=(7.6, 3.9))
+    h = 0.26
+    y = np.arange(len(conds))
+    for k, (m, label, col) in enumerate(methods):
+        vals = [fsp_sens[c][m]["P@10"] for c in conds]
+        ax.barh(y + (k - 1) * (h + 0.02), vals, height=h, color=col, label=label)
+        for i, v in enumerate(vals):
+            ax.text(v + 0.006, y[i] + (k - 1) * (h + 0.02), f"{v:.1%}".replace(".", ","), va="center", fontsize=8,
+                    color=PALETTE["ink"])
+    lo = min(fsp_sens[c][m]["P@10"] for c in conds for m, _, _ in methods)
+    ax.set_xlim(max(0, lo - 0.08), 1.0)
+    ax.set_yticks(y, [c.replace(" (", "\n(").replace("0.8", "0,8").replace("1.6", "1,6") for c in conds], fontsize=9)
+    ax.invert_yaxis()
+    ax.set_xlabel("P@10 (ось начинается не с нуля)")
+    ax.legend(frameon=False, fontsize=8, loc="upper center", bbox_to_anchor=(0.4, -0.22), ncol=3)
+    ax.set_title("Связь мест в соревнованиях с навыками", fontsize=10, loc="left")
+    fig.tight_layout()
+    fig.savefig(OUT / "fig_fsp_sensitivity.png")
     plt.close(fig)
 
 
@@ -322,10 +481,27 @@ def main():
         sens[label] = {m: res[m]["P@10"]["mean"] for m in res}
         print("  ", sens[label], flush=True)
         main_res, main_cands, main_vacs = res, cands, vacs  # основной — последний (реалистичный)
+    # чувствительность к информативности ФСП: тот же мир, разные истории ФСП
+    fsp_methods = ["Наш ранжировщик без ФСП", "Наш до экспертизы (промежуточная сдача)", "Наш ранжировщик (полный)"]
+    fsp_sens = {}
+    for lbl in FSP_NOISE:
+        for c in main_cands:
+            c.fsp_data = c.fsp_variants[lbl]
+        r = evaluate(main_vacs, main_cands, a.seed, only=fsp_methods)
+        fsp_sens[lbl] = {m: {"P@10": r[m]["P@10"]["mean"], "nDCG@10": r[m]["nDCG@10"]["mean"]} for m in fsp_methods}
+        print("  ФСП", lbl, fsp_sens[lbl], flush=True)
+    for c in main_cands:
+        c.fsp_data = c.fsp_variants["реалистично (шум 0.8)"]
+    lift = fsp_lift(main_vacs, main_cands)
+    print("  подъём от одного результата ФСП:", lift, flush=True)
     lt = ltr_experiment(main_vacs, main_cands, a.seed)
     chart(main_res)
     chart_sensitivity(sens)
+    chart_fsp(fsp_sens)
     out = {"candidates": len(main_cands), "vacancies": len(main_vacs), "results": main_res, "sensitivity_p10": sens, "ltr": lt,
+           "fsp_sensitivity": fsp_sens, "fsp_lift": lift,
+           "fsp_share": round(float(np.mean([bool(c.fsp_data) for c in main_cands])), 3),
+           "borderline_share": round(float(np.mean([ranker.borderline_up(c)[1] >= ranker.BORDER_P for c in main_cands])), 3),
            "grade_accuracy": round(float(np.mean([c.grade == c.true_grade for c in main_cands])), 3)}
     (OUT / "matching_results.json").write_text(json.dumps(out, ensure_ascii=False, indent=1))
     print(json.dumps(out, ensure_ascii=False, indent=1))

@@ -4,17 +4,17 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useState } from "react";
 import { InviteModal, NeedDraft, NeedForm, needPayload } from "@/components/employer";
-import { ExplanationView, MatchScore, SkillNames } from "@/components/domain";
+import { ExplanationView, FspBadge, MatchScore, SkillNames } from "@/components/domain";
 import { Button, Chip, Empty, ErrorNote, Field, Loading, Modal, MultiPick, Panel, StatusChip, Tabs, Toggle, useToast } from "@/components/ui";
-import { api, daysAgo, qs, results, rubRange, useApi } from "@/lib/api";
+import { api, daysAgo, qs, results, rubRange, useApi, plural } from "@/lib/api";
 import { useDict } from "@/lib/session";
 import type { CandidateCard, Need } from "@/lib/types";
 
-type Filters = { grades: string[]; skills: string[]; has_fsp: boolean; must_full: boolean; salary_max: string; formats: string[]; include_adjacent: boolean };
+type Filters = { grades: string[]; skills: string[]; has_fsp: boolean; must_full: boolean; salary_max: string; formats: string[]; include_adjacent: boolean; include_borderline: boolean };
 
 function Row({ c, need, onPin, onInvite }: { c: CandidateCard; need: Need; onPin: (c: CandidateCard) => void; onInvite: (c: CandidateCard) => void }) {
   const [open, setOpen] = useState(false);
-  const { formatName } = useDict();
+  const { formatName, gradeName } = useDict();
   const e = c.explanation!;
   return (
     <div className={clsx("panel p-4 sm:p-5", c.filtered_out && "border-dashed opacity-80")}>
@@ -34,9 +34,17 @@ function Row({ c, need, onPin, onInvite }: { c: CandidateCard; need: Need; onPin
           <p className="mt-2 text-[15px] leading-snug">{e.summary}</p>
           <div className="mt-2 flex flex-wrap gap-1.5">
             {e.must_total > 0 && <Chip tone={e.must_covered === e.must_total ? "ok" : "warn"}>обязательные: {e.must_covered} из {e.must_total}</Chip>}
-            {c.fsp?.has_history && <Chip tone="signal">ФСП: {results(c.fsp.total)}{c.fsp.prizes ? `, призовых ${c.fsp.prizes}` : ""}</Chip>}
-            {e.cons.slice(0, 2).map((x, i) => <Chip key={i} tone="mist">{x}</Chip>)}
+            {e.borderline && <Chip tone="warn">{e.borderline.p >= 0.7 ? `вероятно, ${gradeName(e.borderline.to)}` : `на границе с ${gradeName(e.borderline.to)}`}: {Math.round(e.borderline.p * 100)}%</Chip>}
+            {e.cons.slice(0, 2).filter((x) => !x.startsWith("По тесту")).map((x, i) => <Chip key={i} tone="mist">{x}</Chip>)}
           </div>
+          {c.fsp?.has_history && (
+            <div className="mt-2">
+              <FspBadge fsp={c.fsp} />
+              {e.fsp && e.fsp.items.length > 0 && e.fsp.items[0].relevance >= 0.35 && e.fsp.items[0].matched_skills.length > 0 && (
+                <span className="ml-1.5 text-xs text-ink/55">· под ваш запрос подтверждает {e.fsp.items[0].matched_skills.length} {plural(e.fsp.items[0].matched_skills.length, ["навык", "навыка", "навыков"])}</span>
+              )}
+            </div>
+          )}
           {open && <div className="mt-4 border-t border-mist pt-4"><ExplanationView e={e} /></div>}
           <div className="mt-3 flex flex-wrap items-center gap-2">
             <Button size="sm" variant="ghost" onClick={() => setOpen(!open)}>{open ? "Свернуть" : "Почему он здесь"}</Button>
@@ -53,7 +61,7 @@ function Row({ c, need, onPin, onInvite }: { c: CandidateCard; need: Need; onPin
 export default function NeedPage() {
   const { id } = useParams<{ id: string }>();
   const { dict, specName, gradeName, skillName, formatName } = useDict();
-  const [f, setF] = useState<Filters>({ grades: [], skills: [], has_fsp: false, must_full: false, salary_max: "", formats: [], include_adjacent: false });
+  const [f, setF] = useState<Filters>({ grades: [], skills: [], has_fsp: false, must_full: false, salary_max: "", formats: [], include_adjacent: false, include_borderline: true });
   const [tab, setTab] = useState<"all" | "pinned">("all");
   const [inviting, setInviting] = useState<CandidateCard | null>(null);
   const [editing, setEditing] = useState<NeedDraft | null>(null);
@@ -62,7 +70,7 @@ export default function NeedPage() {
   const { data: comp } = useApi<any>("/employer/company");
   const { data: cats, mutate: mcats } = useApi<any[]>(`/employer/needs/${id}/categories`);
   const query = qs({ grades: f.grades, skills: f.skills, has_fsp: f.has_fsp, must_full: f.must_full, salary_max: f.salary_max,
-    formats: f.formats, include_adjacent: f.include_adjacent || undefined, limit: 50 });
+    formats: f.formats, include_adjacent: f.include_adjacent || undefined, include_borderline: f.include_borderline, limit: 50 });
   const { data, mutate, isLoading } = useApi<any>(`/employer/needs/${id}/candidates${query}`, { keepPreviousData: true });
   const { data: pinned, mutate: mpin } = useApi<CandidateCard[]>(`/employer/needs/${id}/shortlist`);
   if (!data || !dict) return <Loading />;
@@ -139,7 +147,9 @@ export default function NeedPage() {
             <Field label="Ожидания не выше, ₽"><input className="input" type="number" step={10000} value={f.salary_max} onChange={(e) => setF({ ...f, salary_max: e.target.value })} /></Field>
             <Toggle checked={f.must_full} onChange={(v) => setF({ ...f, must_full: v })} label="Все обязательные навыки подтверждены" />
             <Toggle checked={f.has_fsp} onChange={(v) => setF({ ...f, has_fsp: v })} label="Есть достижения ФСП" />
-            <button className="text-sm font-semibold text-ink/55 underline" onClick={() => setF({ grades: [], skills: [], has_fsp: false, must_full: false, salary_max: "", formats: [], include_adjacent: false })}>Сбросить фильтры</button>
+            <Toggle checked={f.include_borderline} onChange={(v) => setF({ ...f, include_borderline: v })} label="Кандидаты на границе грейда"
+                    hint="Тест у порога ошибается чаще: показываем тех, кто с вероятностью от 30% уже на грейде запроса, — после точной категории" />
+            <button className="text-sm font-semibold text-ink/55 underline" onClick={() => setF({ grades: [], skills: [], has_fsp: false, must_full: false, salary_max: "", formats: [], include_adjacent: false, include_borderline: true })}>Сбросить фильтры</button>
           </div>
           <p className="px-1 text-xs leading-relaxed text-ink/55">
             Фильтры уточняют выдачу, не удаляя подборку: закреплённые кандидаты остаются видны с пометкой, даже если не проходят фильтр.

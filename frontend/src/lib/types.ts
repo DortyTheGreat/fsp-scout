@@ -59,12 +59,21 @@ export interface FspView {
   sport_rank?: string | null;
   score: number;
   by_discipline: Record<string, { count: number; prizes: number; best_place: string; strength: number; name: string }>;
+  best?: { event: string; result: string; level_name: string; date: string; discipline_name: string; strength: number } | null;
+  max_strength?: number;
   items?: {
     id: string; event_name: string; discipline_name: string; level_name: string; date: string; place: number;
     participants_total: number; is_prize: boolean; team_name?: string; role?: string; stack?: string[];
     tasks_solved?: number; tasks_total?: number; protocol_url: string; verified: boolean;
+    result?: string; strength?: number; skills?: string[];
   }[];
   fetched_at?: string;
+}
+
+export interface FspMatch {
+  has_history: boolean; value: number; points: number; sport_rank?: string | null; prizes?: number; total?: number;
+  items: { event: string; result: string; level?: string; date: string; discipline?: string; role?: string; relevance: number;
+    points: number; matched_skills: string[] }[];
 }
 
 export interface Explanation {
@@ -75,6 +84,9 @@ export interface Explanation {
   must_covered: number;
   must_total: number;
   skills: Record<string, { fit: number; source: string; score?: number; n?: number; required?: number; must: boolean }>;
+  fsp?: FspMatch;
+  borderline?: { to: string; p: number } | null;
+  salary_multiplier?: number;
 }
 
 export interface CandidateCard {
@@ -153,7 +165,13 @@ export interface Invitation {
   match?: { score: number; explanation: Explanation };
   match_summary?: string;
   history?: { status: string; at: string; by: string }[];
+  messages?: InvitationMessage[];
+  messages_count?: number;
+  salary_context?: { candidate_from?: number | null; candidate_to?: number | null; verdict: "below" | "covers" | "overlaps" | "unknown";
+    text: string; category_median?: number | null };
 }
+
+export interface InvitationMessage { id: number; author_role: "candidate" | "employer"; text: string; created_at: string }
 
 export interface Need {
   id: number;

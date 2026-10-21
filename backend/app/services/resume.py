@@ -11,7 +11,7 @@ from pathlib import Path
 
 from pypdf import PdfReader
 
-from app.services import nlp
+from app.services import experience, nlp
 from app.services.llm import get_llm
 from app.taxonomy import GRADE_BY_SLUG, SKILL_BY_SLUG, SPEC_BY_SLUG
 
@@ -38,12 +38,22 @@ def pdf_to_text(data: bytes) -> str:
 
 def parse_rules(text: str) -> dict:
     c = nlp.extract_contacts(text)
+    jobs = experience.extract_experience(text)
+    # стаж: явный итог («Опыт работы — 6 лет 2 месяца») → объединение периодов мест работы (без учёбы и без
+    # двойного счёта параллельной работы) → сумма всех диапазонов дат в тексте (старое поведение, запасной путь)
+    years = nlp.extract_years_total(text)
+    if years is None:
+        years = experience.years_from_entries(jobs)
+    if years is None:
+        years = nlp.extract_years_experience(text)
     return {
         "full_name": nlp.extract_name(text), "email": c["email"], "phone": c["phone"], "telegram": c["telegram"],
-        "city": nlp.extract_city(text), "years_experience": nlp.extract_years_experience(text),
+        "city": nlp.extract_city(text), "years_experience": years,
         "grade": nlp.extract_grade(text), "specialization": nlp.extract_specialization(text),
         "skills": nlp.extract_skills(text), "roles": nlp.extract_roles(text),
-        "soft_skills": nlp.extract_soft_skills(text), "experience": [], "education": None, "about": None,
+        "soft_skills": nlp.extract_soft_skills(text),
+        "experience": [{k: j[k] for k in ("company", "position", "period", "description")} for j in jobs],
+        "education": None, "about": None,
     }
 
 

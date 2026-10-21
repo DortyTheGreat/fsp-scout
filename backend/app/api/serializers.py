@@ -6,7 +6,8 @@
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from app.models import Application, CandidateProfile, Company, Invitation, Need, Vacancy
+from app.models import Application, CandidateProfile, Company, Invitation, InvitationMessage, Need, Vacancy
+from app.services.fsp.scoring import ensure_summary
 from app.taxonomy import GRADE_BY_SLUG, SKILL_BY_SLUG, SPEC_BY_SLUG
 
 
@@ -40,7 +41,7 @@ def category(c: CandidateProfile) -> dict:
 
 def skills_view(c: CandidateProfile, with_evidence: bool = True) -> list[dict]:
     out = []
-    fsp_sk = ((c.fsp_data or {}).get("summary") or {}).get("skills", {})
+    fsp_sk = ensure_summary(c.fsp_data).get("skills", {})
     for s, v in sorted((c.skill_scores or {}).items(), key=lambda kv: -kv[1]["score"]):
         if v.get("n", 0) == 0:
             continue
@@ -60,15 +61,25 @@ def skills_view(c: CandidateProfile, with_evidence: bool = True) -> list[dict]:
 
 def fsp_view(c: CandidateProfile, full: bool = True) -> dict:
     data = c.fsp_data or {}
-    summ = data.get("summary") or {}
+    summ = ensure_summary(data)
+    views = {v["id"]: v for v in summ.get("items", [])}
+    best = summ.get("items", [])[:1]
     res = {"linked": bool(c.fsp_id), "fsp_id": c.fsp_id if full else None, "has_history": summ.get("has_history", False),
            "total": summ.get("total", 0), "prizes": summ.get("prizes", 0), "sport_rank": summ.get("sport_rank"),
-           "by_discipline": summ.get("by_discipline", {}), "score": summ.get("score", 0)}
+           "by_discipline": summ.get("by_discipline", {}), "score": summ.get("score", 0),
+           # лучший результат — для карточки в выдаче: «Призёр, 2 место из 120 · Всероссийские · 2025»
+           "best": {k: best[0].get(k) for k in ("event", "result", "level_name", "date", "discipline_name", "strength")}
+           if best else None}
     if full:
-        res["items"] = [{k: it.get(k) for k in ("id", "event_name", "discipline_name", "level_name", "date", "place",
-                                                "participants_total", "is_prize", "team_name", "role", "stack",
-                                                "tasks_solved", "tasks_total", "protocol_url", "verified")}
+        res["items"] = [{**{k: it.get(k) for k in ("id", "event_name", "discipline_name", "level_name", "date", "place",
+                                                   "participants_total", "is_prize", "team_name", "role", "stack",
+                                                   "tasks_solved", "tasks_total", "protocol_url", "verified")},
+                         "result": views.get(it.get("id"), {}).get("result"),
+                         "strength": views.get(it.get("id"), {}).get("strength"),
+                         "skills": sorted(views.get(it.get("id"), {}).get("skills", {}),
+                                          key=lambda k: -views[it["id"]]["skills"][k]) if it.get("id") in views else []}
                         for it in sorted(data.get("items", []), key=lambda x: x["date"], reverse=True)]
+        res["max_strength"] = max((v["strength"] for v in views.values()), default=0)
         res["fetched_at"] = data.get("fetched_at")
     return res
 
@@ -115,7 +126,26 @@ def invitation_view(i: Invitation, for_role: str, db: Session | None = None) -> 
         d["match"] = i.match_snapshot
     if for_role == "candidate":
         d["match_summary"] = (i.match_snapshot or {}).get("explanation", {}).get("summary")
+        d["salary_context"] = salary_context(i, db)
+    if db is not None:
+        d["messages_count"] = len(db.scalars(select(InvitationMessage.id).where(InvitationMessage.invitation_id == i.id)).all())
     return d
+
+
+def salary_context(i: Invitation, db: Session | None) -> dict:
+    """Вилка — до начала общения (п. 2.2 ТЗ). Чтобы решить, отвечать ли, кандидат видит её рядом со своими
+    ожиданиями и с медианой ожиданий в своей категории на платформе."""
+    c = i.candidate
+    cf, ct = c.salary_from, c.salary_to
+    if cf and i.salary_to < cf:
+        verdict, text = "below", f"Вилка ниже ваших ожиданий: максимум на {round(100 * (cf - i.salary_to) / cf)}% меньше вашего минимума"
+    elif cf and i.salary_from >= cf:
+        verdict, text = "covers", "Вилка целиком не ниже ваших ожиданий"
+    elif cf:
+        verdict, text = "overlaps", "Ваш минимум попадает в вилку"
+    else:
+        verdict, text = "unknown", "Укажите ожидания в профиле — подскажем, как вилка соотносится с ними"
+    return {"candidate_from": cf, "candidate_to": ct, "verdict": verdict, "text": text, "category_median": None}
 
 
 def vacancy_view(v: Vacancy) -> dict:

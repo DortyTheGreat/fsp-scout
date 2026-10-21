@@ -2853,6 +2853,18 @@
       }
      },
      {
+      "name": "include_borderline",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "boolean",
+       "description": "Показывать кандидатов на границе с грейдом запроса (вероятность ≥ 30%) — после точной категории",
+       "default": true,
+       "title": "Include Borderline"
+      },
+      "description": "Показывать кандидатов на границе с грейдом запроса (вероятность ≥ 30%) — после точной категории"
+     },
+     {
       "name": "limit",
       "in": "query",
       "required": false,
@@ -3322,6 +3334,34 @@
        "default": false,
        "title": "Has Fsp"
       }
+     },
+     {
+      "name": "fsp_prize",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "boolean",
+       "description": "Только призёры соревнований ФСП",
+       "default": false,
+       "title": "Fsp Prize"
+      },
+      "description": "Только призёры соревнований ФСП"
+     },
+     {
+      "name": "sort",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "enum": [
+        "strength",
+        "fsp"
+       ],
+       "type": "string",
+       "description": "strength — сила профиля (тест + ФСП), fsp — сила результатов ФСП",
+       "default": "strength",
+       "title": "Sort"
+      },
+      "description": "strength — сила профиля (тест + ФСП), fsp — сила результатов ФСП"
      },
      {
       "name": "salary_max",
@@ -3924,6 +3964,174 @@
      },
      "403": {
       "description": "Недостаточно прав для роли"
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/invitations/{inv_id}/messages": {
+   "get": {
+    "tags": [
+     "Приглашения"
+    ],
+    "summary": "Вопросы и ответы по приглашению (обе стороны)",
+    "operationId": "list_messages_api_v1_invitations__inv_id__messages_get",
+    "parameters": [
+     {
+      "name": "inv_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "integer",
+       "title": "Inv Id"
+      }
+     },
+     {
+      "name": "authorization",
+      "in": "header",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "Authorization"
+      }
+     },
+     {
+      "name": "scout_session",
+      "in": "cookie",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "Scout Session"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "401": {
+      "description": "Не аутентифицирован"
+     },
+     "403": {
+      "description": "Недостаточно прав для роли"
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   },
+   "post": {
+    "tags": [
+     "Приглашения"
+    ],
+    "summary": "Задать вопрос или ответить до раскрытия контактов",
+    "description": "Кандидат уточняет условия (формат, стек, вилку), не открывая контактов: работодатель видит вопрос от «Иван И.», а контакты — только после принятия приглашения. Работает, пока приглашение не отклонено и не отозвано.",
+    "operationId": "post_message_api_v1_invitations__inv_id__messages_post",
+    "parameters": [
+     {
+      "name": "inv_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "integer",
+       "title": "Inv Id"
+      }
+     },
+     {
+      "name": "authorization",
+      "in": "header",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "Authorization"
+      }
+     },
+     {
+      "name": "scout_session",
+      "in": "cookie",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "Scout Session"
+      }
+     }
+    ],
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/MessageIn"
+       }
+      }
+     }
+    },
+    "responses": {
+     "201": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "401": {
+      "description": "Не аутентифицирован"
+     },
+     "403": {
+      "description": "Недостаточно прав для роли"
+     },
+     "409": {
+      "description": "Приглашение отклонено или отозвано"
      },
      "422": {
       "description": "Validation Error",
@@ -6948,6 +7156,40 @@
     ],
     "title": "DraftIn"
    },
+   "ExperienceIn": {
+    "properties": {
+     "company": {
+      "type": "string",
+      "maxLength": 200,
+      "title": "Company",
+      "description": "Место работы",
+      "default": ""
+     },
+     "position": {
+      "type": "string",
+      "maxLength": 200,
+      "title": "Position",
+      "description": "Должность",
+      "default": ""
+     },
+     "period": {
+      "type": "string",
+      "maxLength": 100,
+      "title": "Period",
+      "description": "Период, например «03.2021 — настоящее время»",
+      "default": ""
+     },
+     "description": {
+      "type": "string",
+      "maxLength": 1000,
+      "title": "Description",
+      "description": "Чем занимались",
+      "default": ""
+     }
+    },
+    "type": "object",
+    "title": "ExperienceIn"
+   },
    "HTTPValidationError": {
     "properties": {
      "detail": {
@@ -7068,6 +7310,22 @@
      "password"
     ],
     "title": "LoginIn"
+   },
+   "MessageIn": {
+    "properties": {
+     "text": {
+      "type": "string",
+      "maxLength": 2000,
+      "minLength": 2,
+      "title": "Text",
+      "description": "Вопрос или ответ по приглашению"
+     }
+    },
+    "type": "object",
+    "required": [
+     "text"
+    ],
+    "title": "MessageIn"
    },
    "NeedIn": {
     "properties": {
@@ -7402,10 +7660,10 @@
       "anyOf": [
        {
         "items": {
-         "additionalProperties": true,
-         "type": "object"
+         "$ref": "#/components/schemas/ExperienceIn"
         },
-        "type": "array"
+        "type": "array",
+        "maxItems": 15
        },
        {
         "type": "null"

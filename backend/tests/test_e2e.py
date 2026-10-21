@@ -45,6 +45,12 @@ def solve_test(c: TestClient, attempt: dict, correct_ratio: float = 1.0) -> dict
     return attempt
 
 
+def other_cannot_read(client, inv_id: int) -> bool:
+    spy = register_and_login(client, "spy@test.ru", "candidate")
+    return (spy.get(f"/api/v1/invitations/{inv_id}/messages").status_code == 404
+            and spy.post(f"/api/v1/invitations/{inv_id}/messages", json={"text": "привет"}).status_code == 404)
+
+
 def test_full_flow(client, fsp_mock):
     # ---------------- кандидат
     cand = register_and_login(client, "ivan@test.ru", "candidate", full_name="Иванов Иван")
@@ -122,8 +128,19 @@ def test_full_flow(client, fsp_mock):
     # ---------------- кандидат отвечает
     inbox = cand.get("/api/v1/invitations").json()
     assert inbox[0]["salary_from"] == 280000 and inbox[0]["company"]["name"] == "ООО Корп"
-    assert cand.get(f"/api/v1/invitations/{inv['id']}").json()["status"] == "viewed"
+    # до ответа кандидат видит вилку, компанию и способ связи (п. 2.2 ТЗ) и как вилка соотносится с его ожиданиями
+    det = cand.get(f"/api/v1/invitations/{inv['id']}").json()
+    assert det["status"] == "viewed" and det["contact_method"] == "Telegram @corp_hr"
+    assert det["salary_context"]["verdict"] == "covers" and det["salary_context"]["candidate_from"] == 250000
     assert emp.get(f"/api/v1/invitations/{inv['id']}").json()["status"] == "viewed"
+    # вопрос до раскрытия контактов: работодатель видит вопрос, но не контакты
+    q = cand.post(f"/api/v1/invitations/{inv['id']}/messages", json={"text": "Возможна ли полностью удалённая работа?"})
+    assert q.status_code == 201 and q.json()[0]["author_role"] == "candidate"
+    e_view = emp.get(f"/api/v1/invitations/{inv['id']}").json()
+    assert e_view["messages"][0]["text"].startswith("Возможна") and "contacts" not in e_view["candidate"]
+    emp.post(f"/api/v1/invitations/{inv['id']}/messages", json={"text": "Да, команда распределённая"})
+    assert [m["author_role"] for m in cand.get(f"/api/v1/invitations/{inv['id']}/messages").json()] == ["candidate", "employer"]
+    assert other_cannot_read(client, inv["id"])
     assert cand.post(f"/api/v1/invitations/{inv['id']}/accept").json()["status"] == "accepted"
     card = emp.get(f"/api/v1/employer/candidates/{prof['id']}").json()
     assert card["contacts"]["phone"] == "+79990001122" and card["name"] == "Иванов Иван"

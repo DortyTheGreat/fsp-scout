@@ -1,0 +1,208 @@
+{
+ "llm_record": "llm_raw_unsloth-gemma-4-e4b-it-gguf-q4-k-m.jsonl",
+ "results": {
+  "before": {
+   "name": "Правила до исправления (места работы не извлекались)",
+   "entries_gold": 72,
+   "entries_pred": 0,
+   "recall": 0.0,
+   "precision": null,
+   "company_recall": 0.0,
+   "position_recall": 0.0,
+   "current_company_filled": 0.0,
+   "resumes_all_correct": 0.0,
+   "no_experience_clean": 1.0,
+   "resumes_with_experience": 36,
+   "resumes_without": 4
+  },
+  "rules": {
+   "name": "Правила",
+   "entries_gold": 72,
+   "entries_pred": 69,
+   "recall": 0.875,
+   "precision": 0.913,
+   "company_recall": 0.931,
+   "position_recall": 0.889,
+   "current_company_filled": 0.944,
+   "resumes_all_correct": 0.778,
+   "no_experience_clean": 1.0,
+   "resumes_with_experience": 36,
+   "resumes_without": 4
+  },
+  "llm": {
+   "name": "LLM",
+   "entries_gold": 72,
+   "entries_pred": 72,
+   "recall": 0.986,
+   "precision": 0.986,
+   "company_recall": 0.986,
+   "position_recall": 0.986,
+   "current_company_filled": 0.972,
+   "resumes_all_correct": 0.972,
+   "no_experience_clean": 1.0,
+   "resumes_with_experience": 36,
+   "resumes_without": 4
+  },
+  "hybrid": {
+   "name": "Гибрид (как в продукте с моделью)",
+   "entries_gold": 72,
+   "entries_pred": 72,
+   "recall": 0.986,
+   "precision": 0.986,
+   "company_recall": 0.986,
+   "position_recall": 0.986,
+   "current_company_filled": 0.972,
+   "resumes_all_correct": 0.972,
+   "no_experience_clean": 1.0,
+   "resumes_with_experience": 36,
+   "resumes_without": 4
+  }
+ },
+ "examples": [
+  {
+   "id": "r01",
+   "gold": [
+    {
+     "company": "ООО «ФинТехСервис»",
+     "position": "Python-разработчик"
+    },
+    {
+     "company": "ООО «Веб Решения»",
+     "position": "Python-разработчик"
+    }
+   ],
+   "rules": [
+    {
+     "company": "ООО «ФинТехСервис»",
+     "position": "Python-разработчик",
+     "period": "Август 2022 — настоящее время"
+    },
+    {
+     "company": "ООО «Веб Решения»",
+     "position": "Python-разработчик",
+     "period": "Сентябрь 2020 — Июль 2022"
+    }
+   ]
+  },
+  {
+   "id": "r02",
+   "gold": [
+    {
+     "company": "«Ритейл Тех»",
+     "position": "Frontend-разработчик"
+    },
+    {
+     "company": "ООО «Студия Лайм»",
+     "position": "Junior Frontend-разработчик"
+    }
+   ],
+   "rules": [
+    {
+     "company": "«Ритейл Тех»",
+     "position": "Frontend-разработчик",
+     "period": "Январь 2024 — настоящее время"
+    },
+    {
+     "company": "ООО «Студия Лайм»",
+     "position": "Junior Frontend-разработчик",
+     "period": "Июнь 2022 — Декабрь 2023"
+    }
+   ]
+  },
+  {
+   "id": "r03",
+   "gold": [
+    {
+     "company": "АО «КазаньБанк Технологии»",
+     "position": "Data Scientist"
+    },
+    {
+     "company": "ООО «ТатМаркет»",
+     "position": "Младший аналитик данных"
+    }
+   ],
+   "rules": [
+    {
+     "company": "АО «КазаньБанк Технологии»",
+     "position": "Data Scientist",
+     "period": "Ноябрь 2023 — по настоящее время"
+    }
+   ]
+  },
+  {
+   "id": "r04",
+   "gold": [
+    {
+     "company": "ООО «СибСофт»",
+     "position": "DevOps-инженер"
+    },
+    {
+     "company": "«НовоНет»",
+     "position": "Системный администратор Linux"
+    }
+   ],
+   "rules": [
+    {
+     "company": "ООО «СибСофт»",
+     "position": "DevOps-инженер",
+     "period": "07.2021 – н.в."
+    },
+    {
+     "company": "интернет-провайдер «НовоНет»",
+     "position": "Системный администратор Linux",
+     "period": "09.2019 – 06.2021"
+    }
+   ]
+  },
+  {
+   "id": "r05",
+   "gold": [
+    {
+     "company": "ООО «УралСофт»",
+     "position": "QA-инженер"
+    },
+    {
+     "company": "МАОУ СОШ № 47",
+     "position": "Учитель математики"
+    }
+   ],
+   "rules": [
+    {
+     "company": "ООО «УралСофт» (B2B-платформа для логистики)",
+     "position": "QA-инженер",
+     "period": "Март 2024 — настоящее время"
+    },
+    {
+     "company": "Учитель математики",
+     "position": "",
+     "period": "Сентябрь 2015 — Август 2023"
+    }
+   ]
+  },
+  {
+   "id": "r06",
+   "gold": [
+    {
+     "company": "Logistix",
+     "position": "Senior Backend Engineer"
+    },
+    {
+     "company": "PayFlow",
+     "position": "Backend Developer (Go)"
+    }
+   ],
+   "rules": [
+    {
+     "company": "Logistix",
+     "position": "Senior Backend Engineer",
+     "period": "Apr 2023 – Present"
+    },
+    {
+     "company": "PayFlow",
+     "position": "Backend Developer (Go)",
+     "period": "Jan 2020 – Mar 2023"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,16 @@
+.venv/
+__pycache__/
+*.pyc
+*.db
+.env
+node_modules/
+.next/
+frontend/out/
+.pytest_cache/
+validation/out/cache/
+backend/scout.db
+.fsp.log
+.api.log
+docs/build/*.html
+.logs/
+frontend/tsconfig.tsbuildinfo

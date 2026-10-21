@@ -25,6 +25,6 @@ rows = []
 for sel in ("theta", "cut", "mix"):
     for mx in (20, 25):
         for z in (1.645, 1.28):
-            cfg = cat.CatConfig(min_items=8, max_items=mx, z=z, select_at=sel)
+            cfg = cat.CatConfig(min_items=8, max_items=mx, z=z, select_at=sel, extend_max_items=0)  # подбор до экспертизы
             r = run(cfg); r.update(select_at=sel, max_items=mx, z=z); rows.append(r); print(r, flush=True)
 (OUT / "cat_tuning.json").write_text(json.dumps(rows, ensure_ascii=False, indent=1))

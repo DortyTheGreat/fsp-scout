@@ -3,7 +3,8 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { Suspense, useState } from "react";
 import { InviteModal } from "@/components/employer";
-import { Button, Chip, Empty, Field, Loading, MultiPick, PageHead, Toggle, useToast } from "@/components/ui";
+import { FspBadge } from "@/components/domain";
+import { Button, Chip, Empty, Field, Loading, MultiPick, PageHead, Tabs, Toggle, useToast } from "@/components/ui";
 import { qs, rubRange, useApi } from "@/lib/api";
 import { useDict } from "@/lib/session";
 import type { CandidateCard } from "@/lib/types";
@@ -12,7 +13,8 @@ function Search() {
   const sp = useSearchParams();
   const { dict, skillName } = useDict();
   const [f, setF] = useState({ specialization: sp.get("specialization") || "", grade: sp.get("grade") || "", skills: [] as string[],
-    min_skill_score: 50, has_fsp: false, salary_max: "", formats: [] as string[], q: "" });
+    min_skill_score: 50, has_fsp: sp.get("has_fsp") === "true", fsp_prize: false, sort: (sp.get("sort") === "fsp" ? "fsp" : "strength") as "strength" | "fsp",
+    salary_max: "", formats: [] as string[], q: "" });
   const { data, mutate } = useApi<{ total: number; items: CandidateCard[] }>(`/employer/search${qs({ ...f, limit: 50 })}`, { keepPreviousData: true });
   const { data: comp } = useApi<any>("/employer/company");
   const [inviting, setInviting] = useState<CandidateCard | null>(null);
@@ -46,12 +48,17 @@ function Search() {
         </div>
         <div>
           <Toggle checked={f.has_fsp} onChange={(v) => setF({ ...f, has_fsp: v })} label="Есть достижения ФСП" />
+          <Toggle checked={f.fsp_prize} onChange={(v) => setF({ ...f, fsp_prize: v })} label="Призёры соревнований ФСП" />
           <Field label="Формат"><MultiPick options={dict.work_formats.map((w) => ({ value: w.slug, label: w.name }))} value={f.formats} onChange={(v) => setF({ ...f, formats: v })} /></Field>
         </div>
       </div>
       {!data ? <Loading /> : data.items.length === 0 ? <Empty title="Никого не нашли" text="Ослабьте фильтры: например, снизьте минимальную оценку навыка." /> : (
         <>
-          <p className="mb-3 text-sm text-ink/60">Найдено: {data.total}</p>
+          <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
+            <p className="text-sm text-ink/60">Найдено: {data.total}</p>
+            <div className="w-full max-w-sm"><Tabs value={f.sort} onChange={(v) => setF({ ...f, sort: v })}
+              items={[{ value: "strength", label: "По силе профиля" }, { value: "fsp", label: "По результатам ФСП" }]} /></div>
+          </div>
           <div className="space-y-3">
             {data.items.map((c) => (
               <div key={c.id} className="panel flex flex-wrap items-center gap-4 p-4 sm:p-5">
@@ -63,8 +70,8 @@ function Search() {
                   <div className="text-sm text-ink/60">{c.category.specialization_name}, {c.category.grade_name}{c.city ? `; ${c.city}` : ""}{c.salary_from ? `; ожидает ${rubRange(c.salary_from, c.salary_to)}` : ""}</div>
                   <div className="mt-1.5 flex flex-wrap gap-1.5">
                     {c.skills.filter((s) => s.score !== null).slice(0, 4).map((s) => <Chip key={s.slug} tone="mist">{s.name} {s.score}</Chip>)}
-                    {c.fsp?.has_history && <Chip tone="signal">ФСП: {c.fsp.total}</Chip>}
                   </div>
+                  {c.fsp?.has_history && <div className="mt-1.5"><FspBadge fsp={c.fsp} /></div>}
                 </div>
                 {!c.contacts_unlocked && <Button size="sm" onClick={() => setInviting(c)}>Пригласить</Button>}
               </div>

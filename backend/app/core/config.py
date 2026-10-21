@@ -51,6 +51,7 @@ class Settings(BaseSettings):
     same_grade_retry_days: int = 14          # повторная попытка на тот же грейд
     test_min_items: int = 8
     test_max_items: int = 25
+    test_extend_max_items: int = 35  # дотестирование пограничных результатов (0 — выключено)
     test_confidence_z: float = 1.645         # односторонний 95% интервал для решения о грейде
     pretest_items_per_test: int = 1          # незачётные калибровочные задания в тесте
 

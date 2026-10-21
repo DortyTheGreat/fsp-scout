@@ -3,7 +3,7 @@ import clsx from "clsx";
 import { useEffect, useState } from "react";
 import { api, dateRu, results } from "@/lib/api";
 import { useDict } from "@/lib/session";
-import type { Explanation, FspView, SkillView } from "@/lib/types";
+import type { Explanation, FspMatch, FspView, SkillView } from "@/lib/types";
 import { Chip, Modal, Loading, ErrorNote } from "./ui";
 
 // ---------------------------------------------------------------- шкала уровня
@@ -202,11 +202,34 @@ export function Prompt({ text }: { text: string }) {
 }
 
 // ---------------------------------------------------------------- ФСП
-export function FspBlock({ fsp, compact }: { fsp: FspView; compact?: boolean }) {
+const yearOf = (d?: string) => (d ? d.slice(0, 4) : "");
+
+/** Строка лучшего результата для карточки в выдаче: «Призёр, 2 место из 120 · Всероссийские · 2025». */
+export function FspBadge({ fsp }: { fsp?: FspView }) {
+  if (!fsp || fsp.hidden || !fsp.has_history || !fsp.best) return null;
+  return (
+    <span className="inline-flex flex-wrap items-center gap-1.5 text-xs">
+      <Chip tone="signal">ФСП</Chip>
+      <span className="font-semibold text-plum">{fsp.best.result}</span>
+      <span className="text-ink/55">· {fsp.best.level_name} · {yearOf(fsp.best.date)}</span>
+      {fsp.prizes > 1 && <span className="text-ink/55">· призовых мест: {fsp.prizes}</span>}
+    </span>
+  );
+}
+
+export function FspBlock({ fsp, compact, own }: { fsp: FspView; compact?: boolean; own?: boolean }) {
+  const { skillName } = useDict();
   if (fsp.hidden) return <p className="text-sm text-ink/55">Кандидат скрыл достижения ФСП.</p>;
-  if (!fsp.linked) return <p className="text-sm text-ink/55">ФСП ID не привязан. Это не влияет на категорию: она определяется тестом.</p>;
-  if (!fsp.has_history) return <p className="text-sm text-ink/55">ФСП ID привязан, результатов соревнований пока нет.</p>;
-  const disc = Object.values(fsp.by_discipline || {});
+  if (!fsp.linked)
+    return (
+      <div className="text-sm text-ink/60">
+        <p>ФСП ID не привязан. Это не влияет на категорию: она определяется тестом.</p>
+        {own && <p className="mt-2">Привяжите ФСП ID в <a href="/candidate/settings" className="font-semibold text-plum underline">настройках</a> — подтверждённые результаты соревнований поднимут вас в выдаче под запросы, где они подтверждают нужные навыки.</p>}
+      </div>
+    );
+  if (!fsp.has_history)
+    return <p className="text-sm text-ink/55">ФСП ID привязан, результатов соревнований пока нет. Это не минус: позиция в выдаче определяется тестом, а результаты появятся здесь после первых стартов.</p>;
+  const maxS = fsp.max_strength || Math.max(...(fsp.items || []).map((i) => i.strength || 0), 0.0001);
   return (
     <div className="space-y-3">
       <div className="flex flex-wrap gap-2">
@@ -214,31 +237,52 @@ export function FspBlock({ fsp, compact }: { fsp: FspView; compact?: boolean }) 
         {fsp.prizes > 0 && <Chip tone="signal">призовых мест: {fsp.prizes}</Chip>}
         {fsp.sport_rank && <Chip tone="plum">{fsp.sport_rank}</Chip>}
       </div>
-      {disc.length > 0 && (
+      {fsp.best && (
+        <div className="rounded-xl bg-signal-50 px-4 py-3">
+          <div className="text-xs text-ink/55">Сильнейший результат</div>
+          <div className="font-bold text-plum">{fsp.best.result}</div>
+          <div className="text-sm text-ink/70">{fsp.best.event} · {fsp.best.level_name} · {yearOf(fsp.best.date)}</div>
+        </div>
+      )}
+      {compact && !fsp.items && Object.values(fsp.by_discipline || {}).length > 0 && (
         <ul className="space-y-1 text-sm">
-          {disc.map((d) => (
+          {Object.values(fsp.by_discipline).map((d) => (
             <li key={d.name}><span className="font-semibold">{d.name}</span>: {d.count} старт., лучшее место {d.best_place}</li>
           ))}
         </ul>
       )}
-      {!compact && fsp.items && (
+      {fsp.items && (
         <div className="divide-y divide-mist rounded-xl border border-mist-300/70">
-          {fsp.items.map((it) => (
-            <div key={it.id} className="flex flex-wrap items-start gap-x-4 gap-y-1 px-4 py-3 text-sm">
-              <div className="min-w-0 flex-1">
-                <div className="font-semibold">{it.event_name}</div>
-                <div className="text-ink/55">
-                  {dateRu(it.date)}, {it.level_name.toLowerCase()}
-                  {it.team_name ? `, команда «${it.team_name}»` : ""}{it.role ? `, ${it.role}` : ""}
-                  {it.tasks_total ? `, решено ${it.tasks_solved} из ${it.tasks_total}` : ""}
+          {(compact ? fsp.items.slice(0, 3) : fsp.items).map((it) => (
+            <div key={it.id} className="space-y-1.5 px-4 py-3 text-sm">
+              <div className="flex flex-wrap items-start gap-x-4 gap-y-1">
+                <div className="min-w-0 flex-1">
+                  <div className="font-semibold">{it.event_name}</div>
+                  <div className="text-ink/55">
+                    {dateRu(it.date)}, {it.level_name.toLowerCase()}
+                    {it.team_name ? `, команда «${it.team_name}»` : ""}{it.role ? `, ${it.role}` : ""}
+                    {it.tasks_total ? `, решено ${it.tasks_solved} из ${it.tasks_total}` : ""}
+                  </div>
                 </div>
-                {it.stack && it.stack.length > 0 && <div className="mt-1 text-xs text-ink/50">стек: {it.stack.join(", ")}</div>}
+                <div className="text-right">
+                  <div className={clsx("font-bold tabular-nums", it.is_prize ? "text-signal" : "text-plum")}>{it.place} место</div>
+                  <div className="text-xs text-ink/50">из {it.participants_total}</div>
+                </div>
               </div>
-              <div className="text-right">
-                <div className={clsx("font-bold tabular-nums", it.is_prize ? "text-signal" : "text-plum")}>{it.place} место</div>
-                <div className="text-xs text-ink/50">из {it.participants_total}</div>
-              </div>
-              <div className="w-full">
+              {it.strength != null && (
+                <div className="flex items-center gap-3">
+                  <span className="w-28 shrink-0 text-xs text-ink/55">Сила результата</span>
+                  <div className="flex-1"><ScoreBar value={it.strength} max={maxS} tone="signal" /></div>
+                  <span className="w-24 shrink-0 text-right text-xs text-ink/60">{it.result?.split(",")[0]}</span>
+                </div>
+              )}
+              {it.skills && it.skills.length > 0 && (
+                <div className="flex flex-wrap items-center gap-1.5 text-xs">
+                  <span className="text-ink/55">подтверждает:</span>
+                  {it.skills.slice(0, 6).map((s) => <Chip key={s} tone="lavender" className="!text-[11px]">{skillName(s)}</Chip>)}
+                </div>
+              )}
+              <div>
                 {it.verified ? <Chip tone="ok">подпись ФСП проверена</Chip> : <Chip tone="warn">подпись не проверена</Chip>}{" "}
                 <a href={it.protocol_url} target="_blank" rel="noreferrer" className="text-xs font-semibold text-plum underline">протокол</a>
               </div>
@@ -246,15 +290,51 @@ export function FspBlock({ fsp, compact }: { fsp: FspView; compact?: boolean }) 
           ))}
         </div>
       )}
+      {!compact && <p className="text-xs text-ink/50">Сила результата — уровень соревнования × место с упором на призовые × размер поля × давность. Под конкретный запрос она умножается на то, насколько результат подтверждает нужные навыки.</p>}
+    </div>
+  );
+}
+
+/** Вклад ФСП под конкретный запрос работодателя. */
+export function FspMatchView({ m }: { m: FspMatch }) {
+  const { skillName } = useDict();
+  if (!m.has_history) return <p className="text-sm text-ink/55">Истории ФСП нет — это не штраф: место в выдаче определяют тест и условия.</p>;
+  return (
+    <div className="space-y-2 text-sm">
+      <div className="flex items-center gap-3">
+        <span className="w-44 shrink-0 text-ink/75">ФСП под этот запрос</span>
+        <div className="flex-1"><ScoreBar value={m.value} max={1} tone="signal" /></div>
+        <span className="w-24 text-right text-xs tabular-nums text-ink/60">+{m.points.toFixed(1)} балла</span>
+      </div>
+      {m.items.length === 0 ? <p className="text-ink/55">Результаты есть, но слабо связаны с требованиями запроса.</p> : (
+        <ul className="space-y-1.5">
+          {m.items.map((it, i) => (
+            <li key={i} className="rounded-lg bg-mist-50 px-3 py-2">
+              <div><b>{it.result}</b> — {it.event} ({yearOf(it.date)}{it.level ? `, ${it.level.toLowerCase()}` : ""})</div>
+              <div className="text-xs text-ink/60">
+                связь с запросом {Math.round(it.relevance * 100)}%
+                {it.matched_skills.length > 0 && <> · подтверждает: {it.matched_skills.map(skillName).join(", ")}</>}
+                {it.role ? ` · роль: ${it.role}` : ""}
+              </div>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }
 
 // ---------------------------------------------------------------- объяснение выдачи
 export function ExplanationView({ e, compact }: { e: Explanation; compact?: boolean }) {
+  const { gradeName } = useDict();
   return (
     <div className="space-y-3 text-sm">
-      <div className="grid gap-3 sm:grid-cols-2">
+      {e.borderline && (
+        <div className="rounded-lg bg-amber-50 px-3 py-2 text-warn">
+          {e.borderline.p >= 0.7 ? `Уровень ${gradeName(e.borderline.to)} вероятен` : `На границе с грейдом ${gradeName(e.borderline.to)}`}: вероятность {Math.round(e.borderline.p * 100)}% по оценке теста и её погрешности. Категория по тесту не меняется (тест на {gradeName(e.borderline.to)} кандидат не сдавал), в выдаче он идёт с этой вероятностью вместо полного совпадения грейда.
+        </div>
+      )}
+      <div className={clsx("grid gap-3", e.cons.length > 0 && "sm:grid-cols-2")}>
         <div>
           <div className="mb-1 font-semibold text-ok">Почему в подборке</div>
           <ul className="space-y-1">{e.pros.map((p, i) => <li key={i} className="flex gap-2"><span className="text-ok">+</span>{p}</li>)}</ul>
@@ -266,6 +346,12 @@ export function ExplanationView({ e, compact }: { e: Explanation; compact?: bool
           </div>
         )}
       </div>
+      {!compact && e.fsp && (
+        <div>
+          <div className="mb-2 font-semibold text-plum">Достижения ФСП под запрос</div>
+          <FspMatchView m={e.fsp} />
+        </div>
+      )}
       {!compact && (
         <div>
           <div className="mb-2 font-semibold text-plum">Из чего сложилась оценка</div>
@@ -278,6 +364,9 @@ export function ExplanationView({ e, compact }: { e: Explanation; compact?: bool
               </div>
             ))}
           </div>
+          {e.salary_multiplier != null && e.salary_multiplier < 0.99 && (
+            <p className="mt-2 text-xs text-warn">Ожидания кандидата выше максимума вилки: итог умножен на {e.salary_multiplier.toFixed(2).replace(".", ",")}.</p>
+          )}
         </div>
       )}
     </div>
